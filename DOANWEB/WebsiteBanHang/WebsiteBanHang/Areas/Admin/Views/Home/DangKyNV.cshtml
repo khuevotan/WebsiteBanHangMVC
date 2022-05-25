@@ -1,0 +1,125 @@
+﻿@model WebsiteBanHang.CSDL.NhanVien
+
+
+@{
+    ViewBag.Title = "DangKyNV";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section-content padding-y">
+
+    <!-- ============================ COMPONENT REGISTER   ================================= -->
+    <div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+        <article class="card-body">
+            <header class="mb-4"><h4 class="card-title">Đăng Ký</h4></header>
+
+
+            @using (Html.BeginForm("DangKyNV", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Tài khoản</label>
+                    @Html.EditorFor(model => model.TaiKhoan, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TaiKhoan, "", new { @class = "text-danger" })
+                </div> <!-- form-group end.// -->
+                <div class="form-group col-md-6">
+                    <label>Mật khẩu</label>
+                    @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                </div> <!-- form-group end.// -->
+            </div>
+
+            <div class="form-row">
+                <div class="col form-group">
+                    <label>Họ </label>
+                    @Html.EditorFor(model => model.HoNV, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HoNV, "", new { @class = "text-danger" })
+                </div> <!-- form-group end.// -->
+                <div class="col form-group">
+                    <label>Tên </label>
+                    @Html.EditorFor(model => model.TenNV, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TenNV, "", new { @class = "text-danger" })
+                </div> <!-- form-group end.// -->
+            </div> <!-- form-row end.// -->
+
+            <div class="form-group">
+                <div class="checkbox">
+                    Nam @Html.RadioButtonFor(model => model.GioiTinh, "True", new { @checked = "checked" }) &nbsp;
+                    Nữ @Html.RadioButtonFor(model => model.GioiTinh, "False")
+                    @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
+                </div>
+            </div> <!-- form-group end.// -->
+
+            <div class="form-row">
+                <div class="col form-group">
+                    <label>Ngày sinh</label>
+                    @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
+                </div> <!-- form-group end.// -->
+                <div class="col form-group">
+                    <label>Số điện thoại</label>
+                    @Html.EditorFor(model => model.SoDT, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SoDT, "", new { @class = "text-danger" })
+                </div> <!-- form-group end.// -->
+            </div> <!-- form-row end.// -->
+
+            <div class="form-group">
+                <label>Ảnh đại diện</label>
+                <input type="file" style="height:30px;" name="Avatar" accept="image/*" required />
+                @Html.ValidationMessageFor(model => model.HinhDD, "", new { @class = "text-danger" })
+            </div> <!-- form-group end.// -->
+
+
+            <div class="form-row">
+                <div class="col form-group">
+                    <label>Địa Chỉ</label>
+                    @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                </div> <!-- form-group end.// -->
+                <div class="col form-group">
+                    <label>Lương</label>
+                    @Html.EditorFor(model => model.Luong, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Luong, "", new { @class = "text-danger" })
+                </div> <!-- form-group end.// -->
+            </div> <!-- form-row end.// -->
+
+            <div class="form-group">
+                <label>Email</label>
+                @Html.EditorFor(model => model.Luong, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Luong, "", new { @class = "text-danger" })
+                <small class="form-text text-muted">Chúng tôi sẽ không bao giờ chia sẻ email của bạn với bất kỳ ai khác.</small>
+            </div> <!-- form-group end.// -->
+
+            <div class="form-group">
+                <label>Nhóm nhân viên</label>
+                @Html.DropDownList("MaNhom", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MaNhom, "", new { @class = "text-danger" })
+                <small class="form-text text-muted">Chúng tôi sẽ không bao giờ chia sẻ email của bạn với bất kỳ ai khác.</small>
+            </div> <!-- form-group end.// -->
+
+      
+            <div class="form-group">
+                <input type="submit" value="Thêm mới" class="btn btn-primary btn-block">
+            </div> <!-- form-group// -->
+
+            <div class="form-group">
+                <label class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" checked=""> <div class="custom-control-label"> Tôi đồng ý với các  <a href="#">điều khoản và điều kiện</a>  </div> </label>
+            </div> <!-- form-group end.// -->
+
+        </div>
+            }
+
+
+        </article><!-- card-body.// -->
+    </div> <!-- card .// -->
+    <p class="text-center mt-4">Bạn có một tài khoản? <a href="~/Home/DangNhapNV">Đăng Nhập</a></p>
+    <br><br>
+    <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+</section>
+

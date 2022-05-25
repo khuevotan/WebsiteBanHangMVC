@@ -1,0 +1,73 @@
+﻿@model IEnumerable<WebsiteBanHang.CSDL.HoaDon>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "MaHD", rowsPerPage: 4);
+
+    int i = 0;
+}
+
+<div class="content-wrapper">
+
+    <h3>DANH SÁCH SẢN PHẨM</h3>
+
+    <p>
+        @Html.ActionLink("Thêm đơn hàng mới", "HoaDon")
+    </p>
+
+    <div id="gridContent">
+        @ViewBag.TB
+        @grid.GetHtml(
+            tableStyle: "table table-bordered table-hover",
+            footerStyle: "grid-footer",
+            fillEmptyRows: true,
+            mode: WebGridPagerModes.Numeric,
+            alternatingRowStyle: "alternatingRowStyle",
+              columns: new[]  // colums in grid
+             {
+         grid.Column("STT",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
+          grid.Column("MaHD","Mã Hóa Đơn"), //the model fields to display
+                  grid.Column("NgayDat","Ngày đặt hàng"), //the model fields to display
+        grid.Column("NgayGiao","Ngày giao hàng"),
+          grid.Column("SoDT","Số điện thoại"),
+          grid.Column("DiaChi","Địa chỉ"),
+        grid.Column("GhiChu","Ghi chú"),
+
+    grid.Column("KhachHang.TaiKhoan","Tên tài khoản"),
+    grid.Column("NhanVien.TaiKhoan","Tên nhân viên"),
+     grid.Column("TrangThai.TenTT","Trạng thái"),
+
+
+grid.Column("Chức năng", format: @<text>
+
+    <a href="@Url.Action("Details",
+                        new { id = item.MaHD})" class="edit-btn">
+        <abbr title="Xem chi tiết">
+            <img src="~/content/images/icons/details.png" width="20" height="20" />
+        </abbr>
+
+    </a>
+
+    <a href="@Url.Action("Edit",
+                        new { id = item.MaHD})" class="edit-btn">
+        <abbr title="Chỉnh sửa">
+            <img src="~/content/images/icons/edit.png" width="20" height="20" />
+        </abbr>
+    </a>
+
+    <a href="@Url.Action("Delete",
+                        new { id = item.MaHD})" class="edit-btn">
+        <abbr title="Xóa dữ liệu">
+            <img src="~/content/images/icons/delete.png" width="20" height="20" />
+        </abbr>
+
+    </a>
+
+</text>),
+
+}
+)
+    </div>
+
+</div>

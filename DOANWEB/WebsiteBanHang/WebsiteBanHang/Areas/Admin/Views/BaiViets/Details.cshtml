@@ -1,0 +1,59 @@
+﻿@model WebsiteBanHang.CSDL.BaiViet
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BaiViet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenBV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenBV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhDD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HinhDD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NhanVien.TaiKhoan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhanVien.TaiKhoan)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaBV }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,172 @@
+﻿@model WebsiteBanHang.Models.HomeModel
+
+
+@{
+    ViewBag.Title = "Detail";
+}
+
+
+
+<section class="py-3 bg-success">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li></li>
+        </ol>
+    </div>
+</section>
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content bg-white padding-y">
+
+    @foreach (var item in Model.ListSanPham)
+    {
+        <div class="container">
+            <!-- ============================ ITEM DETAIL ======================== -->
+
+            <div class="row">
+                <aside class="col-md-6">
+                    <div class="card">
+                        <article class="gallery-wrap">
+                            <div class="img-big-wrap">
+                                <div> <a href="#"><img src="~/Content/images/items/@item.HinhDD"></a></div>
+                            </div> <!-- slider-product.// -->
+                            <div class="thumbs-wrap">
+                                <a href="#" class="item-thumb"> <img src="~/Content/images/items/@item.HinhDD"></a>
+                                <a href="#" class="item-thumb"> <img src="~/Content/images/items/@item.HinhDD"></a>
+                            </div> <!-- slider-nav.// -->
+                        </article> <!-- gallery-wrap .end// -->
+                    </div> <!-- card.// -->
+                </aside>
+                <main class="col-md-6">
+                    <article class="product-info-aside">
+
+                        <h2 class="title mt-3">@item.TenSP </h2>
+
+                        <div class="rating-wrap my-3">
+                            <ul class="rating-stars">
+                                <li style="width:80%" class="stars-active">
+                                    <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </li>
+                            </ul>
+
+                        </div> <!-- rating-wrap.// -->
+
+                        <div class="mb-3">
+                            <var class="price h4">@item.GiaBan</var>
+                            <span class="text-muted">đ</span>
+                        </div> <!-- price-detail-wrap .// -->
+
+
+                        @foreach (var itemncc in Model.ListNhaCungCap.Where(n => n.MaNCC == item.MaNCC))
+                        {
+                            <dl class="row">
+                                <dt class="col-sm-3">Tên nhà cung cấp</dt>
+                                <dd class="col-sm-9"><a href="#">@itemncc.TenNCC</a></dd>
+
+                                <dt class="col-sm-3">Số điện thoại</dt>
+                                <dd class="col-sm-9">@itemncc.SoDT</dd>
+
+
+                            </dl>
+                        }
+
+
+                    <div class="form-row  mt-4">
+                        <div class="form-group col-md flex-grow-0">
+
+                            @using (Html.BeginForm("ThemVaoGioCT", "GioHang", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    @Html.TextBoxFor(m => m.MaSP, "", new { @class = "form-control" })
+
+                                </div>
+                                <div class="form-group">
+                                    @Html.TextBoxFor(m => m.SoLuong, "1", new { @class = "form-control" })
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" name="submit" class="btn btn-success btn-block" value="Thêm vào giỏ hàng" />
+                                </div>
+                            }
+
+
+                        </div> <!-- col.// -->
+                            </div> <!-- row.// -->
+
+                    </article> <!-- product-info-aside .// -->
+                </main> <!-- col.// -->
+            </div> <!-- row.// -->
+            <!-- ================ ITEM DETAIL END .// ================= -->
+
+
+        </div> <!-- container .//  -->
+    }
+
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+<!-- ========================= SECTION  ========================= -->
+<section class="section-name padding-y bg">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model.ListSanPham)
+            {
+                <div class="col-md-8">
+                    <h5 class="title-description">Thông tin sản phẩm</h5>
+                    <p> @item.MoTaCT</p>
+                    <h5 class="title-description">Đánh giá sản phẩm</h5>
+                    <div>
+                        <img src="~/Content/images/posts/danhgia.PNG" />
+                    </div>
+                    <br />
+                    <br />
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <img src="~/Content/images/banners/k1.png" />
+                        </div>
+
+                        <div class="col-xl-6">
+                            <img src="~/Content/images/banners/k2.png" />
+                        </div>
+                    </div>
+                </div> <!-- col.// -->
+            }
+
+            <aside class="col-md-4">
+
+                <div class="box">
+
+                    <h5 class="title-description">Bài Viết Liên Quan</h5>
+
+
+                    @foreach (var item in Model.ListBaiViet.Take(3))
+                    {
+                        <article class="media mb-3">
+                            <a href="#"><img class="img-sm mr-3" src="~/Content/images/posts/@item.HinhDD"></a>
+                            <div class="media-body">
+                                <h6 class="mt-0"><a href="#">@item.TenBV</a></h6>
+                                <p class="mb-2">@item.NgayDang </p>
+                                <a href="@Url.Action("ChiTietBaiViet", "BaiViet", new { MaBV = item.MaBV})"
+                                   class="btn btn-light">Xem ngay! </a>
+                            </div>
+                        </article>
+                    }
+
+
+                </div> <!-- box.// -->
+            </aside> <!-- col.// -->
+        </div> <!-- row.// -->
+
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->

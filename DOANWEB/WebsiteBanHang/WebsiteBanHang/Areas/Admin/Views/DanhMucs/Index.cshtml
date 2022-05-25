@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebsiteBanHang.CSDL.DanhMuc>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenDM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HinhDD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoTaCT)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenDM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HinhDD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MoTaCT)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaDM }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaDM }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaDM })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,226 @@
+﻿@model WebsiteBanHang.Models.HomeModel
+
+@{
+    ViewBag.Title = "SanPhamDanhMuc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="py-3 bg-success">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li></li>
+        </ol>
+    </div>
+</section>
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+    <div class="container">
+
+
+        <div class="row">
+            <aside class="col-md-2">
+
+                <article class="filter-group">
+                    <h6 class="title">
+                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_2">Lựa chọn </a>
+                    </h6>
+                    <div class="filter-content collapse show" id="collapse_2">
+                        <div class="inner">
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" checked="" class="custom-control-input">
+                                <div class="custom-control-label">
+                                    Đang phổ biến
+                                 
+                                </div>
+                            </label>
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" checked="" class="custom-control-input">
+                                <div class="custom-control-label">
+                                    Nike
+                                 
+                                </div>
+                            </label>
+
+                        </div> <!-- inner.// -->
+                    </div>
+                </article> <!-- filter-group .// -->
+
+                <article class="filter-group">
+                    <h6 class="title">
+                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_3"> Giá </a>
+                    </h6>
+                    <div class="filter-content collapse show" id="collapse_3">
+                        <div class="inner">
+                            <input type="range" class="custom-range" min="0" max="100" name="">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label>Min</label>
+                                    <input class="form-control" placeholder="0đ" type="number">
+                                </div>
+                                <div class="form-group text-right col-md-6">
+                                    <label>Max</label>
+                                    <input class="form-control" placeholder="1,000,000đ" type="number">
+                                </div>
+                            </div> <!-- form-row.// -->
+                            <button class="btn btn-block btn-success">Áp Dụng</button>
+                        </div> <!-- inner.// -->
+                    </div>
+                </article> <!-- filter-group .// -->
+
+                <article class="filter-group">
+                    <h6 class="title">
+                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_1">Nhà Cung Cấp</a>
+                    </h6>
+                    <div class="filter-content collapse show" id="collapse_1" style="">
+                        <div class="inner">
+                            <ul class="list-menu">
+                                @foreach (var item in Model.ListNhaCungCap)
+                                {
+                                    <li>
+                                        @Html.ActionLink(item.TenNCC, "SanPhamDanhMuc", "DanhMuc", new { @MaNCC = item.MaNCC }, null)
+                                    </li>
+                                }
+                            </ul>
+                        </div> <!-- inner.// -->
+                    </div>
+                </article> <!-- filter-group  .// -->
+
+
+
+
+
+            </aside> <!-- col.// -->
+            <main class="col-md-10">
+
+
+                <header class="mb-3">
+                    <div class="form-inline">
+                 
+                        <select class="mr-2 form-control">
+                            <option>Latest items</option>
+                            <option>Trending</option>
+                            <option>Most Popular</option>
+                            <option>Cheapest</option>
+                        </select>
+                        <div class="btn-group">
+
+                            @foreach (var item in Model.ListDanhMuc)
+                            {
+
+                                <a href="page-listing-grid.html" class="btn btn-light" data-toggle="tooltip" title="List view">
+                                    <i class="fa fa-bars"></i>
+
+
+                                </a>
+
+                                <a href="@Url.Action("SanPhamDanhMuc", "DanhMuc", new { MaDM = item.MaDM})" class="title">List view</a>
+
+
+                                <a href="page-listing-large.html" class="btn btn-light active" data-toggle="tooltip" title="Grid view">
+                                    <i class="fa fa-th"></i>
+                                </a>
+
+                                <a href="@Url.Action("SanPhamDanhMuc2", "DanhMuc", new { MaDM = item.MaDM})" class="title">List view</a>
+
+                            }
+
+
+
+
+                        </div>
+                    </div>
+                </header><!-- sect-heading -->
+
+                @foreach (var item in Model.ListSanPham)
+                {
+                    <article class="card card-product-list">
+                        <div class="row no-gutters">
+                            <aside class="col-md-3">
+                                <a href="#" class="img-wrap">
+                                    <span class="badge badge-danger"> NEW </span>
+                                    <img src="~/Content/images/items/@item.HinhDD">
+                                </a>
+                            </aside> <!-- col.// -->
+                            <div class="col-md-6">
+                                <div class="info-main">
+
+                                    <a href="@Url.Action("Detail", "Product", new { MaSP = item.MaSP})"
+                                       class="btn btn-success btn-sm">Xem ngay! </a>
+
+                                    <a href="#" class="h5 title"> @item.TenSP</a>
+                                    <div class="rating-wrap mb-2">
+                                        <ul class="rating-stars">
+                                            <li style="width:100%" class="stars-active">
+                                                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </li>
+                                        </ul>
+                                   
+                                    </div> <!-- rating-wrap.// -->
+                                    <p>
+                                        @item.MoTaCT
+                                    </p>
+
+                                </div> <!-- info-main.// -->
+                            </div> <!-- col.// -->
+                            <aside class="col-sm-3">
+                                <div class="info-aside">
+                                    <div class="price-wrap">
+                                        <span class="h5 price">@item.GiaBan</span>
+                                        <small class="text-muted"></small>
+                                    </div> <!-- price-wrap.// -->
+                                    <small class="text-warning">Giao trong ngày</small>
+
+                                    @foreach (var itemncc in Model.ListNhaCungCap.Where(n => n.MaNCC == item.MaNCC))
+                                    {
+
+                                <p class="text-muted mt-3">@itemncc.TenNCC</p>
+
+                                    
+                                    }
+
+
+                                <p class="mt-3">
+                              
+                                    <a class="btn btn-outline-primary" href="@Url.Action("ThemVaoGio", "GioHang", new { MaSP = item.MaSP })">  <i class="fa fa-shopping-cart"></i> <span class="glyphicon glyphicon-shopping-cart"></span>  Thêm vào giỏ </a>
+                                </p>
+
+                                 
+
+                                </div> <!-- info-aside.// -->
+                            </aside> <!-- col.// -->
+                        </div> <!-- row.// -->
+                    </article> <!-- card-product .// -->
+                }
+
+
+                <nav class="mb-4" aria-label="Page navigation sample">
+                    <ul class="pagination">
+                        <li class="page-item disabled"><a class="page-link" href="#">Trước</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Sau</a></li>
+                    </ul>
+                </nav>
+
+            </main> <!-- col.// -->
+
+        </div>
+
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->

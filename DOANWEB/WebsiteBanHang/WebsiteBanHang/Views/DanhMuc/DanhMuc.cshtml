@@ -1,0 +1,45 @@
+﻿@model WebsiteBanHang.Models.HomeModel
+
+@{
+    ViewBag.Title = "DanhMuc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="py-3 bg-success">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li></li>
+        </ol>
+    </div>
+</section>
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+    <div class="container">
+        <nav class="row">
+
+
+            @foreach (var item in Model.ListDanhMuc)
+            {
+                <div class="col-md-3">
+                    <div class="card card-category">
+                        <a href="" class="img-wrap" >
+                            <img src="~/Content/images/danhmuc/@item.HinhDD">
+                        </a>
+                        <div class="card-body">
+                            <h4 class="card-title"><a href="#"> @Html.ActionLink(item.TenDM, "SanPhamDanhMuc", "DanhMuc", new { @MaDM = item.MaDM }, null)</a></h4>
+                        </div>
+                    </div>
+                </div> <!-- col.// -->
+            }
+
+        </nav> <!-- row.// -->
+
+
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->

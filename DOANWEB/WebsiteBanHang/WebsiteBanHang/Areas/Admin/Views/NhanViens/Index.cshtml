@@ -1,0 +1,69 @@
+﻿@model IEnumerable<WebsiteBanHang.CSDL.NhanVien>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "MaNV", rowsPerPage: 4);
+    String gtinh = "";
+    int i = 0;
+}
+
+<div class="content-wrapper">
+    <h3>DANH SÁCH SẢN PHẨM</h3>
+    <p>
+        @Html.ActionLink("Thêm Nhân Viên", "Create")
+    </p>
+    <div id="gridContent">
+        @ViewBag.TB
+        @grid.GetHtml(
+            tableStyle: "table table-bordered table-hover",
+            footerStyle: "grid-footer",
+            fillEmptyRows: true,
+            mode: WebGridPagerModes.Numeric,
+            alternatingRowStyle: "alternatingRowStyle",
+              columns: new[]  // colums in grid
+             {
+         grid.Column("STT",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
+        grid.Column("MaNV","Mã nhân viên"), //the model fields to display
+        grid.Column("TaiKhoan","Tài khoản"),
+          grid.Column("HoNV","Họ nhân viên"),
+          grid.Column("TenNV","Tên nhân viên"),
+        grid.Column("SoDT","Số điện thoại"),
+          grid.Column("DiaChi","Địa chỉ"),
+             grid.Column("Email","Email"),
+                grid.Column("Luong","Lương"),
+                  grid.Column("NgaySinh","Ngày Sinh"),
+              grid.Column("GioiTinh","Giới tính",format: (@item) => @item.GioiTinh==true?"Nam":"Nữ"),
+               grid.Column("HinhDD","Hình đại diện"),
+
+     grid.Column("Nhom.TenNhom","Tên nhóm"),
+grid.Column("Chức năng", format: @<text>
+
+        <a href="@Url.Action("Details",
+                        new { id = item.MaNV})" class="edit-btn">
+            <abbr title="Xem chi tiết">
+                <img src="~/content/images/icons/details.png" width="20" height="20" />
+            </abbr>
+
+        </a>
+
+        <a href="@Url.Action("Edit",
+                        new { id = item.MaNV})" class="edit-btn">
+            <abbr title="Chỉnh sửa">
+                <img src="~/content/images/icons/edit.png" width="20" height="20" />
+            </abbr>
+        </a>
+
+        <a href="@Url.Action("Delete",
+                        new { id = item.MaNV})" class="edit-btn">
+            <abbr title="Xóa dữ liệu">
+                <img src="~/content/images/icons/delete.png" width="20" height="20" />
+            </abbr>
+
+        </a>
+    </text>),
+
+}
+)
+    </div>
+</div>

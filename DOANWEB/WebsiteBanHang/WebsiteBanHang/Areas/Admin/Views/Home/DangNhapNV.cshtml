@@ -1,0 +1,81 @@
+﻿
+@model WebsiteBanHang.CSDL.NhanVien
+
+@{
+    ViewBag.Title = "DangNhapNV";
+    Layout = null;
+
+}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ADMIN | THUCPHAM KPK</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Content/admin/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/Content/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="~/Content/admin/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Content/admin/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/Content/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/Content/admin/plugins//daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/Content/admin/plugins//summernote/summernote-bs4.min.css">
+
+</head>
+
+
+<section class="section-conten padding-y" style="min-height:84vh">
+
+    <!-- ============================ COMPONENT LOGIN   ================================= -->
+    <div class="card mx-auto" style="max-width: 380px; margin-top:50px;">
+        <div class="card-body">
+            <h4 class="card-title mb-4">Đăng Nhập</h4>
+
+            <div class="card-body">
+                @using (Html.BeginForm("DangNhapNV", "Home", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.TaiKhoan, "", new { @class = "form-control", @placeholder = "Username" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control", @placeholder = "Password" })
+                    </div>
+
+                    <div class="form-group">
+                        <a href="#" class="float-right">Quên mật khẩu?</a>
+                        <label class="float-left custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" checked="">
+
+                        </label>
+                    </div> <!-- form-group form-check .// -->
+
+                    <div class="form-group">
+                        <input type="submit" name="submit" class="btn btn-primary btn-block" value="Login" />
+                    </div>
+
+
+                }
+            </div>
+        </div> <!-- card-body.// -->
+    </div> <!-- card .// -->
+
+    <p class="text-center mt-4">Bạn chưa có tài khoản? <a href="~/Home/DangKyKH"> Đăng ký</a></p>
+    <br><br>
+    <!-- ============================ COMPONENT LOGIN  END.// ================================= -->
+
+
+</section>

@@ -1,0 +1,72 @@
+﻿@model WebsiteBanHang.Models.HomeModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+<section class="py-3 bg-success">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li></li>
+        </ol>
+    </div>
+</section>
+
+
+
+<!-- ============================ COMPONENT BOOTSTRAP CARD WITH  IMG ================================= -->
+<section class="section-content bg-white padding-y">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model.ListBaiViet.Take(9))
+            {
+                <div class="col-md-4">
+                    <div class="card bg-dark">
+                        <img src="~/Content/images/posts/@item.HinhDD" class="card-img opacity">
+                        <div class="card-img-overlay text-white">
+                            <h5 class="card-title">@item.TenBV</h5>
+                            <p class="card-text">@item.NgayDang</p>
+                       
+                            <a href="@Url.Action("ChiTietBaiViet", "BaiViet", new { MaBV = item.MaBV})"
+                             class="btn btn-light">Xem ngay! </a>
+                        </div>
+                    </div>
+                </div> <!-- col.// -->
+            }
+        </div> <!-- row.// -->
+       
+
+        <br/>
+
+        <div class="row">
+
+            <div class="col-4">
+
+            </div>
+
+            <nav class="col-8" aria-label="Page navigation sample">
+                <ul class="pagination" style="text-align: center">
+                    <li class="page-item disabled"><a class="page-link" href="#">Trước</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Tiếp theo</a></li>
+                </ul>
+            </nav>
+        </div>
+       
+
+
+
+    </div>
+
+   
+</section>

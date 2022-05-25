@@ -1,0 +1,52 @@
+﻿@model IEnumerable<WebsiteBanHang.CSDL.PhanHoi>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayGui)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChuDe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiDung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KhachHang.TaiKhoan)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayGui)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChuDe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoiDung)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KhachHang.TaiKhoan)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaPH }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaPH }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaPH })
+        </td>
+    </tr>
+}
+
+</table>

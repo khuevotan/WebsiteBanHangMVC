@@ -1,0 +1,137 @@
+﻿@model List<CartItem>
+@using WebsiteBanHang.Models;
+
+@{
+    ViewBag.Title = "Giỏ hàng của bạn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model == null || Model.Count == 0)
+{
+<div class="container">
+    <div class="card mx-auto" style="max-width: 380px; margin-top:50px;">
+        <div class="card-body">
+            <h4 class="card-title mb-4">
+                <p class="text-info text-center">
+                    Giỏ hàng của bạn rỗng!
+                </p>
+            </h4>
+        </div> <!-- card-body.// -->
+    </div> <!-- card .// -->
+    <br />
+    <br />
+    <a href="javascript: history.back()" class="btn btn-light"> &laquo Quay về</a>
+    <br />
+    <br />
+</div>
+}
+else
+{
+    <section class="section-content padding-y">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-9">
+                    <div class="card">
+                        <table class="table table-borderless table-shopping-cart">
+                            <thead class="text-muted">
+                                <tr class="small text-uppercase">
+                                    <th scope="col">Sản phẩm</th>
+                                    <th scope="col" width="120">Số lượng</th>
+                                    <th scope="col" width="120">Giá</th>
+                                    <th scope="col" class="text-right" width="200"> </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (CartItem item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <figure class="itemside">
+                                                <div class="aside"><img src="~/Content/images/items/@item.HinhDD" class="img-sm"></div>
+                                                <figcaption class="info">
+                                                    <a href="@Url.Action("ChiTiet", "SanPham", new { id = item.MaSP })" class="title text-dark">  @item.TenSP </a>
+
+                                                </figcaption>
+                                            </figure>
+                                        </td>
+                                        <td>
+                                            <form action="@Url.Action("SuaSoLuong")" method="get">
+                                                <input type="hidden" name="MaSP" value="@item.MaSP" />
+                                                <input type="number" min="1" step="1" name="soluongmoi" value="@item.SoLuong" />
+                                                <div style="height: 15px"></div>
+                                                <button type="submit" class="btn btn-success btn-sm"> Cập nhật </button>  
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <div class="price-wrap">
+                                                <var class="price">@item.DonGia.ToString("#,##0").Replace(',', '.') VNĐ</var>
+
+                                            </div> <!-- price-wrap .// -->
+                                        </td>
+                                        <td class="text-right">
+
+                                            <a href="@Url.Action("XoaKhoiGio", new { MaSP = item.MaSP })" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');" class="btn btn-danger btn-sm">Xóa</a>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+
+                        <div class="card-body border-top">
+                            <a href="@Url.Action("Index", "ThanhToan")" class="btn btn-success float-md-right"> Thanh toán <i class="fa fa-chevron-right"></i> </a>
+                            <a href="#" class="btn btn-light"> <i class="fa fa-chevron-left"></i> Tiếp tục mua hàng </a>
+                        </div>
+                    </div> <!-- card.// -->
+
+                    <div class="alert alert-success mt-3">
+                        <p class="icontext"><i class="icon text-success fa fa-truck"></i>Giao hàng trong ngày</p>
+                    </div>
+
+                </main> <!-- col.// -->
+                <aside class="col-md-3">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <label>Có mã giảm giá</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="" placeholder="">
+                                        <span class="input-group-append">
+                                            <button class="btn btn-success">Áp dụng</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div> <!-- card-body.// -->
+                    </div>  <!-- card .// -->
+                    <div class="card">
+                        <div class="card-body">
+                            <dl class="dlist-align">
+                                <dt>Tổng số lượng:</dt>
+                                <dd class="text-right">@Model.Sum(m => m.SoLuong)</dd>
+                            </dl>
+                            <dl class="dlist-align">
+                                <dt>Tổng thành tiền:</dt>
+                                <dd class="text-right  h5"><strong>@Model.Sum(m => m.ThanhTien).ToString("#,##0").Replace(',', '.') VNĐ</strong></dd>
+                            </dl>
+
+                            <hr>
+                            <p class="text-center mb-3">
+                                <img src="~/Content/images/banners/giaohang.png" height="26">
+                            </p>
+                
+
+                        </div> <!-- card-body.// -->
+                    </div>  <!-- card .// -->
+                </aside> <!-- col.// -->
+            </div>
+
+        </div> <!-- container .//  -->
+    </section>
+
+
+
+
+}

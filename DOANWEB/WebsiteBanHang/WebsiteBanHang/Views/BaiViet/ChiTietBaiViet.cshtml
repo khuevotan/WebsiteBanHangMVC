@@ -1,0 +1,141 @@
+﻿@model WebsiteBanHang.Models.HomeModel
+
+@{
+    ViewBag.Title = "ChiTietBaiViet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="py-3 bg-success">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li></li>
+        </ol>
+    </div>
+</section>
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content bg-white padding-y">
+
+    @foreach (var item in Model.ListBaiViet)
+    {
+        <div class="container">
+            <!-- ============================ ITEM DETAIL ======================== -->
+
+            <div class="row">
+                <aside class="col-md-4">
+                    <div class="card">
+                        <article class="gallery-wrap">
+                            <div class="img-big-wrap">
+                                <div> <a href="#"><img src="~/Content/images/posts/@item.HinhDD"></a></div>
+                            </div> <!-- slider-product.// -->
+                         
+                        </article> <!-- gallery-wrap .end// -->
+                    </div> <!-- card.// -->
+                </aside>
+                <main class="col-md-8">
+                    <article class="product-info-aside">
+
+                        <h2 class="title mt-3">@item.TenBV </h2>
+
+                        <div class="rating-wrap my-3">
+                            <ul class="rating-stars">
+                                <li style="width:80%" class="stars-active">
+                                    <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </li>
+                            </ul>
+                         
+                        </div> <!-- rating-wrap.// -->
+
+                        <div class="mb-3">
+                            <var class="price h4">@item.NoiDung</var>
+                            
+                        </div> <!-- price-detail-wrap .// -->
+
+
+
+                    </article> <!-- product-info-aside .// -->
+                </main> <!-- col.// -->
+            </div> <!-- row.// -->
+            <!-- ================ ITEM DETAIL END .// ================= -->
+
+
+        </div> <!-- container .//  -->
+    }
+
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+<!-- ========================= SECTION  ========================= -->
+<section class="section-name padding-y bg">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model.ListBaiViet)
+            {
+            <div class="col-md-8">
+                <h5 class="title-description">Thông tin bài viết</h5>
+                <p> @item.NoiDung</p>
+
+                @*  @foreach (var item2 in Model.ListNhanVien.Where(n => n.MaNV == item.MaNV))
+        {
+               <p>  Tên nhân viên đăng: @item2.TenNV</p>
+        }*@
+
+
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col-xl-6">
+                        <img src="~/Content/images/banners/k1.png" />
+                    </div>
+
+                    <div class="col-xl-6">
+                        <img src="~/Content/images/banners/k2.png" />
+                    </div>
+                </div>
+            </div> <!-- col.// -->
+            }
+
+            <aside class="col-md-4">
+
+                <div class="box">
+
+                    <h5 class="title-description">THỰC PHẨM HỮU CƠ KPK CAM KẾT!</h5>
+                    <p>
+                        HÀNG TƯƠI, CHẤT LƯỢNG </br>
+                        GIAO ĐÚNG HẸN, ĐỦ HÀNG</br>
+                        ĐỔI TRẢ, HOÀN TIỀN DỄ DÀNG</br>
+                        THÂN THIỆN, VUI VẺ
+
+                    </p>
+
+                    <h5 class="title-description">Bài Viết Liên Quan</h5>
+
+
+                    @foreach (var itemhai in Model.ListFullBaiViet.Take(3))
+                    {
+                        <article class="media mb-3">
+                            <a href="@Url.Action("ChiTietBaiViet", "BaiViet", new { MaBV = itemhai.MaBV})"><img class="img-sm mr-3" src="~/Content/images/posts/@itemhai.HinhDD"></a>
+                            <div class="media-body">
+                                <h6 class="mt-0"><a href="#">@itemhai.TenBV</a></h6>
+                                <p class="mb-2">@itemhai.NgayDang </p>
+                            </div>
+                        </article>
+                    }
+
+
+                </div> <!-- box.// -->
+            </aside> <!-- col.// -->
+        </div> <!-- row.// -->
+
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
