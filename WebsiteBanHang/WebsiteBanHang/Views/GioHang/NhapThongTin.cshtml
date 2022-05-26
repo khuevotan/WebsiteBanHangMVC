@@ -1,0 +1,89 @@
+﻿@model List<CartItem>
+@using WebsiteBanHang.Models;
+
+@{
+    ViewBag.Title = "Giỏ hàng của bạn";
+    Layout = "~/Views/Shared/_LayoutGioHang.cshtml";
+}
+
+@if (Model == null || Model.Count == 0)
+{
+    <div class="container">
+        <div class="card mx-auto" style="max-width: 380px; margin-top:50px;">
+            <div class="card-body">
+                <h4 class="card-title mb-4">
+                    <p class="text-info text-center">
+                        Giỏ hàng của bạn rỗng!
+                    </p>
+                </h4>
+            </div> <!-- card-body.// -->
+        </div> <!-- card .// -->
+        <br />
+        <br />
+        <a href="javascript: history.back()" class="btn btn-light"> &laquo Quay về</a>
+        <br />
+        <br />
+    </div>
+}
+else
+{
+    <section class="section-content padding-y">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-9">
+                    <div class="card">
+                        <table class="table table-borderless table-shopping-cart">
+                            <thead class="text-muted">
+                                <tr class="small text-uppercase">
+                                    <th scope="col">Sản phẩm</th>
+                                    <th scope="col" width="120">Số lượng</th>
+                                    <th scope="col" width="120">Giá</th>
+                                    <th scope="col" class="text-right" width="200"> </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                            <form action="@Url.Action("NhapThongTin", "ThanhToan")" method="get"> 
+                                                <input type="number" min="1" step="1" name="SDT" value="" />
+                                                <div style="height: 15px"></div>   
+                                                <input type="text" min="1" step="1" name="DiaChiNhan" value="" />
+                                                <div style="height: 15px"></div>     
+                                                <input type="text" min="1" step="1" name="GhiChu" value="" />
+                                                <div style="height: 15px"></div>
+                                                <button type="submit" class="btn btn-success btn-sm"> Cập nhật </button>
+                                            </form>
+                            </tbody>
+                        </table>
+                       </div> <!-- card.// -->
+
+                    <div class="alert alert-success mt-3">
+                        <p class="icontext"><i class="icon text-success fa fa-truck"></i>Giao hàng trong ngày</p>
+                    </div>
+
+                </main> <!-- col.// -->
+                <aside class="col-md-3">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <label>Có mã giảm giá</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="" placeholder="">
+                                        <span class="input-group-append">
+                                            <button class="btn btn-success">Áp dụng</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div> <!-- card-body.// -->
+                    </div>  <!-- card .// -->
+                  
+                </aside> <!-- col.// -->
+            </div>
+
+        </div> <!-- container .//  -->
+    </section>
+
+
+
+
+}

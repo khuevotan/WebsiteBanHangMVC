@@ -1,0 +1,85 @@
+﻿@model WebsiteBanHang.Models.HomeModel
+@{
+    ViewBag.Title = "TrangCaNhan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="py-3 bg-success">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li></li>
+        </ol>
+    </div>
+</section>
+
+<link href="~/Content/css/KhachHang/history.css" rel="stylesheet" />
+
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content bg-white padding-y">
+    <div class="container">
+      
+            <div class="container bootdey">
+                <div class="panel panel-default panel-order">
+                    <div class="panel-heading">
+                        <h3>Hóa đơn của bạn</h3>
+                        <br/>
+                    </div>
+
+                    <div class="panel-body">
+
+                        @foreach (var item in Model.ListHoaDon)
+                        {
+                        <div class="row">
+                            @foreach (var khachhang in Model.ListKhachHang)
+                            {
+
+
+                                <div class="col-md-1"><img src="~/Content/images/avatars/kh/@khachhang.HinhDD" class="media-object img-thumbnail" /></div>
+                                <div class="col-md-11">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <a href=""><label class="label label-success">Xem Chi Tiết</label></a>
+                                            <span><strong>@item.MaHD</strong></span> <span class="label label-info">@item.MaTT</span><br />
+                                            Số lượng : 4, Số tiền: $523.13<br />
+                                            <a data-placement="top" class="btn btn-success btn-xs glyphicon glyphicon-ok" href="#" title="View"></a>
+                                            <a data-placement="top" class="btn btn-danger btn-xs glyphicon glyphicon-trash" href="#" title="Danger"></a>
+                                            <a data-placement="top" class="btn btn-info btn-xs glyphicon glyphicon-usd" href="#" title="Danger"></a>
+                                        </div>
+                                        <div class="col-md-12">Ngày đặt: @item.NgayDat </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            }
+
+                            <br /><br />
+                        </div>
+
+                                }
+
+                            </div>
+                   
+                </div>
+            </div>
+
+            <p style="margin-left:50px;">
+
+            </p>
+
+       
+
+
+
+
+        <br><br>
+        <a href="javascript: history.back()" class="btn btn-light"> &laquo Quay về</a>
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->

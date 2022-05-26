@@ -1,0 +1,89 @@
+﻿@model WebsiteBanHang.Models.HomeModel
+
+@{
+    ViewBag.Title = "TimKiemTenSP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- ============================ FILTER TOP END.// ================================= -->
+<section class="py-3 bg-success">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+            <li></li>
+        </ol>
+    </div>
+</section>
+
+
+<section class="section-content bg-white padding-y">
+    <div class="container">
+
+        <a href="javascript: history.back()" class="btn btn-light"> &laquo Quay về</a>
+
+        <br />
+        <br />
+
+        <div class="row">
+
+            @foreach (var item in Model.ListSanPham)
+            {
+                <div class="col-md-3">
+                    <figure class="card card-product-grid">
+                        <div class="img-wrap">
+                            <span class="badge badge-danger"> NEW </span>
+                            <img src="~/Content/images/items/@item.HinhDD">
+                        </div> <!-- img-wrap.// -->
+                        <figcaption class="info-wrap">
+                            <a href="#" class="title mb-2">@item.TenSP</a>
+                            <div class="price-wrap">
+                                <span class="price">@item.GiaBan đ</span>
+
+                            </div> <!-- price-wrap.// -->
+                            @foreach (var itemncc in Model.ListNhaCungCap.Where(n => n.MaNCC == item.MaNCC))
+                            {
+                                <p class="text-muted">@itemncc.TenNCC</p>
+                            }
+
+                            <hr>
+                            <a href="@Url.Action("ThemVaoGio", "GioHang", new { MaSP = item.MaSP })" class="btn btn-outline-primary"><i class="fa fa-shopping-cart"></i>  Thêm vào giỏ </a>
+
+                        </figcaption>
+                    </figure>
+                </div> <!-- col.// -->
+
+            }
+
+
+
+
+
+        </div> <!-- row end.// -->
+
+
+        <br />
+        <div class="row">
+            <div class="col-4">
+            </div>
+            <nav class="col-8" aria-label="Page navigation sample">
+                <ul class="pagination" style="text-align: center">
+                    <li class="page-item disabled"><a class="page-link" href="#">Trước</a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Tiếp theo</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <br />
+        <br />
+
+
+    </div> <!-- container .//  -->
+</section>

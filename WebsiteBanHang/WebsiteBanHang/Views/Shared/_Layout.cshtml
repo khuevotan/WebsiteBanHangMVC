@@ -1,0 +1,250 @@
+﻿
+@model WebsiteBanHang.Models.HomeModel
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="max-age=604800" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="~/Content/css/timkiem.css" rel="stylesheet" />
+    <title>Thực Phẩm Hữu Cơ KPK</title>
+
+    <link href="~/Content/images/favicon.png" rel="shortcut icon" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="~/Scripts/js/jquery-2.0.0.min.js" type="text/javascript"></script>
+
+    <!-- Bootstrap4 files-->
+    <script src="~/Scripts/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+
+    <!-- Font awesome 5 -->
+    <link href="~/Content/fonts/fontawesome/css/all.min.css" type="text/css" rel="stylesheet">
+
+    <!-- custom style -->
+    <link href="~/Content/css/responsive.css" rel="stylesheet" />
+    <link href="~/Content/css/ui.css" rel="stylesheet" />
+
+    <!-- custom javascript -->
+    <script src="~/Scripts/js/script.js" type="text/javascript"></script>
+
+</head>
+<body>
+    <header class="section-header">
+        <section class="header-main border-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-2 col-lg-3 col-md-12">
+                        <a href="/Home/index" class="brand-wrap">
+                            <img class="logo" src="~/Content/images/LOGO.png">
+                        </a> <!-- brand-wrap.// -->
+                    </div>
+
+                    <div class="col-xl-6 col-lg-5 col-md-6">
+                        @using (Html.BeginForm("TimKiemTenSP", "DanhMuc", FormMethod.Get))
+                        {
+
+                            <div class="search-header">
+                                <div class="input-group w-100">
+                                    <select class="custom-select border-right" name="">
+                                        <option value="TenSP">Sản phẩm</option>
+                                    </select>
+                                    @Html.TextBoxFor(m => m.TenSP, new
+                               {
+                                   style = "width: 342px;",
+                                   maxlength = "10",
+
+                               })
+                                    <div class="input-group-append">
+                                        <button class="btn btn-success" type="submit">
+                                            <i class="fa fa-search"></i> Search
+                                        </button>
+                                    </div>
+
+
+                                </div>
+                            </div><!-- search-wrap .end// -->
+
+                        }
+
+                    </div> <!-- col.// -->
+
+                    <div class="col-xl-4 col-lg-4 col-md-6">
+                        <div class="widgets-wrap float-md-right">
+
+                            @if (Session["MaKH"] != null)
+                            {
+
+                                <div class="widget-header mr-3">
+                                    <a href="~/KhachHang/TrangCaNhan" class="widget-view">
+                                        <div class="icon-area">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                        <small class="text"> Cá nhân </small>
+                                    </a>
+                                </div>
+
+                                <div class="widget-header mr-3">
+                                    <a href="~/Home/DangXuat" class="widget-view">
+                                        <div class="icon-area">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                        <small class="text"> Đăng xuất </small>
+                                    </a>
+                                </div>
+
+                                <div class="widget-header mr-3">
+                                    <a href="~/KhachHang/HoaDon" class="widget-view">
+                                        <div class="icon-area">
+                                            <i class="fa fa-store"></i>
+
+                                        </div>
+                                        <small class="text"> Đơn Hàng </small>
+                                    </a>
+                                </div>
+
+                                <div class="widget-header">
+
+                                    <a href="~/GioHang/Index" class="widget-view">
+                                        <div class="icon-area">
+                                            <i class="fa fa-shopping-cart"></i>
+
+                                        </div>
+                                        <small class="text"> Giỏ hàng </small>
+
+                                    </a>
+                                </div>
+
+                            }
+                            else
+                            {
+                                <div class="widget-header mr-3">
+                                    <a href="~/Home/DangNhapKH" class="widget-view">
+                                        <div class="icon-area">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                        <small class="text"> Đăng Nhập </small>
+                                    </a>
+                                </div>
+
+                                <div class="widget-header mr-3">
+                                    <a href="~/Home/DangKyKH" class="widget-view">
+                                        <div class="icon-area">
+                                            <i class="fa fa-store"></i>
+                                        </div>
+                                        <small class="text"> Đăng Kí </small>
+                                    </a>
+                                </div>
+
+
+                                <div class="widget-header">
+
+                                    <a href="~/GioHang/Index" class="widget-view">
+                                        <div class="icon-area">
+                                            <i class="fa fa-shopping-cart"></i>
+
+                                        </div>
+                                        <small class="text"> Giỏ hàng </small>
+
+                                    </a>
+                                </div>
+
+                            }
+                        </div> <!-- widgets-wrap.// -->
+                    </div> <!-- col.// -->
+                </div> <!-- row.// -->
+            </div> <!-- row.// -->
+            </div> <!-- container.// -->
+        </section> <!-- header-main .// -->
+
+
+        <nav class="navbar navbar-main navbar-expand-lg border-bottom">
+            <div class="container">
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="main_nav">
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/DanhMuc/DanhMuc">Danh Mục </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/BaiViet/Index">Kinh Nghiệm Và Mẹo Vặt</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/PageContent/Content">Giới thiệu </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/PageContent/Contact">Liên hệ</a>
+                        </li>
+
+                    </ul>
+                    <ul class="navbar-nav ml-md-auto">
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="http://example.com" data-toggle="dropdown">Ngôn ngữ</a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="#">Tiếng Việt</a>
+                                <a class="dropdown-item" href="#">English</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div> <!-- collapse .// -->
+            </div> <!-- container .// -->
+        </nav>
+    </header> <!-- section-header.// -->
+
+
+
+    @RenderBody()
+
+
+    <section class="section-subscribe padding-y-sm bg-success">
+        <div class="container">
+        </div>
+    </section>
+
+    <!-- ========================= FOOTER ========================= -->
+    <footer class="section-footer ">
+        <div class="container">
+            <section class="footer-top padding-y-lg">
+                <div class="row">
+                    <aside class="col-md col-6">
+                        <h6 class="title">Thông tin giao hàng</h6>
+                        <p>
+
+
+                            <i class="fas fa-envelope"></i>
+                            ThucPham.KPK@Gmail.Com <br />
+
+                            <i class="fas fa-phone">  </i> 098 766 4220 <br />
+                            <i class="fas fa-map-marker-alt"></i>  499 Quốc Lộ Hùng Vương, Mỹ Ca, Cam Nghĩa, Cam Ranh, Khánh Hòa
+                        </p>
+                    </aside>
+                    <aside class="col-md col-6">
+                        <h6 class="title">Về chúng tôi</h6>
+                        <p>
+                            Thực Phẩm KPK hạnh phúc vì được mang đến cho mọi người những bữa ăn
+                            tươi ngon và tốt lành từ nguồn rau, củ, quả hữu cơ ở nông trại Đà Lạt, Nha Trang, Bảo Lộc,...
+                        </p>
+                    </aside>
+                </div> <!-- row.// -->
+            </section>	<!-- footer-top.// -->
+
+            <section class="footer-bottom text-center ">
+                <p class=" text-black">Bản quyền &copy 2022 -  Thực Phẩm Hữu Cơ KPK, All rights reserved </p>
+            </section>
+        </div><!-- //container -->
+    </footer>
+    <!-- ========================= FOOTER END // ========================= -->
+
+
+
+</body>
+</html>
