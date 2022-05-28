@@ -12,15 +12,17 @@ namespace WebsiteBanHang.Controllers
     public class BaiVietController : Controller
     {
         QLTPEntities1 objQLTPEntities = new QLTPEntities1();
+        QLTPEntities1 db = new QLTPEntities1();
 
         // GET: BaiViet
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            HomeModel objHomeModel = new HomeModel();
+            var lstSP = db.BaiViets;
+         
+            int PageSize = 9;
+            int PageNumber = (page ?? 1);
 
-            objHomeModel.ListBaiViet = objQLTPEntities.BaiViets.ToList();
-
-            return View(objHomeModel);
+            return View(lstSP.OrderBy(n => n.MaBV).ToPagedList(PageNumber, PageSize));
 
         }
 

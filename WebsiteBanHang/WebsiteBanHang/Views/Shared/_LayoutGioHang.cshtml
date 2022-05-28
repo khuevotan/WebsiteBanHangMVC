@@ -43,29 +43,28 @@
                             <img class="logo" src="~/Content/images/LOGO.png">
                         </a> <!-- brand-wrap.// -->
                     </div>
+
                     <div class="col-xl-6 col-lg-5 col-md-6">
-                        <div class="search-header">
-                            <div class="input-group w-100">
-                                <select class="custom-select border-right" name="">
-                                    <option value="TenSP">Sản phẩm</option>
-                                    <option value="TenDM">Danh mục</option>
-                                    <option value="TenNCC">Nhà cung cấp</option>
-                                </select>
-                                <input type="text" class="form-control" placeholder="">
-                                
-                                <div class="input-group-append">
-                                    <button class="btn btn-success" type="submit">
-                                        <i class="fa fa-search"></i> Search
-                                    </button>
+                        @using (Html.BeginForm("TimKiemTenSP", "DanhMuc", FormMethod.Get))
+                        {
+                            <div class="search-header">
+                                <div class="input-group w-100">
+                                    <select class="custom-select border-right" name="">
+                                        <option value="TenSP">Sản phẩm</option>
+                                    </select>
+                                    <input type="text" class="form-control" placeholder="" value="">
+
+
+                                    <div class="input-group-append">
+                                        <button class="btn btn-success" type="submit">
+                                            <i class="fa fa-search"></i> Search
+                                        </button>
+                                    </div>
                                 </div>
-
-                            </div>
-                        </div><!-- search-wrap .end// -->
-
-
+                            </div><!-- search-wrap .end// -->
+                        }
 
                     </div> <!-- col.// -->
-
 
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="widgets-wrap float-md-right">
@@ -74,7 +73,7 @@
                             {
 
                                 <div class="widget-header mr-3">
-                                    <a href="#" class="widget-view">
+                                    <a href="~/KhachHang/TrangCaNhan" class="widget-view">
                                         <div class="icon-area">
                                             <i class="fa fa-user"></i>
                                         </div>
@@ -92,7 +91,7 @@
                                 </div>
 
                                 <div class="widget-header mr-3">
-                                    <a href="#" class="widget-view">
+                                    <a href="~/KhachHang/HoaDon" class="widget-view">
                                         <div class="icon-area">
                                             <i class="fa fa-store"></i>
 
@@ -140,7 +139,7 @@
                                     <a href="~/GioHang/Index" class="widget-view">
                                         <div class="icon-area">
                                             <i class="fa fa-shopping-cart"></i>
-
+                                         
                                         </div>
                                         <small class="text"> Giỏ hàng </small>
 
@@ -196,6 +195,11 @@
         </nav>
     </header> <!-- section-header.// -->
 
+
+    <section class="section-subscribe padding-y-sm bg-success">
+        <div class="container">
+        </div>
+    </section>
 
 
     @RenderBody()

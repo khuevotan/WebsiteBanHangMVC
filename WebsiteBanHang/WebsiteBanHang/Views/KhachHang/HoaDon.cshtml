@@ -37,26 +37,61 @@
                         <div class="row">
                             @foreach (var khachhang in Model.ListKhachHang)
                             {
-
-
                                 <div class="col-md-1"><img src="~/Content/images/avatars/kh/@khachhang.HinhDD" class="media-object img-thumbnail" /></div>
                                 <div class="col-md-11">
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <a href=""><label class="label label-success">Xem Chi Tiết</label></a>
-                                            <span><strong>@item.MaHD</strong></span> <span class="label label-info">@item.MaTT</span><br />
-                                            Số lượng : 4, Số tiền: $523.13<br />
+                                        <div class="col-xl-6">
+                                            <a href=""><label class="label label-success">Mã hóa đơn: </label></a>
+                                            <span><strong>@item.MaHD</strong></span> <span class="label label-info">
+                                           
+                                                @if (@item.MaTT == "TT1")
+                                                {
+                                                                                         <div>
+                                                                                             Trạng thái: Chưa duyệt
+                                                                                         </div>
+                                                }
+
+
+                                                @if (@item.MaTT == "TT2")
+                                                {
+                                                                                     <div>
+                                                                                         Trạng thái: Đã duyệt
+                                                                                     </div>
+                                                }
+
+
+                                                @if (@item.MaTT == "TT3")
+                                                {
+                                                                                     <div>
+                                                                                         Trạng thái: Đang vận chuyển
+                                                                                     </div>
+                                                }
+
+                                                @if (@item.MaTT == "TT5")
+                                                {
+                                                                                     <div>
+                                                                                         Trạng thái: Hủy
+                                                                                     </div>
+                                                }
+
+                                            </span><br />
+                                            Ngày đặt: @item.NgayDat<br />
                                             <a data-placement="top" class="btn btn-success btn-xs glyphicon glyphicon-ok" href="#" title="View"></a>
                                             <a data-placement="top" class="btn btn-danger btn-xs glyphicon glyphicon-trash" href="#" title="Danger"></a>
                                             <a data-placement="top" class="btn btn-info btn-xs glyphicon glyphicon-usd" href="#" title="Danger"></a>
                                         </div>
-                                        <div class="col-md-12">Ngày đặt: @item.NgayDat </div>
+
+                                        <div class="col-xl-5">
+                                         
+                                        </div>
+
+                                        <div class="col-xl-1" >
+                                            <a href="@Url.Action("HoaDonChiTiet", "KhachHang", new { MaHD = item.MaHD})"
+                                               class="btn btn-success btn-sm">Xem Chi Tiết </a>
+                                        </div>
+                                        <div class="col-md-12"> </div>
                                     </div>
                                 </div>
-
-
-
-
                             }
 
                             <br /><br />

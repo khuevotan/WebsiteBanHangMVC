@@ -23,7 +23,6 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
                 NhanVien = ThongKeNhanVien(),
             };
             return View(model);
-            
         }
 
         public int ThongKeDonHang()

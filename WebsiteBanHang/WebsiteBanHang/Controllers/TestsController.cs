@@ -10,17 +10,17 @@ using WebsiteBanHang.CSDL;
 
 namespace WebsiteBanHang.Controllers
 {
-    public class TestController : Controller
+    public class TestsController : Controller
     {
         private QLTPEntities1 db = new QLTPEntities1();
 
-        // GET: Test
+        // GET: Tests
         public ActionResult Index()
         {
             return View(db.KhachHangs.ToList());
         }
 
-        // GET: Test/Details/5
+        // GET: Tests/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -35,13 +35,13 @@ namespace WebsiteBanHang.Controllers
             return View(khachHang);
         }
 
-        // GET: Test/Create
+        // GET: Tests/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Test/Create
+        // POST: Tests/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -58,7 +58,7 @@ namespace WebsiteBanHang.Controllers
             return View(khachHang);
         }
 
-        // GET: Test/Edit/5
+        // GET: Tests/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -73,7 +73,7 @@ namespace WebsiteBanHang.Controllers
             return View(khachHang);
         }
 
-        // POST: Test/Edit/5
+        // POST: Tests/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -89,7 +89,7 @@ namespace WebsiteBanHang.Controllers
             return View(khachHang);
         }
 
-        // GET: Test/Delete/5
+        // GET: Tests/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -104,7 +104,7 @@ namespace WebsiteBanHang.Controllers
             return View(khachHang);
         }
 
-        // POST: Test/Delete/5
+        // POST: Tests/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)

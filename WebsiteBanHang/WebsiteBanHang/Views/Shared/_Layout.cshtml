@@ -52,11 +52,10 @@
                                         <option value="TenSP">Sản phẩm</option>
                                     </select>
                                     @Html.TextBoxFor(m => m.TenSP, new
-                               {
-                                   style = "width: 342px;",
-                                   maxlength = "10",
-
-                               })
+                                        {
+                                           style = "width: 342px;",
+                                           maxlength = "10",
+                                         })
                                     <div class="input-group-append">
                                         <button class="btn btn-success" type="submit">
                                             <i class="fa fa-search"></i> Search
@@ -99,7 +98,7 @@
                                     <a href="~/KhachHang/HoaDon" class="widget-view">
                                         <div class="icon-area">
                                             <i class="fa fa-store"></i>
-
+                                         
                                         </div>
                                         <small class="text"> Đơn Hàng </small>
                                     </a>
@@ -110,7 +109,7 @@
                                     <a href="~/GioHang/Index" class="widget-view">
                                         <div class="icon-area">
                                             <i class="fa fa-shopping-cart"></i>
-
+                                         
                                         </div>
                                         <small class="text"> Giỏ hàng </small>
 
@@ -200,6 +199,10 @@
         </nav>
     </header> <!-- section-header.// -->
 
+    <section class="section-subscribe padding-y-sm bg-success">
+        <div class="container">
+        </div>
+    </section>
 
 
     @RenderBody()

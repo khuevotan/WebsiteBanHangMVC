@@ -62,6 +62,8 @@ namespace WebsiteBanHang.Controllers
 
         public ActionResult ThanhCong()
         {
+           
+
             return View();
         }
 

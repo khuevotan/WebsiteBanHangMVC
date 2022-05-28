@@ -8,22 +8,22 @@
 
 @if (Model == null || Model.Count == 0)
 {
-<div class="container">
-    <div class="card mx-auto" style="max-width: 380px; margin-top:50px;">
-        <div class="card-body">
-            <h4 class="card-title mb-4">
-                <p class="text-info text-center">
-                    Giỏ hàng của bạn rỗng!
-                </p>
-            </h4>
-        </div> <!-- card-body.// -->
-    </div> <!-- card .// -->
+    <div class="container">
+        <div class="card mx-auto" style="max-width: 380px; margin-top:50px;">
+            <div class="card-body">
+                <h4 class="card-title mb-4">
+                    <p class="text-info text-center">
+                        Giỏ hàng của bạn rỗng!
+                    </p>
+                </h4>
+            </div> <!-- card-body.// -->
+        </div> <!-- card .// -->
+
+    </div>
+
     <br />
     <br />
-    <a href="javascript: history.back()" class="btn btn-light"> &laquo Quay về</a>
-    <br />
-    <br />
-</div>
+
 }
 else
 {
@@ -60,7 +60,7 @@ else
                                                 <input type="hidden" name="MaSP" value="@item.MaSP" />
                                                 <input type="number" min="1" step="1" name="soluongmoi" value="@item.SoLuong" />
                                                 <div style="height: 15px"></div>
-                                                <button type="submit" class="btn btn-success btn-sm"> Cập nhật </button>  
+                                                <button type="submit" class="btn btn-success btn-sm"> Cập nhật </button>
                                             </form>
                                         </td>
                                         <td>
@@ -81,7 +81,7 @@ else
 
                         <div class="card-body border-top">
                             <a href="@Url.Action("NhapThongTin", "GioHang")" class="btn btn-success float-md-right"> Thanh toán <i class="fa fa-chevron-right"></i> </a>
-                            <a href="#" class="btn btn-light"> <i class="fa fa-chevron-left"></i> Tiếp tục mua hàng </a>
+
                         </div>
                     </div> <!-- card.// -->
 
@@ -121,7 +121,7 @@ else
                             <p class="text-center mb-3">
                                 <img src="~/Content/images/banners/giaohang.png" height="26">
                             </p>
-                
+
 
                         </div> <!-- card-body.// -->
                     </div>  <!-- card .// -->
@@ -130,6 +130,7 @@ else
 
         </div> <!-- container .//  -->
     </section>
+
 
 
 

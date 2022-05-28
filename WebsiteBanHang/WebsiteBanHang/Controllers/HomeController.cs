@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using WebsiteBanHang.CSDL;
 using WebsiteBanHang.Models;
 
@@ -82,6 +83,27 @@ namespace WebsiteBanHang.Controllers
             return View(khachHang);
         }
 
+        public bool CheckUser(string username, string password)
+        {
+            var data = objQLTPEntities.KhachHangs.Where(x => x.TaiKhoan == username && x.MatKhau == password).ToList();
+            //string hoTen = kq.First().HoTen;
+            if (data.Count() > 0)
+            {
+                Session["FullName"] = data.FirstOrDefault().HoKH + " " + data.FirstOrDefault().TenKH;
+                Session["Email"] = data.FirstOrDefault().Email;
+                Session["MaKH"] = data.FirstOrDefault().MaKH;
+                Session["SoDT"] = data.FirstOrDefault().SoDT;
+                Session["DiaChi"] = data.FirstOrDefault().DiaChi;
+      
+                return true;
+            }
+            else
+            {
+                Session["HoTen"] = null;
+                return false;
+            }
+        }
+
 
         [HttpGet]
         public ActionResult DangNhapKH()
@@ -89,30 +111,23 @@ namespace WebsiteBanHang.Controllers
             return View();
         }
 
+   
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult DangNhapKH(string taiKhoan, string matKhau)
+        public ActionResult DangNhapKH(KhachHang kh)
         {
             if (ModelState.IsValid)
             {
-                var data = objQLTPEntities.KhachHangs.Where(s => s.TaiKhoan.Equals(taiKhoan) && s.MatKhau.Equals(matKhau)).ToList();
-                if (data.Count() > 0)
+                if (CheckUser(kh.TaiKhoan, kh.MatKhau))
                 {
-                    //add session
-                    Session["FullName"] = data.FirstOrDefault().HoKH + " " + data.FirstOrDefault().TenKH;
-                    Session["Email"] = data.FirstOrDefault().Email;
-                    Session["MaKH"] = data.FirstOrDefault().MaKH;
-                    Session["SoDT"] = data.FirstOrDefault().SoDT;
-                    Session["DiaChi"] = data.FirstOrDefault().DiaChi;
-                    return RedirectToAction("Index");
+                    FormsAuthentication.SetAuthCookie(kh.TaiKhoan, true);
+                    return RedirectToAction("Index", "Home");
                 }
                 else
-                {
-                    ViewBag.error = "Login failed";
-                    return RedirectToAction("Index");
-                }
+                    ModelState.AddModelError("", "Tên đăng nhập hoặc tài khoản không đúng. ");
             }
-            return View();
+            return View(kh);
         }
 
         //Logout

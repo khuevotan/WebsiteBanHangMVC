@@ -1,22 +1,15 @@
-﻿@model WebsiteBanHang.Models.HomeModel
+﻿@using WebsiteBanHang.CSDL
+@using PagedList.Mvc;
+@model PagedList.IPagedList<BaiViet>
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
 
 }
 
 
-<section class="py-3 bg-success">
-    <div class="container">
-        <ol class="breadcrumb">
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-            <li></li>
-        </ol>
-    </div>
-</section>
+
 
 
 
@@ -24,8 +17,11 @@
 <section class="section-content bg-white padding-y">
     <div class="container">
         <div class="row">
-            @foreach (var item in Model.ListBaiViet.Take(9))
+
+
+            @foreach (var item in Model.OrderBy(n => n.MaBV))
             {
+
                 <div class="col-md-4">
                     <div class="card bg-dark">
                         <img src="~/Content/images/posts/@item.HinhDD" class="card-img opacity">
@@ -38,22 +34,24 @@
                         </div>
                     </div>
                 </div> <!-- col.// -->
+
             }
+
+         
         </div> <!-- row.// -->
+
+
+       
+       
 
         <br />
         <div class="row">
             <div class="col-4">
             </div>
             <nav class="col-8" aria-label="Page navigation sample">
+                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
                 <ul class="pagination" style="text-align: center">
-                    <li class="page-item disabled"><a class="page-link" href="#">Trước</a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Tiếp theo</a></li>
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
                 </ul>
             </nav>
         </div>

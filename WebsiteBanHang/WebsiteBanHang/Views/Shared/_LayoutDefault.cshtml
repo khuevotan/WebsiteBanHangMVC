@@ -42,23 +42,21 @@
                     <div class="col-xl-6 col-lg-5 col-md-6">
                         @using (Html.BeginForm("TimKiemTenSP", "DanhMuc", FormMethod.Get))
                         {
-
                             <div class="search-header">
                                 <div class="input-group w-100">
                                     <select class="custom-select border-right" name="">
                                         <option value="TenSP">Sản phẩm</option>
                                     </select>
-                                    <input type="text" class="form-control" placeholder="">
+                                    <input type="text" class="form-control" placeholder="" value="">
+
+
                                     <div class="input-group-append">
                                         <button class="btn btn-success" type="submit">
                                             <i class="fa fa-search"></i> Search
                                         </button>
                                     </div>
-
-
                                 </div>
                             </div><!-- search-wrap .end// -->
-
                         }
 
                     </div> <!-- col.// -->
@@ -192,6 +190,11 @@
         </nav>
     </header> <!-- section-header.// -->
 
+
+    <section class="section-subscribe padding-y-sm bg-success">
+        <div class="container">
+        </div>
+    </section>
 
 
     @RenderBody()

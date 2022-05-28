@@ -106,6 +106,81 @@ namespace WebsiteBanHang.Controllers
             return RedirectToAction("Detail", "Product", new { MaSP = MaSP });
         }
 
+        public RedirectToRouteResult ThemVaoGioDMLst(String MaSP, String MaDM)
+        {
+            if (Session["giohang"] == null) // Nếu giỏ hàng chưa được khởi tạo
+            {
+                Session["giohang"] = new List<CartItem>();  // Khởi tạo Session["giohang"] là 1 List<CartItem>
+            }
+
+            List<CartItem> giohang = Session["giohang"] as List<CartItem>;  // Gán qua biến giohang dễ code
+
+            // Kiểm tra xem sản phẩm khách đang chọn đã có trong giỏ hàng chưa
+
+            if (giohang.FirstOrDefault(m => m.MaSP == MaSP) == null) // ko co sp nay trong gio hang
+            {
+                SanPham sp = objQLTPEntities.SanPhams.Find(MaSP);  // tim sp theo MaSP
+
+                CartItem newItem = new CartItem()
+                {
+                    MaSP = MaSP,
+                    TenSP = sp.TenSP,
+                    SoLuong = 1,
+                    HinhDD = sp.HinhDD,
+                    DonGia = (float)sp.GiaBan
+
+                };  // Tạo ra 1 CartItem mới
+
+                giohang.Add(newItem);  // Thêm CartItem vào giỏ 
+            }
+            else
+            {
+                // Nếu sản phẩm khách chọn đã có trong giỏ hàng thì không thêm vào giỏ nữa mà tăng số lượng lên.
+                CartItem cardItem = giohang.FirstOrDefault(m => m.MaSP == MaSP);
+                cardItem.SoLuong++;
+            }
+
+            // Action này sẽ chuyển hướng về trang chi tiết sp khi khách hàng đặt vào giỏ thành công. Bạn có thể chuyển về chính trang khách hàng vừa đứng bằng lệnh return Redirect(Request.UrlReferrer.ToString()); nếu muốn.
+            return RedirectToAction("SanPhamDanhMuc", "DanhMuc", new { MaDM = MaDM });
+        }
+
+        public RedirectToRouteResult ThemVaoGioDMGr(String MaSP, String MaDM)
+        {
+            if (Session["giohang"] == null) // Nếu giỏ hàng chưa được khởi tạo
+            {
+                Session["giohang"] = new List<CartItem>();  // Khởi tạo Session["giohang"] là 1 List<CartItem>
+            }
+
+            List<CartItem> giohang = Session["giohang"] as List<CartItem>;  // Gán qua biến giohang dễ code
+
+            // Kiểm tra xem sản phẩm khách đang chọn đã có trong giỏ hàng chưa
+
+            if (giohang.FirstOrDefault(m => m.MaSP == MaSP) == null) // ko co sp nay trong gio hang
+            {
+                SanPham sp = objQLTPEntities.SanPhams.Find(MaSP);  // tim sp theo MaSP
+
+                CartItem newItem = new CartItem()
+                {
+                    MaSP = MaSP,
+                    TenSP = sp.TenSP,
+                    SoLuong = 1,
+                    HinhDD = sp.HinhDD,
+                    DonGia = (float)sp.GiaBan
+
+                };  // Tạo ra 1 CartItem mới
+
+                giohang.Add(newItem);  // Thêm CartItem vào giỏ 
+            }
+            else
+            {
+                // Nếu sản phẩm khách chọn đã có trong giỏ hàng thì không thêm vào giỏ nữa mà tăng số lượng lên.
+                CartItem cardItem = giohang.FirstOrDefault(m => m.MaSP == MaSP);
+                cardItem.SoLuong++;
+            }
+
+            // Action này sẽ chuyển hướng về trang chi tiết sp khi khách hàng đặt vào giỏ thành công. Bạn có thể chuyển về chính trang khách hàng vừa đứng bằng lệnh return Redirect(Request.UrlReferrer.ToString()); nếu muốn.
+            return RedirectToAction("SanPhamDanhMuc2", "DanhMuc", new { MaDM = MaDM });
+        }
 
         public RedirectToRouteResult SuaSoLuong(String MaSP, int soluongmoi)
         {

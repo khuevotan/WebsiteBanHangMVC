@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using WebsiteBanHang.CSDL;
 using WebsiteBanHang.Models;
+using static WebsiteBanHang.Models.HomeModel;
 
 namespace WebsiteBanHang.Controllers
 {
@@ -17,14 +19,54 @@ namespace WebsiteBanHang.Controllers
         // GET: KhachHang
         public ActionResult TrangCaNhan()
         {
-            
-            string MaKH = Session["MaKH"].ToString();
+            if (Session["MaKH"] == null)
+            {
+                return RedirectToAction("DangNhapKH", "Home");
+            }
+            else
+            {
 
-            HomeModel objHomeModel2 = new HomeModel();
-            objHomeModel2.ListKhachHang = db.KhachHangs.Where(n => n.MaKH == MaKH).ToList();
+                string MaKH = Session["MaKH"].ToString();
 
-            return View(objHomeModel2);            
+                HomeModel objHomeModel2 = new HomeModel();
+                objHomeModel2.ListKhachHang = db.KhachHangs.Where(n => n.MaKH == MaKH).ToList();
+
+                return View(objHomeModel2);
+
+            }    
+                      
         }
+
+        public ActionResult SetPassword(string MaKH)
+        {
+            if (MaKH == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            KhachHang khachHang = db.KhachHangs.Find(MaKH);
+            if (khachHang == null)
+            {
+                return HttpNotFound();
+            }
+            return View(khachHang);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SetPassword([Bind(Include = "MatKhau")] KhachHang khachHang)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(khachHang).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("TrangCaNhan", "KhachHang");
+            }
+            return View(khachHang);
+
+        }
+
+
+
 
         public ActionResult Edit(string id)
         {
@@ -40,54 +82,100 @@ namespace WebsiteBanHang.Controllers
             return View(khachHang);
         }
 
-        // POST: Admin/KhachHangs/Edit/5
+      
+
+        // POST: Tests/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaKH,TaiKhoan,MatKhau,HoKH,TenKH,NgaySinh,SoDT,DiaChi,Email,GioiTinh,HinhDD")] KhachHang khachHang)
+        public ActionResult Edit([Bind(Include = "MaKH,TaiKhoan,HoKH,TenKH,NgaySinh,SoDT,DiaChi,Email,GioiTinh,HinhDD")] KhachHang khachHang)
         {
+            var imgKH = Request.Files["Avatar"];
+            try
+            {
+                string postedFileName = System.IO.Path.GetFileName(imgKH.FileName);
+                //Lưu hình đại diện về Server
+                var path = Server.MapPath("/Content/images/avatars/kh/" + postedFileName);
+                imgKH.SaveAs(path);
+            }
+            catch
+            { }
+
+
             if (ModelState.IsValid)
             {
                 db.Entry(khachHang).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("TrangCaNhan","KhachHang");
             }
+
             return View(khachHang);
+
         }
 
+     
 
-
-        public ActionResult LichSuMuaHang()
+        public ActionResult LichSuMuaHang(String maKH)
         {
+            if(Session["MaKH"] == null)
+            {
+                return RedirectToAction("DangNhapKH", "Home");
+            }
+            else
+            {
+                string MaKH = Session["MaKH"].ToString();
 
-            string MaKH = Session["MaKH"].ToString();
+                HomeModel objHomeModel2 = new HomeModel();
+                objHomeModel2.ListHoaDon = db.HoaDons.Where(n => n.MaKH == MaKH && n.MaTT == "TT4").ToList();
+                objHomeModel2.ListKhachHang = db.KhachHangs.Where(n => n.MaKH == MaKH).ToList();
 
-            HomeModel objHomeModel2 = new HomeModel();
-            objHomeModel2.ListKhachHang = db.KhachHangs.Where(n => n.MaKH == MaKH).ToList();
-
-            return View(objHomeModel2);
+                return View(objHomeModel2);
+            }    
+         
         }
 
 
         public ActionResult HoaDon()
         {
-            string MaKH = Session["MaKH"].ToString();
 
-            HomeModel objHomeModel2 = new HomeModel();
-            objHomeModel2.ListHoaDon = db.HoaDons.Where(n => n.MaKH == MaKH).ToList();
-            objHomeModel2.ListKhachHang = db.KhachHangs.Where(n => n.MaKH == MaKH).ToList();
-            return View(objHomeModel2);
+            if (Session["MaKH"] == null)
+            {
+                return RedirectToAction("DangNhapKH", "Home");
+            }
+            else
+            {
+                string MaKH = Session["MaKH"].ToString();
+
+                HomeModel objHomeModel2 = new HomeModel();
+                objHomeModel2.ListHoaDon = db.HoaDons.Where(n => n.MaKH == MaKH ).ToList();
+           
+                objHomeModel2.ListKhachHang = db.KhachHangs.Where(n => n.MaKH == MaKH).ToList();
+                objHomeModel2.ListTrangThai = db.TrangThais.ToList();
+                return View(objHomeModel2);
+            }
+
+          
         }
 
-        public ActionResult HoaDonChiTiet()
+        public ActionResult HoaDonChiTiet(String MaHD)
         {
-            string MaKH = Session["MaKH"].ToString();
+            if (Session["MaKH"] == null)
+            {
+                return RedirectToAction("DangNhapKH", "Home");
+            }
+            else
+            {
+                string MaKH = Session["MaKH"].ToString();
 
-            HomeModel objHomeModel2 = new HomeModel();
-            objHomeModel2.ListHoaDon = db.HoaDons.Where(n => n.MaKH == MaKH).ToList();
-            return View(objHomeModel2);
+                HomeModel objHomeModel2 = new HomeModel();
+                objHomeModel2.ListCTHoaDon = db.CTHoaDons.Where(n => n.MaHD == MaHD).ToList();
+                objHomeModel2.ListHoaDon = db.HoaDons.Where(n => n.MaHD == MaHD).ToList();
+                objHomeModel2.ListKhachHang = db.KhachHangs.Where(n => n.MaKH == MaKH).ToList();
+                objHomeModel2.ListTrangThai = db.TrangThais.ToList();
+                objHomeModel2.ListSanPham = db.SanPhams.ToList();
+                return View(objHomeModel2);
+            }
         }
-
     }
 }

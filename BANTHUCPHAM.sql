@@ -228,8 +228,6 @@ VALUES	('SP01', N'Nấm kim châm Hàn Quốc', 'namkimcham.jpg', 30, N'Nấm ki
 		('SP20', N'Rong biển nấu canh Tohogenkai gói 50g', 'rongbien.jpg', 30,N'Rong biển nấu canh giúp bạn chế biến những món canh rong biển dinh dưỡng, mát lành. Rong biển nấu canh Tohogenkai gói 50g tiện lợi, chỉ cần ngâm rong biển trong nước và rửa sạch là có thể chế biến. Rong biển Tohogenkai chất lượng, vệ sinh, không lẫn tạp chất, yên tâm cho mọi người sử dụng', 6000.0,1, CAST(N'2020-09-01' AS Date), 'NCC09', 'DM08')
 GO
 
-
-
 GO
 INSERT INTO dbo.TrangThai (MaTT, TenTT)
 VALUES ('TT1', N'Chưa duyệt'),
@@ -305,3 +303,52 @@ VALUES	('PH01', CAST(N'2020-11-10' AS Date), N'Đánh giá', N'Rau tươi', 'KH0
 		('PH09', CAST(N'2020-10-03' AS Date), N'Đánh giá', N'Củ quả sạch', 'KH004'),
 		('PH10', CAST(N'2020-12-10' AS Date), N'Đánh giá', N'Giao hàng nhanh', 'KH005')
 GO
+
+
+
+
+
+
+GO
+CREATE PROCEDURE SanPhamND_TimKiem
+    @MaSP varchar(15)=NULL,
+	@TenSP nvarchar(200)=NULL
+AS
+BEGIN
+DECLARE @SqlStr NVARCHAR(4000),
+		@ParamList nvarchar(2000)
+SELECT @SqlStr = '
+       SELECT * 
+       FROM SanPham
+       WHERE  (1=1)
+       '
+IF @MaSP IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (MaSP LIKE ''%'+@MaSP+'%'')
+              '
+IF @TenSP IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+             AND (TenSP LIKE ''%'+@TenSP+'%'')
+              '
+	EXEC SP_EXECUTESQL @SqlStr
+END
+
+
+GO
+CREATE PROCEDURE ThongTinKH_TimKiem
+    @MaKH varchar(15)=NULL
+AS
+BEGIN
+DECLARE @SqlStr NVARCHAR(4000),
+		@ParamList nvarchar(2000)
+SELECT @SqlStr = '
+       SELECT * 
+       FROM KhachHang
+       WHERE  (1=1)
+       '
+IF @MaKH IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (MaKH LIKE ''%'+@MaKH+'%'')
+              '
+	EXEC SP_EXECUTESQL @SqlStr
+END

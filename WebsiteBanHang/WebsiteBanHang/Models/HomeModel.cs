@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using WebsiteBanHang.CSDL;
@@ -19,8 +20,9 @@ namespace WebsiteBanHang.Models
         public List<BaiViet> ListFullBaiViet { get; set; }
 
         public List<KhachHang> ListKhachHang { get; set; }
+        public List<TrangThai> ListTrangThai { get; set; }
 
-        
+
         public String HinhDD { get; set; }
 
         public String MaSP { get; set; }
@@ -31,5 +33,9 @@ namespace WebsiteBanHang.Models
         public String TenSP { get; set; }
 
         public int SoLuong { get; set; }
+
+     
+    
+
     }
 }

@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "DangNhapKH";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
 }
 
 
@@ -17,9 +17,14 @@
                 <a href="#" class="btn btn-google btn-block mb-4"> <i class="fab fa-google"></i> &nbsp;  Đăng nhập bằng Google</a>
 
                 <div class="card-body">
-                    @using (Html.BeginForm("DangNhapKH", "Home", FormMethod.Post))
+
+                    @using (Html.BeginForm("DangNhapKH", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                     {
                         @Html.AntiForgeryToken()
+
+                        @Html.ValidationSummary(true, "Đăng nhập không thành công. Kiểm tra lại các thông tin.", new { @class = "text-danger" })
+                    
+                        <br/>
                         <div class="form-group">
                             @Html.TextBoxFor(m => m.TaiKhoan, "", new { @class = "form-control", @placeholder = "Username" })
 
@@ -30,8 +35,10 @@
 
                         <div class="form-group">
                             <a href="#" class="float-right">Quên mật khẩu?</a>
-                            <label class="float-left custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" checked=""> 
-                            <div class="custom-control-label">Ghi nhớ </div> </label>
+                            <label class="float-left custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" checked="">
+                                <div class="custom-control-label">Ghi nhớ </div>
+                            </label>
                         </div> <!-- form-group form-check .// -->
 
                         <div class="form-group">

@@ -18,21 +18,32 @@
 </section>
 
 <div class="container">
+
+    <br />
+
     <header class="mb-3">
         <div class="form-inline">
-            <select class="mr-2 form-control">
-                <option>Latest items</option>
-                <option>Trending</option>
-                <option>Most Popular</option>
-                <option>Cheapest</option>
-            </select>
+            <strong class="mr-md-auto">Các sản phẩm</strong>
+
             <div class="btn-group">
-                <a href="page-listing-grid.html" class="btn btn-light active" data-toggle="tooltip" title="List view">
-                    <i class="fa fa-bars"></i>
-                </a>
-                <a href="page-listing-large.html" class="btn btn-light" data-toggle="tooltip" title="Grid view">
-                    <i class="fa fa-th"></i>
-                </a>
+
+                @foreach (var item in Model.ListDanhMuc)
+                {
+                    <a href="@Url.Action("SanPhamDanhMuc", "DanhMuc", new { MaDM = item.MaDM})" class="btn btn-success" data-toggle="tooltip" title="List view">
+                        <i class="fa fa-bars"></i>
+                    </a>
+
+                    <p>   </p>
+
+
+                    <a href="@Url.Action("SanPhamDanhMuc2", "DanhMuc", new { MaDM = item.MaDM})" class="btn btn-success" data-toggle="tooltip" title="Grid view">
+                        <i class="fa fa-th"></i>
+                    </a>
+                }
+
+
+
+
             </div>
         </div>
     </header><!-- sect-heading -->
@@ -59,17 +70,13 @@
                         }
 
                         <hr>
-                        <a href="@Url.Action("ThemVaoGio", "GioHang", new { MaSP = item.MaSP })" class="btn btn-outline-primary"><i class="fa fa-shopping-cart"></i>  Thêm vào giỏ </a>
+                        <a href="@Url.Action("ThemVaoGioDMGr", "GioHang", new { MaSP = item.MaSP, item.MaDM })" class="btn btn-success"><i class="fa fa-shopping-cart"></i>  Thêm vào giỏ </a>
 
                     </figcaption>
                 </figure>
             </div> <!-- col.// -->
 
         }
-
-
-
-
 
     </div> <!-- row end.// -->
 

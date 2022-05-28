@@ -33,9 +33,15 @@
                                         <img src="~/Content/images/avatars/kh/@item.HinhDD" alt="Admin" class="rounded-circle" width="150">
                                         <div class="mt-3">
                                             <h4>@item.HoKH @item.TenKH</h4>
-                                            
-                                            <a class="btn btn-success " href="~/KhachHang/LichSuMuaHang">Lịch sử mua</a>
-                                         
+
+                                           
+
+                                            <a href="@Url.Action("LichSuMuaHang","KhachHang",
+                                                new { id = item.MaKH})" class="btn btn-success">
+
+                                               Lịch sử mua
+                                            </a>
+
                                         </div>
                                     </div>
                                 </div>
@@ -143,17 +149,20 @@
                                     </div>
                                     <hr>
                                     <div class="row">
-                                        <div class="col-sm-12">
-
+                                        <div class="col-3">
                                             <a href="@Url.Action("Edit",
-                                                new { id = item.MaKH})" class="edit-btn">
-                                                <abbr title="Xem chi tiết">
-                                                    <img src="/images/details.png" width="20" height="20" />
-                                                </abbr>
+                                                new { id = item.MaKH})" class="btn btn-success">
+                                                Chỉnh sửa
                                             </a>
-
-
-                                            <a class="btn btn-success " href="~/KhachHang/Edit">Chỉnh sửa</a>
+                                        </div>
+                                        <div class="col-6">
+                                            <h5>  </h5>
+                                        </div>
+                                        <div class="col-3">
+                                            <a href="@Url.Action("SetPassword",
+                                                new { id = item.MaKH})" class="btn btn-success">
+                                                Đổi mật khẩu
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

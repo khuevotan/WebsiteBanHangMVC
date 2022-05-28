@@ -153,8 +153,9 @@
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\PageContentController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\TestsController.cs" />
     <Compile Include="Controllers\ThanhToanController.cs" />
+    <Compile Include="Controllers\ThongBaoController.cs" />
     <Compile Include="CSDL\BaiViet.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
@@ -212,7 +213,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\BV.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2414,12 +2414,14 @@
     <Content Include="Views\KhachHang\Edit.cshtml" />
     <Content Include="Views\KhachHang\LichSuMuaHang.cshtml" />
     <Content Include="Views\KhachHang\HoaDonChiTiet.cshtml" />
-    <Content Include="Views\Test\Create.cshtml" />
-    <Content Include="Views\Test\Delete.cshtml" />
-    <Content Include="Views\Test\Details.cshtml" />
-    <Content Include="Views\Test\Edit.cshtml" />
-    <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutDefault.cshtml" />
+    <Content Include="Views\Tests\Create.cshtml" />
+    <Content Include="Views\Tests\Delete.cshtml" />
+    <Content Include="Views\Tests\Details.cshtml" />
+    <Content Include="Views\Tests\Edit.cshtml" />
+    <Content Include="Views\Tests\Index.cshtml" />
+    <Content Include="Views\ThongBao\Index.cshtml" />
+    <Content Include="Views\KhachHang\SetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
