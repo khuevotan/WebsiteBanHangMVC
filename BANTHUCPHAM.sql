@@ -305,50 +305,90 @@ VALUES	('PH01', CAST(N'2020-11-10' AS Date), N'Đánh giá', N'Rau tươi', 'KH0
 GO
 
 
-
-
-
-
+------------------- TÌM KIẾM ----------------------------------------
 GO
-CREATE PROCEDURE SanPhamND_TimKiem
-    @MaSP varchar(15)=NULL,
-	@TenSP nvarchar(200)=NULL
+CREATE PROCEDURE HoaDon_TimKiemNC
+    @MaHD varchar(30)=NULL,
+	@NgayDat nvarchar(15)=NULL,
+	@NgayGiao nvarchar(15)= NULL,
+	@DiaChi nvarchar(50)=NULL,
+	@MaTT nvarchar(15)=NULL,
+	@MaNV nvarchar(15)=NULL
 AS
 BEGIN
 DECLARE @SqlStr NVARCHAR(4000),
 		@ParamList nvarchar(2000)
 SELECT @SqlStr = '
        SELECT * 
-       FROM SanPham
+       FROM HoaDon
        WHERE  (1=1)
        '
-IF @MaSP IS NOT NULL
+IF @MaHD IS NOT NULL
        SELECT @SqlStr = @SqlStr + '
-              AND (MaSP LIKE ''%'+@MaSP+'%'')
+              AND (MaHD LIKE ''%'+@MaHD+'%'')
               '
-IF @TenSP IS NOT NULL
+IF @NgayDat IS NOT NULL
        SELECT @SqlStr = @SqlStr + '
-             AND (TenSP LIKE ''%'+@TenSP+'%'')
+               AND (NgayDat LIKE ''%'+@NgayDat+'%'')
+              '
+IF @NgayGiao IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+             AND (NgayGiao LIKE ''%'+@NgayGiao+'%'')
+             '
+IF @DiaChi IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (DiaChi LIKE ''%'+@DiaChi+'%'')
+              '
+IF @MaTT IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (MaTT LIKE ''%'+@MaTT+'%'')
+              '
+IF @MaNV IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (MaNV LIKE ''%'+@MaNV+'%'')
               '
 	EXEC SP_EXECUTESQL @SqlStr
 END
+GO
 
 
 GO
-CREATE PROCEDURE ThongTinKH_TimKiem
-    @MaKH varchar(15)=NULL
+CREATE PROCEDURE PhanHoi_TimKiemNC
+    @MaPH varchar(30)=NULL,
+	@NgayGui nvarchar(15)=NULL,
+	@ChuDe nvarchar(15)= NULL,
+	@NoiDung nvarchar(50)=NULL,
+	@MaKH nvarchar(15)=NULL
 AS
 BEGIN
 DECLARE @SqlStr NVARCHAR(4000),
 		@ParamList nvarchar(2000)
 SELECT @SqlStr = '
        SELECT * 
-       FROM KhachHang
+       FROM PhanHoi
        WHERE  (1=1)
        '
+IF @MaPH IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (MaPH LIKE ''%'+@MaPH+'%'')
+              '
+IF @NgayGui IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+               AND (NgayGui LIKE ''%'+@NgayGui+'%'')
+              '
+IF @ChuDe IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+             AND (ChuDe LIKE ''%'+@ChuDe+'%'')
+             '
+IF @NoiDung IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (NoiDung LIKE ''%'+@NoiDung+'%'')
+              '
 IF @MaKH IS NOT NULL
        SELECT @SqlStr = @SqlStr + '
               AND (MaKH LIKE ''%'+@MaKH+'%'')
               '
 	EXEC SP_EXECUTESQL @SqlStr
 END
+GO
+

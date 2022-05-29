@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using WebsiteBanHang.Areas.Admin.Data;
 using WebsiteBanHang.CSDL;
 
@@ -15,14 +16,23 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
         // GET: Admin/Home
         public ActionResult Index()
         {
-            var model = new ThongKeDG()
+            if (Session["MaNV"] == null)
             {
-                DonHang = ThongKeDonHang(),
-                SanPham = ThongKeSanPham(),
-                KhachHang = ThongKeKhachHang(),
-                NhanVien = ThongKeNhanVien(),
-            };
-            return View(model);
+                return RedirectToAction("LoiPhanQuyen", "Home");
+               
+            }
+            else
+            {
+                var model = new ThongKeDG()
+                {
+                    DonHang = ThongKeDonHang(),
+                    SanPham = ThongKeSanPham(),
+                    KhachHang = ThongKeKhachHang(),
+                    NhanVien = ThongKeNhanVien(),
+                };
+                return View(model);
+            }
+               
         }
 
         public int ThongKeDonHang()
@@ -94,34 +104,58 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
         }
 
 
+        public bool CheckUser(string username, string password)
+        {
+            var data = objQLTPEntities.NhanViens.Where(x => x.TaiKhoan == username && x.MatKhau == password).ToList();
+            //string hoTen = kq.First().HoTen;
+            if (data.Count() > 0)
+            {
+                Session["FullName"] = data.FirstOrDefault().HoNV + " " + data.FirstOrDefault().TenNV;
+                Session["Email"] = data.FirstOrDefault().Email;
+                Session["MaNV"] = data.FirstOrDefault().MaNV;
+                Session["SoDT"] = data.FirstOrDefault().SoDT;
+                Session["DiaChi"] = data.FirstOrDefault().DiaChi;
+                Session["HinhDD"] = data.FirstOrDefault().HinhDD;
+                return true;
+            }
+            else
+            {
+                Session["HoTen"] = null;
+                return false;
+            }
+        }
+
         [HttpGet]
         public ActionResult DangNhapNV()
         {
             return View();
         }
 
+
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult DangNhapNV(string taiKhoan, string matKhau)
+        public ActionResult DangNhapNV(NhanVien nv)
         {
             if (ModelState.IsValid)
             {
-                var data = objQLTPEntities.NhanViens.Where(s => s.TaiKhoan.Equals(taiKhoan) && s.MatKhau.Equals(matKhau)).ToList();
-                if (data.Count() > 0)
+                if (CheckUser(nv.TaiKhoan, nv.MatKhau))
                 {
-                    //add session
-                    Session["FullName"] = data.FirstOrDefault().HoNV + " " + data.FirstOrDefault().TenNV;
-                    Session["MaNV"] = data.FirstOrDefault().MaNV;
-                    return RedirectToAction("Index");
+                    FormsAuthentication.SetAuthCookie(nv.TaiKhoan, true);
+                    return RedirectToAction("Index", "Home");
                 }
                 else
-                {
-                    ViewBag.error = "Login failed";
-                    return RedirectToAction("Index");
-                }
+                    ModelState.AddModelError("", "Tên đăng nhập hoặc tài khoản không đúng. ");
             }
+            return View(nv);
+        }
+
+        public ActionResult LoiPhanQuyen()
+        {
             return View();
         }
+
+
 
         //Logout
         public ActionResult DangXuat()
@@ -133,7 +167,16 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
 
         public ActionResult LienHe()
         {
-            return View();
+            if (Session["MaNV"] == null)
+            {
+                return RedirectToAction("LoiPhanQuyen", "Home");
+
+            }
+            else
+            {
+                return View();
+            }
+            
         }
 
     }

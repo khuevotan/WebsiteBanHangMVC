@@ -17,7 +17,16 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
         // GET: Admin/NhaCungCaps
         public ActionResult Index()
         {
-            return View(db.NhaCungCaps.ToList());
+            if (Session["MaNV"] == null)
+            {
+                return RedirectToAction("LoiPhanQuyen", "Home");
+
+            }
+            else
+            {
+                return View(db.NhaCungCaps.ToList());
+            }
+           
         }
 
         // GET: Admin/NhaCungCaps/Details/5

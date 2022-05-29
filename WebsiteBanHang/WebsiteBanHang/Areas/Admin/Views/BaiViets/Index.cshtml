@@ -5,33 +5,30 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TenBV)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NoiDung)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HinhDD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NgayDang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NhanVien.TaiKhoan)
-        </th>
-        <th></th>
-    </tr>
+<div class="content-wrapper">
+    <br />
+    <table class="table table-bordered" style="width:100%" id="example">
+        <thead class="thead-dark">
+            <tr>
+                <th>Mã bài viết</th>
+                <th>Tên bài viết</th>
+                <th>Nội dung</th>
+                <th>Hình DD</th>
+                <th>Ngày đăng</th>
+                <th>Mã nhân viên</th>
+            </tr>
 
-@foreach (var item in Model) {
+           
+
+        </thead>
+
+        @foreach (var item in Model)
+        {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaBV)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.TenBV)
         </td>
@@ -45,14 +42,37 @@
             @Html.DisplayFor(modelItem => item.NgayDang)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NhanVien.TaiKhoan)
+            @Html.DisplayFor(modelItem => item.MaNV)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaBV }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaBV }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaBV })
-        </td>
+
+      
+
     </tr>
+        }
+
+    </table>
+
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+            $(document).ready(function () {
+                $("#example").dataTable({
+                    "columns": [
+                        { 'data': 'MaBV' },
+                        { 'data': 'TenBV' },
+                        { 'data': 'NoiDung' },
+                        { 'data': 'HinhDD' },
+                        { 'data': 'NgayDang' },
+                        { 'data': 'MaNV)' },     
+                    ],
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                })
+            })
+    </script>
 }
 
-</table>
+

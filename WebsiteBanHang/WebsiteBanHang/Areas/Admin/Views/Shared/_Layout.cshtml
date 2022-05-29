@@ -26,13 +26,19 @@
     <!-- summernote -->
     <link rel="stylesheet" href="~/Content/admin/plugins//summernote/summernote-bs4.min.css">
 
+   
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link href="~/Content/DataTables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/buttons.bootstrap4.min.css" rel="stylesheet" />
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__shake" src="~/Content/admin/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+            <img class="animation__shake" src="~/Content/images/avatars/nv/favicon.png" alt="TPKPK" height="60" width="60">
         </div>
 
         <!-- Navbar -->
@@ -51,18 +57,32 @@
             </ul>
 
             <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">   
+            <ul class="navbar-nav ml-auto">
                 @if (Session["MaNV"] != null)
                 {
+                    <li class="nav-item">
+                        <a href="~/Admin/NhanViens/TrangCaNhan" class="widget-view">
+                            <div class="icon-area">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <small class="text">Trang cá nhân </small>
+                        </a>
+                    </li>
 
-                        <li class="nav-item">
-                            <a href="~/Admin/Home/DangXuat" class="widget-view">
-                                <div class="icon-area">
-                                    <i class="fa fa-user"></i>
-                                </div>
-                                <small class="text">Đăng xuất </small>
-                            </a>
-                        </li>     
+
+                    <li class="nav-item">
+                        <a href="~/Admin/Home/DangXuat" class="widget-view">
+                            <div class="icon-area">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <small class="text">Đăng xuất </small>
+                        </a>
+                    </li>
+
+                }
+                else
+                {
+
                 }
             </ul>
         </nav>
@@ -70,28 +90,26 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="~/Admin/Home/Index" class="brand-link">
-                <img src="~/Content/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Admin </span>
-            </a>
+          
 
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
 
                 @if (Session["MaNV"] != null)
-                    {
+                {
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="image">
-                            <img src="#" class="img-circle elevation-2" >
+                            <img src="~/Content/images/avatars/nv/@Session["HinhDD"]" class="img-circle elevation-2">
                         </div>
                         <div class="info">
-                            <a href="#" class="d-block">Xin Chào!</a>
+                            <a href="#" class="d-block">Xin Chào @Session["FullName"]!</a>
                         </div>
                     </div>
                 }
-                else{
-                    
+                else
+                {
+
                 }
 
 
@@ -111,7 +129,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-    with font-awesome or any other icon font library -->
+                        with font-awesome or any other icon font library -->
 
                         <li class="nav-item">
                             <a href="#" class="nav-link">
@@ -168,7 +186,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="~/Admin/NhanViens/TimKiem" class="nav-link">
+                                    <a href="~/Admin/NhanViens/TimKiemNCNC" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Tìm kiếm</p>
                                     </a>
@@ -205,7 +223,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="~/Admin/SanPhams/TimKiem" class="nav-link">
+                                    <a href="~/Admin/SanPhams/TimKiemNC" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Tìm kiếm sản phẩm</p>
                                     </a>
@@ -240,7 +258,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="~/Admin/KhachHangs/TimKiem" class="nav-link">
+                                    <a href="~/Admin/KhachHangs/TimKiemNC" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Tìm kiếm</p>
                                     </a>
@@ -270,7 +288,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="~/Admin/NhaCungCaps/TimKiem" class="nav-link">
+                                    <a href="~/Admin/NhaCungCaps/TimKiemNC" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Tìm kiếm</p>
                                     </a>
@@ -299,7 +317,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="~/Admin/HoaDons/TimKiem" class="nav-link">
+                                    <a href="~/Admin/HoaDons/TimKiemNC" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Tìm kiếm</p>
                                     </a>
@@ -330,7 +348,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="~/Admin/BaiViets/TimKiem" class="nav-link">
+                                    <a href="~/Admin/BaiViets/TimKiemNC" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Tìm Kiếm</p>
                                     </a>
@@ -356,7 +374,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="~/Admin/PhanHois/TimKiem" class="nav-link">
+                                    <a href="~/Admin/PhanHois/TimKiemNCNC" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Tìm Kiếm</p>
                                     </a>
@@ -374,10 +392,16 @@
 
         <!-- Content Wrapper. Contains page content -->
 
+      
 
         @RenderBody();
 
-       
+
+
+
+
+
+
         <!-- /.content-wrapper -->
         <footer class="main-footer">
             <strong>Copyright &copy; 2022 ThuPhamHuuCoKPK.</strong>
@@ -400,7 +424,7 @@
     <script src="~/Content/admin/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-  $.widget.bridge('uibutton', $.ui.button)
+        $.widget.bridge('uibutton', $.ui.button)
     </script>
     <!-- Bootstrap 4 -->
     <script src="~/Content/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -429,6 +453,22 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="~/Content/admin/dist/js/pages/dashboard.js"></script>
 
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.bootstrap4.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.9.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.5/vfs_fonts.js"></script>
+
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js"></script>
+
+    @RenderSection("scripts", required: false)
 
 </body>
 </html>

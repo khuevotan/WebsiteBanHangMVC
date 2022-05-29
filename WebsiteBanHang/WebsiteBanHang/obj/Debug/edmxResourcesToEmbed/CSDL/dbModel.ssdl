@@ -315,6 +315,29 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="HoaDon_TimKiem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MaHD" Type="varchar" Mode="In" />
+    <Parameter Name="NgayDat" Type="nvarchar" Mode="In" />
+    <Parameter Name="NgayGiao" Type="nvarchar" Mode="In" />
+    <Parameter Name="DiaChi" Type="nvarchar" Mode="In" />
+    <Parameter Name="MaTT" Type="nvarchar" Mode="In" />
+    <Parameter Name="MaNV" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="HoaDon_TimKiemNC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MaHD" Type="varchar" Mode="In" />
+    <Parameter Name="NgayDat" Type="nvarchar" Mode="In" />
+    <Parameter Name="NgayGiao" Type="nvarchar" Mode="In" />
+    <Parameter Name="DiaChi" Type="nvarchar" Mode="In" />
+    <Parameter Name="MaTT" Type="nvarchar" Mode="In" />
+    <Parameter Name="MaNV" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="NhanVien_TimKiem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MaNV" Type="varchar" Mode="In" />
+    <Parameter Name="HoTen" Type="nvarchar" Mode="In" />
+    <Parameter Name="GioiTinh" Type="nvarchar" Mode="In" />
+    <Parameter Name="DiaChi" Type="nvarchar" Mode="In" />
+    <Parameter Name="MaNhom" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="SanPhamND_TimKiem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="MaSP" Type="varchar" Mode="In" />
     <Parameter Name="TenSP" Type="nvarchar" Mode="In" />

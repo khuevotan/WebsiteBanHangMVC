@@ -5,48 +5,65 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="content-wrapper">
+    <br/>
+    <table class="table table-bordered" style="width:100%" id="example">
+        <thead class="thead-dark">
+            <tr>
+                <th>Mã nhà cung cấp</th>
+                <th>Tên nhà cung cấp</th>
+                <th>Địa chỉ</th>
+                <th>Số điện thoại</th>
+                <th>Hình đại diện</th>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TenNCC)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SoDT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HinhDD)
-        </th>
-        <th></th>
-    </tr>
+            </tr>
+        </thead>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenNCC)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiaChi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoDT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HinhDD)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaNCC }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaNCC }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaNCC })
-        </td>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaNCC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenNCC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiaChi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoDT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HinhDD)
+                </td>
+
+
+            </tr>
 }
 
-</table>
+    </table>
+
+    </div>
+
+    @section scripts {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#example").dataTable({
+                    "columns": [
+                        { 'data': 'MaNCC' },
+                        { 'data': 'TenNCC' },
+                        { 'data': 'DiaChi' },
+                        { 'data': 'SoDT' },
+
+                        { 'data': 'HinhDD' },
+                    ],
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                })
+            })
+        </script>
+    }
+

@@ -161,5 +161,8 @@
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="SanPhamND_TimKiem" FunctionName="QLTPModel.Store.SanPhamND_TimKiem" />
     <FunctionImportMapping FunctionImportName="ThongTinKH_TimKiem" FunctionName="QLTPModel.Store.ThongTinKH_TimKiem" />
+    <FunctionImportMapping FunctionImportName="HoaDon_TimKiem" FunctionName="QLTPModel.Store.HoaDon_TimKiem" />
+    <FunctionImportMapping FunctionImportName="NhanVien_TimKiem" FunctionName="QLTPModel.Store.NhanVien_TimKiem" />
+    <FunctionImportMapping FunctionImportName="HoaDon_TimKiemNC" FunctionName="QLTPModel.Store.HoaDon_TimKiemNC" />
   </EntityContainerMapping>
 </Mapping>

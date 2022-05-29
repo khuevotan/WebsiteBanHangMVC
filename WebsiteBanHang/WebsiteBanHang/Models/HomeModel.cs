@@ -9,6 +9,7 @@ namespace WebsiteBanHang.Models
 {
     public class HomeModel
     {
+        public List<NhanVien> ListNhanVien { get; set; }
         public List<DanhMuc> ListDanhMuc { get; set; }
         public List<SanPham> ListSanPham { get; set; }
         public List<NhaCungCap> ListNhaCungCap { get; set; }

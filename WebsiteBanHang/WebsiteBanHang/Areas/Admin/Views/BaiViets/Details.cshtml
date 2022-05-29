@@ -5,55 +5,59 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="content-wrapper">
+    <br />
+    <h2>Details</h2>
 
-<div>
-    <h4>BaiViet</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TenBV)
-        </dt>
+    <div>
+        <h4>BaiViet</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.TenBV)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TenBV)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.TenBV)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NoiDung)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.NoiDung)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NoiDung)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.NoiDung)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.HinhDD)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.HinhDD)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.HinhDD)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.HinhDD)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayDang)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.NgayDang)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NgayDang)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.NgayDang)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NhanVien.TaiKhoan)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.NhanVien.TaiKhoan)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NhanVien.TaiKhoan)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.NhanVien.TaiKhoan)
+            </dd>
 
-    </dl>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MaBV }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaBV }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

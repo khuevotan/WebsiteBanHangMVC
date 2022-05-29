@@ -128,6 +128,61 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+
+        [HttpGet]
+        public ActionResult TimKiemNC(string MaHD = "", string NgayDat = "", string NgayGiao = "", string DiaChi = "", string MaTT = "", string MaNV = "")
+        {
+            if (Session["MaNV"] == null)
+            {
+                return RedirectToAction("DangNhapNV", "Home");
+            }
+            else
+            {
+                ViewBag.MaHD = MaHD;
+                ViewBag.NgayDat = NgayDat;
+                ViewBag.NgayGiao = NgayGiao;
+                ViewBag.DiaChi = DiaChi;
+                ViewBag.MaTT = new SelectList(db.TrangThais, "MaTT", "TenTT");
+                ViewBag.MaNV = new SelectList(db.NhanViens, "MaNV", "MaNV");
+                var hoaDons = db.HoaDons.SqlQuery("HoaDon_TimKiemNC'" + MaHD + "','" + NgayDat + "','" + NgayGiao + "','" + DiaChi + "','" + MaTT + "','" + MaNV + "'");
+                if (hoaDons.Count() == 0)
+                    ViewBag.TB = "Không có thông tin tìm kiếm.";
+                return View(hoaDons.ToList());
+            }    
+
+            
+        }
+
+
+        [HttpGet]
+        public ActionResult XuatTest()
+        {
+            return View();
+
+
+        }
+
+
+        public ActionResult ChuaDuyet()
+        {
+            var lstDSDHCD = db.HoaDons.Where(n => n.MaTT == "TT1");
+            return View(lstDSDHCD);
+        }
+
+        public ActionResult ChuaGiao()
+        {
+            var lstDSDHCG = db.HoaDons.Where(n => n.MaTT == "TT3");
+            return View(lstDSDHCG);
+        }
+
+        public ActionResult DaGiaoDaThanhToan()
+        {
+            var lstDSDHDHT = db.HoaDons.Where(n => n.MaTT == "TT4");
+            return View(lstDSDHDHT);
+        }
+       
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

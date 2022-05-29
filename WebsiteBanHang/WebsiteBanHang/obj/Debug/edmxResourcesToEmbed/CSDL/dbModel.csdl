@@ -420,5 +420,28 @@
     <FunctionImport Name="ThongTinKH_TimKiem">
       <Parameter Name="MaKH" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="HoaDon_TimKiem">
+      <Parameter Name="MaHD" Mode="In" Type="String" />
+      <Parameter Name="NgayDat" Mode="In" Type="String" />
+      <Parameter Name="NgayGiao" Mode="In" Type="String" />
+      <Parameter Name="DiaChi" Mode="In" Type="String" />
+      <Parameter Name="MaTT" Mode="In" Type="String" />
+      <Parameter Name="MaNV" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="NhanVien_TimKiem">
+      <Parameter Name="MaNV" Mode="In" Type="String" />
+      <Parameter Name="HoTen" Mode="In" Type="String" />
+      <Parameter Name="GioiTinh" Mode="In" Type="String" />
+      <Parameter Name="DiaChi" Mode="In" Type="String" />
+      <Parameter Name="MaNhom" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="HoaDon_TimKiemNC">
+      <Parameter Name="MaHD" Mode="In" Type="String" />
+      <Parameter Name="NgayDat" Mode="In" Type="String" />
+      <Parameter Name="NgayGiao" Mode="In" Type="String" />
+      <Parameter Name="DiaChi" Mode="In" Type="String" />
+      <Parameter Name="MaTT" Mode="In" Type="String" />
+      <Parameter Name="MaNV" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
 </Schema>

@@ -17,8 +17,16 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
         // GET: Admin/BaiViets
         public ActionResult Index()
         {
-            var baiViets = db.BaiViets.Include(b => b.NhanVien);
-            return View(baiViets.ToList());
+            if (Session["MaNV"] == null)
+            {
+                return RedirectToAction("LoiPhanQuyen", "Home");
+            }
+            else
+            {
+                var baiViets = db.BaiViets.Include(b => b.NhanVien);
+                return View(baiViets.ToList());
+            }    
+                
         }
 
         // GET: Admin/BaiViets/Details/5
@@ -119,6 +127,31 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+   
+
+       [HttpGet]
+        public ActionResult TimKiemNC(string MaBV = "", string MaNV = "", string NgayDang = "", string TenBV = "", string HinhDD = "", string NoiDung = "")
+        {
+            if (Session["MaNV"] == null)
+            {
+                return RedirectToAction("DangNhapNV", "Home");
+            }
+            else
+            {
+                ViewBag.MaBV = MaBV;
+                ViewBag.NgayDang = NgayDang;
+                ViewBag.TenBV = TenBV;
+                ViewBag.HinhDD = HinhDD;
+                ViewBag.NoiDung = NoiDung;
+                ViewBag.MaNV = new SelectList(db.NhanViens, "MaNV", "MaNV");
+                var baiViets = db.BaiViets.SqlQuery("BaiViet_TimKiemNC'" + MaBV + "','" + MaNV + "','" + NgayDang + "','" + TenBV + "','" + HinhDD + "','" + NoiDung + "'");
+                if (baiViets.Count() == 0)
+                    ViewBag.TB = "Không có thông tin tìm kiếm.";
+                return View(baiViets.ToList());
+            }
+        }
+
 
         protected override void Dispose(bool disposing)
         {

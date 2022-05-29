@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebsiteBanHang.CSDL;
+using WebsiteBanHang.Models;
 
 namespace WebsiteBanHang.Areas.Admin.Controllers
 {
@@ -119,6 +120,55 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult TimKiemNC(string MaNV = "", string TaiKhoan = "", string HoNV = "", string TenNV = "", string SoDT = "", string DiaChi = "", string Luong = "", string NgaySinh = "", string GioiTinh = "", string MaNhom = "" )
+        {
+            if (Session["MaNV"] == null)
+            {
+                return RedirectToAction("DangNhapNV", "Home");
+            }
+            else
+            {
+                ViewBag.MaNV = MaNV;
+                ViewBag.TaiKhoan = TaiKhoan;
+                ViewBag.HoNV = HoNV;
+                ViewBag.TenNV = TenNV;
+                ViewBag.SoDT = SoDT;
+                ViewBag.Luong = Luong;
+                ViewBag.DiaChi = DiaChi;
+                ViewBag.NgaySinh = NgaySinh;
+                ViewBag.GioiTinh = GioiTinh;
+                ViewBag.MaNhom = new SelectList(db.Nhoms, "MaNhom", "MaNhom");
+                var nhanViens = db.NhanViens.SqlQuery("NhanVien_TimKiemNC'" + MaNV + "','" + TaiKhoan + "','" + HoNV + "','" + TenNV + "','" + SoDT + "','" + DiaChi + "','" + Luong + "','" + NgaySinh + "','" + GioiTinh + "','" + MaNhom + "'");
+                if (nhanViens.Count() == 0)
+                    ViewBag.TB = "Không có thông tin tìm kiếm.";
+                return View(nhanViens.ToList());
+            }
+        }
+
+
+
+        public ActionResult TrangCaNhan()
+        {
+            if (Session["MaNV"] == null)
+            {
+                return RedirectToAction("DangNhapNV", "Home");
+            }
+            else
+            {
+
+                string manv = Session["MaNV"].ToString();
+
+                HomeModel objHomeModel2 = new HomeModel();
+                objHomeModel2.ListNhanVien = db.NhanViens.Where(n => n.MaNV == manv).ToList();
+
+                return View(objHomeModel2);
+
+            }
+        }
+
+
 
         protected override void Dispose(bool disposing)
         {

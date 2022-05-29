@@ -1,5 +1,4 @@
-﻿
-@model WebsiteBanHang.CSDL.NhanVien
+﻿@model WebsiteBanHang.CSDL.NhanVien
 
 @{
     ViewBag.Title = "DangNhapNV";
@@ -47,6 +46,9 @@
                 @using (Html.BeginForm("DangNhapNV", "Home", FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true, "Đăng nhập không thành công. Kiểm tra lại các thông tin.", new { @class = "text-danger" })
+
                     <div class="form-group">
                         @Html.TextBoxFor(m => m.TaiKhoan, "", new { @class = "form-control", @placeholder = "Username" })
 

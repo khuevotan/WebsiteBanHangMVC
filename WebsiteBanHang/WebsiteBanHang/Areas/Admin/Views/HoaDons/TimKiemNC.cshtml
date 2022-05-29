@@ -1,0 +1,144 @@
+﻿@model List<WebsiteBanHang.CSDL.HoaDon>
+@{
+    ViewBag.Title = "TimKiemNC";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "MaHD", rowsPerPage: 5);
+    @Scripts.Render("~/Scripts/jquery-1.6.2.min.js")
+
+}
+<html>
+<head>
+    <style type="text/css">
+        .grid-footer {
+            color: #000;
+            font: 17px Calibri;
+            text-align: center;
+            font-weight: bold;
+        }
+
+            .grid-footer a {
+                background-color: #ffffff;
+                color: blue;
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                padding: 1px 10px 2px 10px;
+            }
+
+        .alternatingRowStyle {
+            background-color: aliceblue;
+        }
+
+        table .table1 {
+            text-align: left;
+            margin-left: 0px;
+            margin-right: 0px;
+            width: 800px;
+        }
+
+        .tr, .td {
+            text-align: left;
+        }
+    </style>
+</head>
+<div class="content-wrapper">
+    <br />
+    <body>
+        <div>
+            @using (Html.BeginForm("TimKiemNC", "HoaDons", FormMethod.Get))
+            {
+                @Html.AntiForgeryToken()
+
+                <table class="table1" align="center" >
+                    <tr>
+                        <td>
+                            <div> Mã hóa đơn</div>
+                        </td>
+                        <td>
+                            <input type="text" name="MaHD" value="@ViewBag.MaHD" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ngày đặt</td>
+                        <td>
+                            <input type="text" name="NgayDat" value="@ViewBag.NgayDat" />
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td>Ngày giao</td>
+                        <td>
+                            <input type="text" name="NgayGiao" value="@ViewBag.NgayGiao" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>DiaChi</td>
+                        <td>
+                            <input type="text" name="DiaChi" value="@ViewBag.DiaChi" />
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Trạng Thái</td>
+                        <td>
+                            @Html.DropDownList("MaTT", null, "Tất cả", htmlAttributes: new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    <tr>
+                    <tr>
+                        <td>Nhân Viên</td>
+                        <td>
+                            @Html.DropDownList("MaNV", null, "Tất cả", htmlAttributes: new { @class = "form-control" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" name="submit" value="Tìm kiếm" style="margin-left: 5px;width:100px;
+                background-color: blue;color:white" />
+                            <input type="button" name="Nhapmoi" value="Nhập mới" style="margin-left: 5px;width:100px;
+                background-color: blue;color:white" onclick="location.href='@Url.Action("TimKiemNC", "HoaDons/TimKiemNC")'" />
+
+                        </td>
+                    </tr>
+                </table>
+            }
+        </div>
+        <div id="gridContent">
+            @ViewBag.TB
+            @grid.GetHtml(
+                tableStyle: "table table-bordered table-hover",
+                footerStyle: "grid-footer",
+                fillEmptyRows: true,
+                mode: WebGridPagerModes.Numeric,
+                alternatingRowStyle: "alternatingRowStyle",
+                  columns: new[]  // colums in grid
+                 {
+             grid.Column("STT",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
+            grid.Column("MaHD","Mã hóa đơn"), //the model fields to display
+            grid.Column("NgayDat","Ngày đặt",format:@<text> @item.NgayDat.ToString("dd/MM/yyyy")</text>),
+grid.Column("NgayGiao","Ngày giao",format:@<text> @item.NgayGiao.ToString("dd/MM/yyyy")</text>),
+grid.Column("DiaChi","Địa chỉ"),
+grid.Column("TrangThai.TenTT","Trạng thái"),
+grid.Column("NhanVien.MaNV","Nhân Viên"),
+
+grid.Column("Chức năng", format: @<text>
+    <a href="@Url.Action("Edit",
+                        new { id = item.MaHD})" class="edit-btn"><abbr title="Cập nhật dữ liệu"><img src="~/content/images/icons/edit.png" width="20" height="20" /></abbr></a>
+    <a href="@Url.Action("Details",
+                        new { id = item.MaHD})" class="edit-btn"><abbr title="Xem chi tiết"><img src="~/content/images/icons/details.png" width="20" height="20" /></abbr></a>
+    <a href="@Url.Action("Delete",
+                        new { id = item.MaHD})" class="edit-btn">
+        <abbr title="Xóa dữ liệu">
+            <img src="~/content/images/icons/delete.png" width="20" height="20" />
+        </abbr>
+    </a>
+</text>),
+
+}
+)
+        </div>
+    </body>
+
+
+    </div>
+</html>

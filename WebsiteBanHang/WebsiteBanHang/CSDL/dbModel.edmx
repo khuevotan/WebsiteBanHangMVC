@@ -320,6 +320,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="HoaDon_TimKiem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaHD" Type="varchar" Mode="In" />
+          <Parameter Name="NgayDat" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgayGiao" Type="nvarchar" Mode="In" />
+          <Parameter Name="DiaChi" Type="nvarchar" Mode="In" />
+          <Parameter Name="MaTT" Type="nvarchar" Mode="In" />
+          <Parameter Name="MaNV" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="HoaDon_TimKiemNC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaHD" Type="varchar" Mode="In" />
+          <Parameter Name="NgayDat" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgayGiao" Type="nvarchar" Mode="In" />
+          <Parameter Name="DiaChi" Type="nvarchar" Mode="In" />
+          <Parameter Name="MaTT" Type="nvarchar" Mode="In" />
+          <Parameter Name="MaNV" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="NhanVien_TimKiem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaNV" Type="varchar" Mode="In" />
+          <Parameter Name="HoTen" Type="nvarchar" Mode="In" />
+          <Parameter Name="GioiTinh" Type="nvarchar" Mode="In" />
+          <Parameter Name="DiaChi" Type="nvarchar" Mode="In" />
+          <Parameter Name="MaNhom" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="SanPhamND_TimKiem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MaSP" Type="varchar" Mode="In" />
           <Parameter Name="TenSP" Type="nvarchar" Mode="In" />
@@ -820,7 +843,30 @@
             <Parameter Name="TenSP" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ThongTinKH_TimKiem">
-            <Parameter Name="MaKH" Mode="In" Type="String" />
+          <Parameter Name="MaKH" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="HoaDon_TimKiem">
+            <Parameter Name="MaHD" Mode="In" Type="String" />
+            <Parameter Name="NgayDat" Mode="In" Type="String" />
+            <Parameter Name="NgayGiao" Mode="In" Type="String" />
+            <Parameter Name="DiaChi" Mode="In" Type="String" />
+            <Parameter Name="MaTT" Mode="In" Type="String" />
+            <Parameter Name="MaNV" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NhanVien_TimKiem">
+            <Parameter Name="MaNV" Mode="In" Type="String" />
+            <Parameter Name="HoTen" Mode="In" Type="String" />
+            <Parameter Name="GioiTinh" Mode="In" Type="String" />
+            <Parameter Name="DiaChi" Mode="In" Type="String" />
+            <Parameter Name="MaNhom" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="HoaDon_TimKiemNC">
+            <Parameter Name="MaHD" Mode="In" Type="String" />
+            <Parameter Name="NgayDat" Mode="In" Type="String" />
+            <Parameter Name="NgayGiao" Mode="In" Type="String" />
+            <Parameter Name="DiaChi" Mode="In" Type="String" />
+            <Parameter Name="MaTT" Mode="In" Type="String" />
+            <Parameter Name="MaNV" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
@@ -989,6 +1035,9 @@
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SanPhamND_TimKiem" FunctionName="QLTPModel.Store.SanPhamND_TimKiem" />
           <FunctionImportMapping FunctionImportName="ThongTinKH_TimKiem" FunctionName="QLTPModel.Store.ThongTinKH_TimKiem" />
+          <FunctionImportMapping FunctionImportName="HoaDon_TimKiem" FunctionName="QLTPModel.Store.HoaDon_TimKiem" />
+          <FunctionImportMapping FunctionImportName="NhanVien_TimKiem" FunctionName="QLTPModel.Store.NhanVien_TimKiem" />
+          <FunctionImportMapping FunctionImportName="HoaDon_TimKiemNC" FunctionName="QLTPModel.Store.HoaDon_TimKiemNC" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

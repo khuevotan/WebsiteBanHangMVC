@@ -5,47 +5,50 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="content-wrapper">
+    <br />
+    <div>
+        <h4>PhanHoi</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.NgayGui)
+            </dt>
 
-<div>
-    <h4>PhanHoi</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayGui)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NgayGui)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.NgayGui)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ChuDe)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ChuDe)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ChuDe)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ChuDe)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.NoiDung)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NoiDung)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NoiDung)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.NoiDung)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.KhachHang.TaiKhoan)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.KhachHang.TaiKhoan)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.KhachHang.TaiKhoan)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.KhachHang.TaiKhoan)
-        </dd>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MaPH }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 
-    </dl>
+
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaPH }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

@@ -62,5 +62,88 @@ namespace WebsiteBanHang.CSDL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ThongTinKH_TimKiem", maKHParameter);
         }
+    
+        public virtual int HoaDon_TimKiem(string maHD, string ngayDat, string ngayGiao, string diaChi, string maTT, string maNV)
+        {
+            var maHDParameter = maHD != null ?
+                new ObjectParameter("MaHD", maHD) :
+                new ObjectParameter("MaHD", typeof(string));
+    
+            var ngayDatParameter = ngayDat != null ?
+                new ObjectParameter("NgayDat", ngayDat) :
+                new ObjectParameter("NgayDat", typeof(string));
+    
+            var ngayGiaoParameter = ngayGiao != null ?
+                new ObjectParameter("NgayGiao", ngayGiao) :
+                new ObjectParameter("NgayGiao", typeof(string));
+    
+            var diaChiParameter = diaChi != null ?
+                new ObjectParameter("DiaChi", diaChi) :
+                new ObjectParameter("DiaChi", typeof(string));
+    
+            var maTTParameter = maTT != null ?
+                new ObjectParameter("MaTT", maTT) :
+                new ObjectParameter("MaTT", typeof(string));
+    
+            var maNVParameter = maNV != null ?
+                new ObjectParameter("MaNV", maNV) :
+                new ObjectParameter("MaNV", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("HoaDon_TimKiem", maHDParameter, ngayDatParameter, ngayGiaoParameter, diaChiParameter, maTTParameter, maNVParameter);
+        }
+    
+        public virtual int NhanVien_TimKiem(string maNV, string hoTen, string gioiTinh, string diaChi, string maNhom)
+        {
+            var maNVParameter = maNV != null ?
+                new ObjectParameter("MaNV", maNV) :
+                new ObjectParameter("MaNV", typeof(string));
+    
+            var hoTenParameter = hoTen != null ?
+                new ObjectParameter("HoTen", hoTen) :
+                new ObjectParameter("HoTen", typeof(string));
+    
+            var gioiTinhParameter = gioiTinh != null ?
+                new ObjectParameter("GioiTinh", gioiTinh) :
+                new ObjectParameter("GioiTinh", typeof(string));
+    
+            var diaChiParameter = diaChi != null ?
+                new ObjectParameter("DiaChi", diaChi) :
+                new ObjectParameter("DiaChi", typeof(string));
+    
+            var maNhomParameter = maNhom != null ?
+                new ObjectParameter("MaNhom", maNhom) :
+                new ObjectParameter("MaNhom", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NhanVien_TimKiem", maNVParameter, hoTenParameter, gioiTinhParameter, diaChiParameter, maNhomParameter);
+        }
+    
+        public virtual int HoaDon_TimKiemNC(string maHD, string ngayDat, string ngayGiao, string diaChi, string maTT, string maNV)
+        {
+            var maHDParameter = maHD != null ?
+                new ObjectParameter("MaHD", maHD) :
+                new ObjectParameter("MaHD", typeof(string));
+    
+            var ngayDatParameter = ngayDat != null ?
+                new ObjectParameter("NgayDat", ngayDat) :
+                new ObjectParameter("NgayDat", typeof(string));
+    
+            var ngayGiaoParameter = ngayGiao != null ?
+                new ObjectParameter("NgayGiao", ngayGiao) :
+                new ObjectParameter("NgayGiao", typeof(string));
+    
+            var diaChiParameter = diaChi != null ?
+                new ObjectParameter("DiaChi", diaChi) :
+                new ObjectParameter("DiaChi", typeof(string));
+    
+            var maTTParameter = maTT != null ?
+                new ObjectParameter("MaTT", maTT) :
+                new ObjectParameter("MaTT", typeof(string));
+    
+            var maNVParameter = maNV != null ?
+                new ObjectParameter("MaNV", maNV) :
+                new ObjectParameter("MaNV", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("HoaDon_TimKiemNC", maHDParameter, ngayDatParameter, ngayGiaoParameter, diaChiParameter, maTTParameter, maNVParameter);
+        }
     }
 }

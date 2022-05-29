@@ -14,10 +14,19 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
         // GET: Admin/ThongKe
         public ActionResult Index()
         {
-            
+
+            if (Session["MaNV"] == null)
+            {
+                return RedirectToAction("LoiPhanQuyen", "Home");
+
+            }
+            else
+            {
+              
                 return View();
-      
-            
+            }
+
+
         }
 
        

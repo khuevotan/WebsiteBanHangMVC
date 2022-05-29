@@ -9,36 +9,37 @@
 
 
 <div class="content-wrapper">
+   
+        <br />
+        <h3>DANH SÁCH SẢN PHẨM</h3>
 
-    <h3>DANH SÁCH SẢN PHẨM</h3>
+        <p>
+            @Html.ActionLink("Thêm sản phẩm mới", "Product")
+        </p>
 
-    <p>
-        @Html.ActionLink("Thêm sản phẩm mới", "Product")
-    </p>
-
-    <div id="gridContent">
-        @ViewBag.TB
-        @grid.GetHtml(
-            tableStyle: "table table-bordered table-hover",
-            footerStyle: "grid-footer",
-            fillEmptyRows: true,
-            mode: WebGridPagerModes.Numeric,
-            alternatingRowStyle: "alternatingRowStyle",
-              columns: new[]  // colums in grid
-             {
-         grid.Column("STT",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
-        grid.Column("MaSP","Mã sản phẩm"), //the model fields to display
-        grid.Column("TenSP","Tên sản phẩm"),
-          grid.Column("HinhDD","Hình đại diện"),
-          grid.Column("SoLuong","Số lượng"),
-        grid.Column("GiaBan","Giá bán"),
-          grid.Column("PhoBien","Phổ biến"),
-             grid.Column("NgayDang","Ngày đăng"),
-    grid.Column("DanhMuc.TenDM","Tên danh mục"),
-     grid.Column("NhaCungCap.TenNCC","Nhà cung cấp"),
+        <div id="gridContent">
+            @ViewBag.TB
+            @grid.GetHtml(
+                tableStyle: "table table-bordered table-hover",
+                footerStyle: "grid-footer",
+                fillEmptyRows: true,
+                mode: WebGridPagerModes.Numeric,
+                alternatingRowStyle: "alternatingRowStyle",
+                  columns: new[]  // colums in grid
+                 {
+             grid.Column("STT",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
+            grid.Column("MaSP","Mã sản phẩm"), //the model fields to display
+            grid.Column("TenSP","Tên sản phẩm"),
+              grid.Column("HinhDD","Hình đại diện"),
+              grid.Column("SoLuong","Số lượng"),
+            grid.Column("GiaBan","Giá bán"),
+              grid.Column("PhoBien","Phổ biến"),
+                 grid.Column("NgayDang","Ngày đăng"),
+        grid.Column("DanhMuc.TenDM","Tên danh mục"),
+         grid.Column("NhaCungCap.TenNCC","Nhà cung cấp"),
 
 
-grid.Column("Chức năng", format: @<text>
+    grid.Column("Chức năng", format: @<text>
 
     <a href="@Url.Action("Details",
                         new { id = item.MaSP})" class="edit-btn">
@@ -59,12 +60,12 @@ grid.Column("Chức năng", format: @<text>
             <img src="/images/delete.png" width="20" height="20" />
         </abbr>
     </a>
-</text>),
+    </text>),
 
 }
 )
-    </div>
+        </div>
 
-</div>
+    </div>
 
 

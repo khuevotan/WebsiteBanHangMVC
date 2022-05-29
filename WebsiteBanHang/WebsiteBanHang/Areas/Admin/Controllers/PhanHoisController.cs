@@ -17,8 +17,16 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
         // GET: Admin/PhanHois
         public ActionResult Index()
         {
-            var phanHois = db.PhanHois.Include(p => p.KhachHang);
-            return View(phanHois.ToList());
+            if (Session["MaNV"] == null)
+            {
+                return RedirectToAction("LoiPhanQuyen", "Home");
+
+            }
+            else
+            {
+                var phanHois = db.PhanHois.Include(p => p.KhachHang);
+                return View(phanHois.ToList());
+            }
         }
 
         // GET: Admin/PhanHois/Details/5
@@ -128,5 +136,30 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        [HttpGet]
+        public ActionResult TimKiemNC(string MaPH = "", string NgayGui = "", string ChuDe = "", string NoiDung = "", string MaKH = "")
+        {
+            if (Session["MaNV"] == null)
+            {
+                return RedirectToAction("DangNhapNV", "Home");
+            }
+            else
+            {
+                ViewBag.MaPH = MaPH;
+                ViewBag.NgayGui = NgayGui;
+                ViewBag.ChuDe = ChuDe;
+                ViewBag.NoiDung = NoiDung;
+                ViewBag.MaKH = new SelectList(db.KhachHangs, "MaKH", "TenKH");
+                var phanHois = db.PhanHois.SqlQuery("PhanHoi_TimKiemNC'" + MaPH + "','" + NgayGui + "','" + ChuDe + "','" + NoiDung + "','" + MaKH +  "'");
+                if (phanHois.Count() == 0)
+                    ViewBag.TB = "Không có thông tin tìm kiếm.";
+                return View(phanHois.ToList());
+            }
+
+
+        }
+
     }
 }
