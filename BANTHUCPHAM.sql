@@ -144,22 +144,22 @@ CREATE TABLE PhanHoi
 GO
 
 INSERT INTO dbo.Nhom (MaNhom, TenNhom)
-VALUES ('MN1','Quản lý'),
-	   ('MN2','Nhân viên')	
+VALUES ('MN1', N'Quản lý'),
+	   ('MN2', N'Nhân viên')	
 		
 
 GO
 INSERT INTO dbo.NhanVien (MaNV, TaiKhoan, MatKhau, HoNV, TenNV, SoDT, DiaChi,Email, Luong, NgaySinh, GioiTinh, HinhDD, MaNhom)
-VALUES ('NV01', N'khuevotan','123', N'Võ', N'Tấn Khuê','0987664220', 'Cam Ranh, Khánh Hòa','hello@gmail.com',10000000.0 ,CAST(N'2001-09-06' AS Date), 1, N'employee.jpg','MN1'),
-	   ('NV02', N'admin','123', N'Quản', N'Trị Viên','01627240041', 'Tuy Hòa, Phú Yên','hello@gmail.com', 20000000.0 ,CAST(N'2001-09-06' AS Date), 1, N'employee.jpg','MN2'),
-	   ('NV03', N'huynguyenhuu','123', N'Nguyễn', N'Hữu Huy','0987413571', 'Cam Lâm, Khánh Hòa','hello@gmail.com',10000000.0 ,CAST(N'2001-03-04' AS Date), 1, N'employee.jpg','MN1'),
-	   ('NV04', N'phucnguyenvan','123', N'Nguyễn', N'Văn Phúc','0983468912', 'Nha Trang, Khánh Hòa','hello@gmail.com',10000000.0 ,CAST(N'2001-11-24' AS Date), 1, N'employee.jpg','MN1'),
-	   ('NV05', N'phuongthihuynh','123', N'Huỳnh', N'Thị Phương','0983347511', 'Đông Hòa, Phú Yên','hello@gmail.com',10000000.0 ,CAST(N'2001-02-07' AS Date), 2, N'employee.jpg','MN1'),
-	   ('NV06', N'khanhtranvan','123', N'Trần', N'Văn Khánh','0984478901', 'Nha Trang, Khánh Hòa','hello@gmail.com',20000000.0 ,CAST(N'2001-06-24' AS Date), 1, N'employee.jpg','MN2'),
-	   ('NV07', N'namnguyenvan','123', N'Nguyễn', N'Văn Nam','0984416745', 'Nha Trang, Khánh Hòa','hello@gmail.com',10000000.0 ,CAST(N'2001-09-22' AS Date), 1, N'employee.jpg','MN1'),
-	   ('NV08', N'nhinguyenthiai','123', N'Nguyễn', N'Thị Ái Nhi','0983468912', 'Cam Lâm, Khánh Hòa','hello@gmail.com',10000000.0 ,CAST(N'2001-11-03' AS Date), 2, N'employee.jpg','MN1'),
-	   ('NV09', N'huytranvan','123', N'Trần', N'Văn Huy','0983515131', 'Nha Trang, Khánh Hòa','hello@gmail.com',10000000.0 ,CAST(N'2001-10-01' AS Date), 1, N'employee.jpg','MN1'),
-	   ('NV10', N'datnguyenthanh','123', N'Nguyễn', N'Thành Đạt','0984141674', 'Nha Trang, Khánh Hòa','hello@gmail.com',20000000 ,CAST(N'2001-11-20' AS Date), 1, N'employee.jpg','MN2')
+VALUES ('NV01', N'khuevotan','123', N'Võ', N'Tấn Khuê','0987664220', N'Cam Ranh, Khánh Hòa','hello@gmail.com',10000000.0 ,CAST(N'2001-09-06' AS Date), 1, N'employee.jpg','MN1'),
+	   ('NV02', N'admin','123', N'Quản', N'Trị Viên','01627240041', N'Tuy Hòa, Phú Yên','hello@gmail.com', 20000000.0 ,CAST(N'2001-09-06' AS Date), 1, N'employee.jpg','MN2'),
+	   ('NV03', N'huynguyenhuu','123', N'Nguyễn', N'Hữu Huy','0987413571', N'Cam Lâm, Khánh Hòa','hello@gmail.com',10000000.0 ,CAST(N'2001-03-04' AS Date), 1, N'employee.jpg','MN1'),
+	   ('NV04', N'phucnguyenvan','123', N'Nguyễn', N'Văn Phúc','0983468912', N'Nha Trang, Khánh Hòa','hello@gmail.com',10000000.0 ,CAST(N'2001-11-24' AS Date), 1, N'employee.jpg','MN1'),
+	   ('NV05', N'phuongthihuynh','123', N'Huỳnh', N'Thị Phương','0983347511', N'Đông Hòa, Phú Yên','hello@gmail.com',10000000.0 ,CAST(N'2001-02-07' AS Date), 2, N'employee.jpg','MN1'),
+	   ('NV06', N'khanhtranvan','123', N'Trần', N'Văn Khánh','0984478901', N'Nha Trang, Khánh Hòa','hello@gmail.com',20000000.0 ,CAST(N'2001-06-24' AS Date), 1, N'employee.jpg','MN2'),
+	   ('NV07', N'namnguyenvan','123', N'Nguyễn', N'Văn Nam','0984416745', N'Nha Trang, Khánh Hòa','hello@gmail.com',10000000.0 ,CAST(N'2001-09-22' AS Date), 1, N'employee.jpg','MN1'),
+	   ('NV08', N'nhinguyenthiai','123', N'Nguyễn', N'Thị Ái Nhi','0983468912', N'Cam Lâm, Khánh Hòa','hello@gmail.com',10000000.0 ,CAST(N'2001-11-03' AS Date), 2, N'employee.jpg','MN1'),
+	   ('NV09', N'huytranvan','123', N'Trần', N'Văn Huy','0983515131', N'Nha Trang, Khánh Hòa','hello@gmail.com',10000000.0 ,CAST(N'2001-10-01' AS Date), 1, N'employee.jpg','MN1'),
+	   ('NV10', N'datnguyenthanh','123', N'Nguyễn', N'Thành Đạt','0984141674', N'Nha Trang, Khánh Hòa','hello@gmail.com',20000000 ,CAST(N'2001-11-20' AS Date), 1, N'employee.jpg','MN2')
 
 GO
 
@@ -252,29 +252,29 @@ VALUES	('PN001', 'SP02', 10, 15000),
 
 GO
 INSERT INTO dbo.KhachHang (MaKH, TaiKhoan, MatKhau, HoKH, TenKH, NgaySinh, SoDT, DiaChi, Email, GioiTinh, HinhDD)
-VALUES	('KH001', N'huynguyen','123', N'Nguyễn', N'Huy', CAST(N'2001-03-16' AS Date), 0985101312, 'Cam Ranh, Khánh Hòa', N'nguyenhuy@gmail.com', 1, N'employee.jpg'),
-		('KH002', N'nhinguyen','123', N'Nguyễn', N'Nhi', CAST(N'2002-04-26' AS Date), 0981231232, 'Cam Ranh, Khánh Hòa', N'nguyennhi@gmail.com', 2, N'employee.jpg'),
-		('KH003', N'phucnguyen','123', N'Nguyễn', N'Phúc', CAST(N'2001-06-01' AS Date), 0985323422, 'Cam Lâm, Khánh Hòa', N'nguyenphuc@gmail.com', 1, N'employee.jpg'),
-		('KH004', N'minhtran','123', N'Trần', N'Minh', CAST(N'2002-03-17' AS Date), 0985101312, 'Nha Trang, Khánh Hòa', N'tranminh@gmail.com', 1, N'employee.jpg'),
-		('KH005', N'hoapham','123', N'Phạm', N'Hoa', CAST(N'2001-11-21' AS Date), 0983231112, 'Cam Lâm, Khánh Hòa', N'hoapham@gmail.com', 2, N'employee.jpg'),
-		('KH006', N'namvannguyen','123', N'Nguyễn', N'Văn Nam', CAST(N'2001-11-16' AS Date), 0982325222, 'Cam Ranh, Khánh Hòa', N'nguyenhuy@gmail.com', 1, N'employee.jpg'),
-		('KH007', N'hongphamthi','123', N'Phạm', N'Thị Hồng', CAST(N'2001-10-26' AS Date), 0985312312, 'Nha Trang, Khánh Hòa', N'phamthihong@gmail.com', 2, N'employee.jpg'),
-		('KH008', N'phinguyen','123', N'Nguyễn', N'Phi', CAST(N'2001-02-11' AS Date), 0985424212, 'Cam Ranh, Khánh Hòa', N'nguyenphi@gmail.com', 1, N'employee.jpg'),
-		('KH009', N'hoaitran','123', N'Trần', N'Hoài', CAST(N'2001-03-20' AS Date), 0985231312, 'Nha Trang, Khánh Hòa', N'nguyenhoai@gmail.com', 1, N'employee.jpg'),
-		('KH010', N'thupham','123', N'Phạm', N'Thu', CAST(N'2001-11-16' AS Date), 0985441312, 'Cam Lâm, Khánh Hòa', N'phamthu@gmail.com', 2, N'employee.jpg')
+VALUES	('KH001', N'huynguyen','123', N'Nguyễn', N'Huy', CAST(N'2001-03-16' AS Date), 0985101312, N'Cam Ranh, Khánh Hòa', N'nguyenhuy@gmail.com', 1, N'employee.jpg'),
+		('KH002', N'nhinguyen','123', N'Nguyễn', N'Nhi', CAST(N'2002-04-26' AS Date), 0981231232, N'Cam Ranh, Khánh Hòa', N'nguyennhi@gmail.com', 2, N'employee.jpg'),
+		('KH003', N'phucnguyen','123', N'Nguyễn', N'Phúc', CAST(N'2001-06-01' AS Date), 0985323422, N'Cam Lâm, Khánh Hòa', N'nguyenphuc@gmail.com', 1, N'employee.jpg'),
+		('KH004', N'minhtran','123', N'Trần', N'Minh', CAST(N'2002-03-17' AS Date), 0985101312, N'Nha Trang, Khánh Hòa', N'tranminh@gmail.com', 1, N'employee.jpg'),
+		('KH005', N'hoapham','123', N'Phạm', N'Hoa', CAST(N'2001-11-21' AS Date), 0983231112, N'Cam Lâm, Khánh Hòa', N'hoapham@gmail.com', 2, N'employee.jpg'),
+		('KH006', N'namvannguyen','123', N'Nguyễn', N'Văn Nam', CAST(N'2001-11-16' AS Date), 0982325222, N'Cam Ranh, Khánh Hòa', N'nguyenhuy@gmail.com', 1, N'employee.jpg'),
+		('KH007', N'hongphamthi','123', N'Phạm', N'Thị Hồng', CAST(N'2001-10-26' AS Date), 0985312312, N'Nha Trang, Khánh Hòa', N'phamthihong@gmail.com', 2, N'employee.jpg'),
+		('KH008', N'phinguyen','123', N'Nguyễn', N'Phi', CAST(N'2001-02-11' AS Date), 0985424212, N'Cam Ranh, Khánh Hòa', N'nguyenphi@gmail.com', 1, N'employee.jpg'),
+		('KH009', N'hoaitran','123', N'Trần', N'Hoài', CAST(N'2001-03-20' AS Date), 0985231312, N'Nha Trang, Khánh Hòa', N'nguyenhoai@gmail.com', 1, N'employee.jpg'),
+		('KH010', N'thupham','123', N'Phạm', N'Thu', CAST(N'2001-11-16' AS Date), 0985441312, N'Cam Lâm, Khánh Hòa', N'phamthu@gmail.com', 2, N'employee.jpg')
 GO
 
 INSERT INTO dbo.HoaDon (MaHD, NgayDat, NgayGiao, SoDT, DiaChi, GhiChu, MaTT, MaNV, MaKH)
-VALUES	('HD001', CAST(N'2020-09-03' AS Date), CAST(N'2020-09-04' AS Date), 0984614815, 'Vĩnh Điềm Trung', 'aaa', 'TT1', 'NV01','KH001'),
-		('HD002', CAST(N'2020-10-02' AS Date), CAST(N'2020-10-03' AS Date), 0985161712, 'Mã Vòng', 'aaa', 'TT2', 'NV03','KH002'),
-		('HD003', CAST(N'2020-04-10' AS Date), CAST(N'2020-04-11' AS Date), 0984614235, 'Vĩnh Điềm Trung', 'aaa', 'TT3', 'NV01','KH003'),
-		('HD004', CAST(N'2020-09-11' AS Date), CAST(N'2020-09-12' AS Date), 0984641215, 'Vĩnh Hải', 'aaa', 'TT4', 'NV02', 'KH004'),
-		('HD005', CAST(N'2020-04-06' AS Date), CAST(N'2020-04-07' AS Date), 0984611256, 'Vĩnh Phước', 'aaa', 'TT5', 'NV08', 'KH005'),
-		('HD006', CAST(N'2020-11-20' AS Date), CAST(N'2020-11-21' AS Date), 0982324812, 'Xóm Cồn', 'aaa', 'TT2', 'NV05', 'KH006'),
-		('HD007', CAST(N'2020-10-11' AS Date), CAST(N'2020-10-12' AS Date), 0984123815, 'Vĩnh Hải', 'aaa', 'TT2', 'NV10', 'KH007'),
-		('HD008', CAST(N'2020-02-01' AS Date), CAST(N'2020-02-02' AS Date), 0985125115, 'Vĩnh Phước', 'aaa', 'TT2', 'NV04', 'KH008'),
-		('HD009', CAST(N'2020-01-03' AS Date), CAST(N'2020-01-04' AS Date), 0984612314, 'Mường Thanh', 'aaa', 'TT2', 'NV09', 'KH009'),
-		('HD010', CAST(N'2020-11-09' AS Date), CAST(N'2020-11-10' AS Date), 098111155, 'Vĩnh Điềm Trung', 'aaa', 'TT2', 'NV03', 'KH001')
+VALUES	('HD001', CAST(N'2020-09-03' AS Date), CAST(N'2020-09-04' AS Date), 0984614815, N'Vĩnh Điềm Trung', N'aaa', 'TT1', 'NV01','KH001'),
+		('HD002', CAST(N'2020-10-02' AS Date), CAST(N'2020-10-03' AS Date), 0985161712, N'Mã Vòng', N'aaa', 'TT2', 'NV03','KH002'),
+		('HD003', CAST(N'2020-04-10' AS Date), CAST(N'2020-04-11' AS Date), 0984614235, N'Vĩnh Điềm Trung', N'aaa', 'TT3', 'NV01','KH003'),
+		('HD004', CAST(N'2020-09-11' AS Date), CAST(N'2020-09-12' AS Date), 0984641215, N'Vĩnh Hải', N'aaa', 'TT4', 'NV02', 'KH004'),
+		('HD005', CAST(N'2020-04-06' AS Date), CAST(N'2020-04-07' AS Date), 0984611256, N'Vĩnh Phước', N'aaa', 'TT5', 'NV08', 'KH005'),
+		('HD006', CAST(N'2020-11-20' AS Date), CAST(N'2020-11-21' AS Date), 0982324812, N'Xóm Cồn', N'aaa', 'TT2', 'NV05', 'KH006'),
+		('HD007', CAST(N'2020-10-11' AS Date), CAST(N'2020-10-12' AS Date), 0984123815, N'Vĩnh Hải', N'aaa', 'TT2', 'NV10', 'KH007'),
+		('HD008', CAST(N'2020-02-01' AS Date), CAST(N'2020-02-02' AS Date), 0985125115, N'Vĩnh Phước', N'aaa', 'TT2', 'NV04', 'KH008'),
+		('HD009', CAST(N'2020-01-03' AS Date), CAST(N'2020-01-04' AS Date), 0984612314, N'Mường Thanh', N'aaa', 'TT2', 'NV09', 'KH009'),
+		('HD010', CAST(N'2020-11-09' AS Date), CAST(N'2020-11-10' AS Date), 098111155, N'Vĩnh Điềm Trung', N'aaa', 'TT2', 'NV03', 'KH001')
 GO
 
 GO
@@ -392,3 +392,258 @@ IF @MaKH IS NOT NULL
 END
 GO
 
+GO
+CREATE PROCEDURE NhanVien_TimKiemNC
+    @MaNV varchar(15)=NULL,
+	@TaiKhoan nvarchar(30)=NULL,
+	@MatKhau nvarchar(20)=NULL,
+	@HoNV nvarchar(30)=NULL,
+	@TenNV nvarchar(30)=NULL,
+	@SoDT nvarchar(15)= NULL,
+	@DiaChi nvarchar(50)=NULL,
+	@Email nvarchar(30)=NULL,
+	@Luong nvarchar(30)=NULL,
+	@NgaySinh nvarchar(20)=NULL,
+	@GioiTinh nvarchar(5)=NULL,
+	@HinhDD nvarchar(50)=NULL,
+	@MaNhom nvarchar(15)=NULL
+AS
+BEGIN
+DECLARE @SqlStr NVARCHAR(4000),
+		@ParamList nvarchar(2000)
+SELECT @SqlStr = '
+       SELECT * 
+       FROM NhanVien
+       WHERE  (1=1)
+       '
+IF @MaNV IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (MaNV LIKE ''%'+@MaNV+'%'')
+              '
+IF @TaiKhoan IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (TaiKhoan LIKE ''%'+@TaiKhoan+'%'')
+              '
+IF @MatKhau IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (MatKhau LIKE ''%'+@MatKhau+'%'')
+              '
+IF @HoNV IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+               AND (HoNV LIKE ''%'+@HoNV+'%'')
+              '
+IF @TenNV IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+               AND (TenNV LIKE ''%'+@TenNV+'%'')
+              '
+IF @SoDT IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+             AND (SoDT LIKE ''%'+@SoDT+'%'')
+             '
+IF @DiaChi IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (DiaChi LIKE ''%'+@DiaChi+'%'')
+              '
+IF @Email IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (Email LIKE ''%'+@Email+'%'')
+              '
+IF @Luong IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (Luong LIKE ''%'+@Luong+'%'')
+              '
+IF @NgaySinh IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (NgaySinh LIKE ''%'+@NgaySinh+'%'')
+              '
+IF @GioiTinh IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (GioiTinh LIKE ''%'+@GioiTinh+'%'')
+              '
+IF @HinhDD IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (HinhDD LIKE ''%'+@HinhDD+'%'')
+              '
+IF @MaNhom IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (MaNhom LIKE ''%'+@MaNhom+'%'')
+              '
+	EXEC SP_EXECUTESQL @SqlStr
+END
+GO
+
+GO
+CREATE PROCEDURE SanPham_TimKiemNC
+    @MaSP varchar(15)=NULL,
+	@TenSP nvarchar(30)=NULL,
+	@HinhDD nvarchar(50)=NULL,
+	@SoLuong nvarchar(50)=NULL,
+	@MoTaCT nvarchar(1000)=NULL,
+	@GiaBan nvarchar(30)=NULL,
+	@PhoBien nvarchar(15)=NULL,
+	@NgayDang nvarchar(15)= NULL,
+	@MaNCC nvarchar(15)=NULL,
+	@MaDM nvarchar(15)=NULL
+AS
+BEGIN
+DECLARE @SqlStr NVARCHAR(4000),
+		@ParamList nvarchar(2000)
+SELECT @SqlStr = '
+       SELECT * 
+       FROM NhanVien
+       WHERE  (1=1)
+       '
+IF @MaSP IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (MaSP LIKE ''%'+@MaSP+'%'')
+              '
+IF @TenSP IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+               AND (TenSP LIKE ''%'+@TenSP+'%'')
+              '
+IF @HinhDD IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+               AND (HinhDD LIKE ''%'+@HinhDD+'%'')
+              '
+IF @SoLuong IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+               AND (SoLuong LIKE ''%'+@SoLuong+'%'')
+              '
+IF @MoTaCT IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+               AND (MoTaCT LIKE ''%'+@MoTaCT+'%'')
+              '
+IF @GiaBan IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (GiaBan LIKE ''%'+@GiaBan+'%'')
+              '
+IF @PhoBien IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+               AND (PhoBien LIKE ''%'+@PhoBien+'%'')
+              '
+IF @NgayDang IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+             AND (NgayDang LIKE ''%'+@NgayDang+'%'')
+             '
+IF @MaNCC IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (MaNCC LIKE ''%'+@MaNCC+'%'')
+              '
+IF @MaDM IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (MaDM LIKE ''%'+@MaDM+'%'')
+              '
+	EXEC SP_EXECUTESQL @SqlStr
+END
+GO
+
+
+GO
+CREATE PROCEDURE KhachHang_TimKiemNC
+    @MaKH varchar(15)=NULL,
+	@TaiKhoan nvarchar(30)=NULL,
+	@MatKhau nvarchar(20)=NULL,
+	@HoKH nvarchar(30)=NULL,
+	@TenKH nvarchar(30)=NULL,
+	@NgaySinh nvarchar(20)=NULL,
+	@SoDT nvarchar(15)= NULL,
+	@DiaChi nvarchar(50)=NULL,
+	@Email nvarchar(30)=NULL,
+	@GioiTinh nvarchar(5)=NULL,
+	@HinhDD nvarchar(50)=NULL
+AS
+BEGIN
+DECLARE @SqlStr NVARCHAR(4000),
+		@ParamList nvarchar(2000)
+SELECT @SqlStr = '
+       SELECT * 
+       FROM NhanVien
+       WHERE  (1=1)
+       '
+IF @MaKH IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (MaKH LIKE ''%'+@MaKH+'%'')
+              '
+IF @TaiKhoan IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (TaiKhoan LIKE ''%'+@TaiKhoan+'%'')
+              '
+IF @MatKhau IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (MatKhau LIKE ''%'+@MatKhau+'%'')
+              '
+IF @HoKH IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+               AND (HoKH LIKE ''%'+@HoKH+'%'')
+              '
+IF @TenKH IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+               AND (TenKH LIKE ''%'+@TenKH+'%'')
+              '
+IF @NgaySinh IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (NgaySinh LIKE ''%'+@NgaySinh+'%'')
+              '
+IF @SoDT IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+             AND (SoDT LIKE ''%'+@SoDT+'%'')
+             '
+IF @DiaChi IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (DiaChi LIKE ''%'+@DiaChi+'%'')
+              '
+IF @Email IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (Email LIKE ''%'+@Email+'%'')
+              '
+IF @GioiTinh IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (GioiTinh LIKE ''%'+@GioiTinh+'%'')
+              '
+IF @HinhDD IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (HinhDD LIKE ''%'+@HinhDD+'%'')
+              '
+	EXEC SP_EXECUTESQL @SqlStr
+END
+GO
+
+GO
+CREATE PROCEDURE NhaCungCap_TimKiemNC
+    @MaNCC varchar(15)=NULL,
+	@TenNCC nvarchar(50)=NULL,
+	@DiaChi nvarchar(50)=NULL,
+	@SoDT nvarchar(15)= NULL,
+	@HinhDD nvarchar(50)=NULL
+AS
+BEGIN
+DECLARE @SqlStr NVARCHAR(4000),
+		@ParamList nvarchar(2000)
+SELECT @SqlStr = '
+       SELECT * 
+       FROM NhanVien
+       WHERE  (1=1)
+       '
+IF @MaNCC IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (MaNCC LIKE ''%'+@MaNCC+'%'')
+              '
+IF @TenNCC IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+               AND (TenNCC LIKE ''%'+@TenNCC+'%'')
+              '
+IF @DiaChi IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (DiaChi LIKE ''%'+@DiaChi+'%'')
+              '
+IF @SoDT IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+             AND (SoDT LIKE ''%'+@SoDT+'%'')
+             '
+IF @HinhDD IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (HinhDD LIKE ''%'+@HinhDD+'%'')
+              '
+	EXEC SP_EXECUTESQL @SqlStr
+END
+GO

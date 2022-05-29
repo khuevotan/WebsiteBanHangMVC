@@ -2483,7 +2483,6 @@
     <Content Include="Areas\Admin\Views\NhaCungCaps\Details.cshtml" />
     <Content Include="Areas\Admin\Views\NhaCungCaps\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\NhaCungCaps\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\NhanViens\Create.cshtml" />
     <Content Include="Areas\Admin\Views\NhanViens\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\NhanViens\Details.cshtml" />
     <Content Include="Areas\Admin\Views\NhanViens\Edit.cshtml" />
@@ -2523,7 +2522,6 @@
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
-    <Content Include="Areas\Admin\Views\HoaDons\XuatTest.cshtml" />
     <Content Include="Areas\Admin\Views\PhanHois\TimKiemNC.cshtml" />
     <Content Include="Areas\Admin\Views\BaiViets\TimKiemNC.cshtml" />
     <Content Include="Areas\Admin\Views\NhanViens\TimKiemNC.cshtml" />
