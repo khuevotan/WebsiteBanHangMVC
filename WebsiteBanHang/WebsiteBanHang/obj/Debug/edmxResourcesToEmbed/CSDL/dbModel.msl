@@ -46,6 +46,7 @@
     <EntitySetMapping Name="HoaDons">
       <EntityTypeMapping TypeName="QLTPModel.HoaDon">
         <MappingFragment StoreEntitySet="HoaDon">
+          <ScalarProperty Name="ThanhToan" ColumnName="ThanhToan" />
           <ScalarProperty Name="MaHD" ColumnName="MaHD" />
           <ScalarProperty Name="NgayDat" ColumnName="NgayDat" />
           <ScalarProperty Name="NgayGiao" ColumnName="NgayGiao" />
@@ -159,10 +160,11 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="SanPhamND_TimKiem" FunctionName="QLTPModel.Store.SanPhamND_TimKiem" />
-    <FunctionImportMapping FunctionImportName="ThongTinKH_TimKiem" FunctionName="QLTPModel.Store.ThongTinKH_TimKiem" />
-    <FunctionImportMapping FunctionImportName="HoaDon_TimKiem" FunctionName="QLTPModel.Store.HoaDon_TimKiem" />
-    <FunctionImportMapping FunctionImportName="NhanVien_TimKiem" FunctionName="QLTPModel.Store.NhanVien_TimKiem" />
     <FunctionImportMapping FunctionImportName="HoaDon_TimKiemNC" FunctionName="QLTPModel.Store.HoaDon_TimKiemNC" />
+    <FunctionImportMapping FunctionImportName="KhachHang_TimKiemNC" FunctionName="QLTPModel.Store.KhachHang_TimKiemNC" />
+    <FunctionImportMapping FunctionImportName="NhaCungCap_TimKiemNC" FunctionName="QLTPModel.Store.NhaCungCap_TimKiemNC" />
+    <FunctionImportMapping FunctionImportName="NhanVien_TimKiemNC" FunctionName="QLTPModel.Store.NhanVien_TimKiemNC" />
+    <FunctionImportMapping FunctionImportName="PhanHoi_TimKiemNC" FunctionName="QLTPModel.Store.PhanHoi_TimKiemNC" />
+    <FunctionImportMapping FunctionImportName="SanPham_TimKiemNC" FunctionName="QLTPModel.Store.SanPham_TimKiemNC" />
   </EntityContainerMapping>
 </Mapping>

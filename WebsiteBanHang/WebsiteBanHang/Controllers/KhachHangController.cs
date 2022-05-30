@@ -37,35 +37,62 @@ namespace WebsiteBanHang.Controllers
                       
         }
 
-        public ActionResult SetPassword(string MaKH)
+        public ActionResult ChangePassword(string id)
         {
-            if (MaKH == null)
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            KhachHang khachHang = db.KhachHangs.Find(MaKH);
+            KhachHang khachHang = db.KhachHangs.Find(id);
             if (khachHang == null)
             {
-                return HttpNotFound();
+                return View("Error");
             }
             return View(khachHang);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SetPassword([Bind(Include = "MatKhau")] KhachHang khachHang)
+        public ActionResult ChangePassword(FormCollection collection, string id)
         {
-            if (ModelState.IsValid)
+            KhachHang kh = db.KhachHangs.SingleOrDefault(x => x.TaiKhoan.Equals(id));
+
+            if (string.IsNullOrWhiteSpace(collection["MatKhauCu"]))
             {
-                db.Entry(khachHang).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("TrangCaNhan", "KhachHang");
+                ViewData["TrongMKCu"] = "Nhập mật khẩu cũ!";
             }
-            return View(khachHang);
-
+            else if (string.IsNullOrWhiteSpace(collection["MatKhauMoi"]))
+            {
+                ViewData["TrongMKMoi"] = "Nhập mật khẩu mới!";
+            }
+            else if (string.IsNullOrWhiteSpace(collection["MatKhauNhapLai"]))
+            {
+                ViewData["TrongMKNhapLai"] = "Nhập lại mật khẩu mới!";
+            }
+            else if (!collection["MatKhauCu"].Equals(kh.MatKhau))
+            {
+                ViewData["SaiMKCu"] = "Sai mật khẩu cũ!";
+            }
+            else if (collection["MatKhauMoi"].Equals(collection["MatKhauCu"]))
+            {
+                ViewData["TrungMKCu"] = "Trùng mật khẩu cũ!";
+            }
+            else if (!collection["MatKhauNhapLai"].Equals(collection["MatKhauMoi"]))
+            {
+                ViewData["KhacMKMoi"] = "Sai mật khẩu mới!";
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    kh.MatKhau = collection["MatKhauMoi"];
+                    Session["KhachHang"] = kh;
+                    db.SaveChanges();
+                    return RedirectToAction("TrangCaNhan", new { id = kh.TaiKhoan });
+                }
+            }
+            return View(kh);
         }
-
-
 
 
         public ActionResult Edit(string id)
@@ -135,10 +162,8 @@ namespace WebsiteBanHang.Controllers
          
         }
 
-
-        public ActionResult HoaDon()
+        public ActionResult HoaDon(String maKH)
         {
-
             if (Session["MaKH"] == null)
             {
                 return RedirectToAction("DangNhapKH", "Home");
@@ -148,15 +173,15 @@ namespace WebsiteBanHang.Controllers
                 string MaKH = Session["MaKH"].ToString();
 
                 HomeModel objHomeModel2 = new HomeModel();
-                objHomeModel2.ListHoaDon = db.HoaDons.Where(n => n.MaKH == MaKH ).ToList();
-           
+                objHomeModel2.ListHoaDon = db.HoaDons.Where(n => n.MaKH == MaKH && n.MaTT != "TT4").ToList();
                 objHomeModel2.ListKhachHang = db.KhachHangs.Where(n => n.MaKH == MaKH).ToList();
-                objHomeModel2.ListTrangThai = db.TrangThais.ToList();
+
                 return View(objHomeModel2);
             }
 
-          
         }
+
+
 
         public ActionResult HoaDonChiTiet(String MaHD)
         {

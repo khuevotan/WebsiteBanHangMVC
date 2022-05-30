@@ -36,6 +36,10 @@ namespace WebsiteBanHang.Controllers
                 objOrder.GhiChu = GhiChu;
                 objOrder.MaNV = "NV02";
                 objOrder.MaTT = "TT1";
+                foreach (var item in lstCart)
+                {
+                    objOrder.ThanhToan = item.DonGia * item.SoLuong;
+                }
                 objQLTPEntities.HoaDons.Add(objOrder);
                 // luu thong tin du lieu vao bang HoaDon
                 objQLTPEntities.SaveChanges();
@@ -63,7 +67,6 @@ namespace WebsiteBanHang.Controllers
         public ActionResult ThanhCong()
         {
            
-
             return View();
         }
 

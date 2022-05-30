@@ -50,7 +50,7 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaHD,NgayDat,NgayGiao,SoDT,DiaChi,GhiChu,MaTT,MaNV,MaKH")] HoaDon hoaDon)
+        public ActionResult Create([Bind(Include = "MaHD,NgayDat,NgayGiao,SoDT,DiaChi,GhiChu,MaTT,MaNV,MaKH,ThanhToan")] HoaDon hoaDon)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaHD,NgayDat,NgayGiao,SoDT,DiaChi,GhiChu,MaTT,MaNV,MaKH")] HoaDon hoaDon)
+        public ActionResult Edit([Bind(Include = "MaHD,NgayDat,NgayGiao,SoDT,DiaChi,GhiChu,MaTT,MaNV,MaKH,ThanhToan")] HoaDon hoaDon)
         {
             if (ModelState.IsValid)
             {
@@ -130,7 +130,7 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
 
 
         [HttpGet]
-        public ActionResult TimKiemNC(string MaHD = "", string NgayDat = "", string NgayGiao = "", string DiaChi = "", string MaTT = "", string MaNV = "")
+        public ActionResult TimKiemNC(string MaHD = "", string NgayDat = "", string NgayGiao = "", string DiaChi = "", string MaTT = "", string MaNV = "", string MaKH = "")
         {
             if (Session["MaNV"] == null)
             {
@@ -144,7 +144,8 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
                 ViewBag.DiaChi = DiaChi;
                 ViewBag.MaTT = new SelectList(db.TrangThais, "MaTT", "TenTT");
                 ViewBag.MaNV = new SelectList(db.NhanViens, "MaNV", "MaNV");
-                var hoaDons = db.HoaDons.SqlQuery("HoaDon_TimKiemNC'" + MaHD + "','" + NgayDat + "','" + NgayGiao + "','" + DiaChi + "','" + MaTT + "','" + MaNV + "'");
+                ViewBag.MaNV = new SelectList(db.KhachHangs, "MaKH", "MaKH");
+                var hoaDons = db.HoaDons.SqlQuery("HoaDon_TimKiemNC'" + MaHD + "','" + NgayDat + "','" + NgayGiao + "','" + DiaChi + "','" + MaTT + "','" + MaNV + "','" + MaKH + "'");
                 if (hoaDons.Count() == 0)
                     ViewBag.TB = "Không có thông tin tìm kiếm.";
                 return View(hoaDons.ToList());
@@ -158,8 +159,6 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
         public ActionResult XuatTest()
         {
             return View();
-
-
         }
 
 

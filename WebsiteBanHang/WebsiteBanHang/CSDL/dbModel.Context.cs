@@ -145,5 +145,206 @@ namespace WebsiteBanHang.CSDL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("HoaDon_TimKiemNC", maHDParameter, ngayDatParameter, ngayGiaoParameter, diaChiParameter, maTTParameter, maNVParameter);
         }
+    
+        public virtual int KhachHang_TimKiemNC(string maKH, string taiKhoan, string matKhau, string hoKH, string tenKH, string ngaySinh, string soDT, string diaChi, string email, string gioiTinh, string hinhDD)
+        {
+            var maKHParameter = maKH != null ?
+                new ObjectParameter("MaKH", maKH) :
+                new ObjectParameter("MaKH", typeof(string));
+    
+            var taiKhoanParameter = taiKhoan != null ?
+                new ObjectParameter("TaiKhoan", taiKhoan) :
+                new ObjectParameter("TaiKhoan", typeof(string));
+    
+            var matKhauParameter = matKhau != null ?
+                new ObjectParameter("MatKhau", matKhau) :
+                new ObjectParameter("MatKhau", typeof(string));
+    
+            var hoKHParameter = hoKH != null ?
+                new ObjectParameter("HoKH", hoKH) :
+                new ObjectParameter("HoKH", typeof(string));
+    
+            var tenKHParameter = tenKH != null ?
+                new ObjectParameter("TenKH", tenKH) :
+                new ObjectParameter("TenKH", typeof(string));
+    
+            var ngaySinhParameter = ngaySinh != null ?
+                new ObjectParameter("NgaySinh", ngaySinh) :
+                new ObjectParameter("NgaySinh", typeof(string));
+    
+            var soDTParameter = soDT != null ?
+                new ObjectParameter("SoDT", soDT) :
+                new ObjectParameter("SoDT", typeof(string));
+    
+            var diaChiParameter = diaChi != null ?
+                new ObjectParameter("DiaChi", diaChi) :
+                new ObjectParameter("DiaChi", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var gioiTinhParameter = gioiTinh != null ?
+                new ObjectParameter("GioiTinh", gioiTinh) :
+                new ObjectParameter("GioiTinh", typeof(string));
+    
+            var hinhDDParameter = hinhDD != null ?
+                new ObjectParameter("HinhDD", hinhDD) :
+                new ObjectParameter("HinhDD", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("KhachHang_TimKiemNC", maKHParameter, taiKhoanParameter, matKhauParameter, hoKHParameter, tenKHParameter, ngaySinhParameter, soDTParameter, diaChiParameter, emailParameter, gioiTinhParameter, hinhDDParameter);
+        }
+    
+        public virtual int NhaCungCap_TimKiemNC(string maNCC, string tenNCC, string diaChi, string soDT, string hinhDD)
+        {
+            var maNCCParameter = maNCC != null ?
+                new ObjectParameter("MaNCC", maNCC) :
+                new ObjectParameter("MaNCC", typeof(string));
+    
+            var tenNCCParameter = tenNCC != null ?
+                new ObjectParameter("TenNCC", tenNCC) :
+                new ObjectParameter("TenNCC", typeof(string));
+    
+            var diaChiParameter = diaChi != null ?
+                new ObjectParameter("DiaChi", diaChi) :
+                new ObjectParameter("DiaChi", typeof(string));
+    
+            var soDTParameter = soDT != null ?
+                new ObjectParameter("SoDT", soDT) :
+                new ObjectParameter("SoDT", typeof(string));
+    
+            var hinhDDParameter = hinhDD != null ?
+                new ObjectParameter("HinhDD", hinhDD) :
+                new ObjectParameter("HinhDD", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NhaCungCap_TimKiemNC", maNCCParameter, tenNCCParameter, diaChiParameter, soDTParameter, hinhDDParameter);
+        }
+    
+        public virtual int NhanVien_TimKiemNC(string maNV, string taiKhoan, string matKhau, string hoNV, string tenNV, string soDT, string diaChi, string email, string luong, string ngaySinh, string gioiTinh, string hinhDD, string maNhom)
+        {
+            var maNVParameter = maNV != null ?
+                new ObjectParameter("MaNV", maNV) :
+                new ObjectParameter("MaNV", typeof(string));
+    
+            var taiKhoanParameter = taiKhoan != null ?
+                new ObjectParameter("TaiKhoan", taiKhoan) :
+                new ObjectParameter("TaiKhoan", typeof(string));
+    
+            var matKhauParameter = matKhau != null ?
+                new ObjectParameter("MatKhau", matKhau) :
+                new ObjectParameter("MatKhau", typeof(string));
+    
+            var hoNVParameter = hoNV != null ?
+                new ObjectParameter("HoNV", hoNV) :
+                new ObjectParameter("HoNV", typeof(string));
+    
+            var tenNVParameter = tenNV != null ?
+                new ObjectParameter("TenNV", tenNV) :
+                new ObjectParameter("TenNV", typeof(string));
+    
+            var soDTParameter = soDT != null ?
+                new ObjectParameter("SoDT", soDT) :
+                new ObjectParameter("SoDT", typeof(string));
+    
+            var diaChiParameter = diaChi != null ?
+                new ObjectParameter("DiaChi", diaChi) :
+                new ObjectParameter("DiaChi", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("Email", email) :
+                new ObjectParameter("Email", typeof(string));
+    
+            var luongParameter = luong != null ?
+                new ObjectParameter("Luong", luong) :
+                new ObjectParameter("Luong", typeof(string));
+    
+            var ngaySinhParameter = ngaySinh != null ?
+                new ObjectParameter("NgaySinh", ngaySinh) :
+                new ObjectParameter("NgaySinh", typeof(string));
+    
+            var gioiTinhParameter = gioiTinh != null ?
+                new ObjectParameter("GioiTinh", gioiTinh) :
+                new ObjectParameter("GioiTinh", typeof(string));
+    
+            var hinhDDParameter = hinhDD != null ?
+                new ObjectParameter("HinhDD", hinhDD) :
+                new ObjectParameter("HinhDD", typeof(string));
+    
+            var maNhomParameter = maNhom != null ?
+                new ObjectParameter("MaNhom", maNhom) :
+                new ObjectParameter("MaNhom", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NhanVien_TimKiemNC", maNVParameter, taiKhoanParameter, matKhauParameter, hoNVParameter, tenNVParameter, soDTParameter, diaChiParameter, emailParameter, luongParameter, ngaySinhParameter, gioiTinhParameter, hinhDDParameter, maNhomParameter);
+        }
+    
+        public virtual int PhanHoi_TimKiemNC(string maPH, string ngayGui, string chuDe, string noiDung, string maKH)
+        {
+            var maPHParameter = maPH != null ?
+                new ObjectParameter("MaPH", maPH) :
+                new ObjectParameter("MaPH", typeof(string));
+    
+            var ngayGuiParameter = ngayGui != null ?
+                new ObjectParameter("NgayGui", ngayGui) :
+                new ObjectParameter("NgayGui", typeof(string));
+    
+            var chuDeParameter = chuDe != null ?
+                new ObjectParameter("ChuDe", chuDe) :
+                new ObjectParameter("ChuDe", typeof(string));
+    
+            var noiDungParameter = noiDung != null ?
+                new ObjectParameter("NoiDung", noiDung) :
+                new ObjectParameter("NoiDung", typeof(string));
+    
+            var maKHParameter = maKH != null ?
+                new ObjectParameter("MaKH", maKH) :
+                new ObjectParameter("MaKH", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PhanHoi_TimKiemNC", maPHParameter, ngayGuiParameter, chuDeParameter, noiDungParameter, maKHParameter);
+        }
+    
+        public virtual int SanPham_TimKiemNC(string maSP, string tenSP, string hinhDD, string soLuong, string moTaCT, string giaBan, string phoBien, string ngayDang, string maNCC, string maDM)
+        {
+            var maSPParameter = maSP != null ?
+                new ObjectParameter("MaSP", maSP) :
+                new ObjectParameter("MaSP", typeof(string));
+    
+            var tenSPParameter = tenSP != null ?
+                new ObjectParameter("TenSP", tenSP) :
+                new ObjectParameter("TenSP", typeof(string));
+    
+            var hinhDDParameter = hinhDD != null ?
+                new ObjectParameter("HinhDD", hinhDD) :
+                new ObjectParameter("HinhDD", typeof(string));
+    
+            var soLuongParameter = soLuong != null ?
+                new ObjectParameter("SoLuong", soLuong) :
+                new ObjectParameter("SoLuong", typeof(string));
+    
+            var moTaCTParameter = moTaCT != null ?
+                new ObjectParameter("MoTaCT", moTaCT) :
+                new ObjectParameter("MoTaCT", typeof(string));
+    
+            var giaBanParameter = giaBan != null ?
+                new ObjectParameter("GiaBan", giaBan) :
+                new ObjectParameter("GiaBan", typeof(string));
+    
+            var phoBienParameter = phoBien != null ?
+                new ObjectParameter("PhoBien", phoBien) :
+                new ObjectParameter("PhoBien", typeof(string));
+    
+            var ngayDangParameter = ngayDang != null ?
+                new ObjectParameter("NgayDang", ngayDang) :
+                new ObjectParameter("NgayDang", typeof(string));
+    
+            var maNCCParameter = maNCC != null ?
+                new ObjectParameter("MaNCC", maNCC) :
+                new ObjectParameter("MaNCC", typeof(string));
+    
+            var maDMParameter = maDM != null ?
+                new ObjectParameter("MaDM", maDM) :
+                new ObjectParameter("MaDM", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SanPham_TimKiemNC", maSPParameter, tenSPParameter, hinhDDParameter, soLuongParameter, moTaCTParameter, giaBanParameter, phoBienParameter, ngayDangParameter, maNCCParameter, maDMParameter);
+        }
     }
 }

@@ -141,11 +141,11 @@
     <Compile Include="Areas\Admin\Controllers\HoaDonsController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\KhachHangsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MainController.cs" />
     <Compile Include="Areas\Admin\Controllers\NhaCungCapsController.cs" />
     <Compile Include="Areas\Admin\Controllers\NhanViensController.cs" />
     <Compile Include="Areas\Admin\Controllers\PhanHoisController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamsController.cs" />
-    <Compile Include="Areas\Admin\Controllers\ThongKeController.cs" />
     <Compile Include="Areas\Admin\Data\ThongKeDG.cs" />
     <Compile Include="Controllers\BaiVietController.cs" />
     <Compile Include="Controllers\DanhMucController.cs" />
@@ -2515,7 +2515,6 @@
     <Content Include="Areas\Admin\Views\HoaDons\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SanPhams\DanhMuc.cshtml" />
     <Content Include="libman.json" />
-    <Content Include="Areas\Admin\Views\ThongKe\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\LoiPhanQuyen.cshtml" />
     <Content Include="Areas\Admin\Views\NhanViens\TrangCaNhan.cshtml" />
     <Content Include="Areas\Admin\Views\HoaDons\TimKiemNC.cshtml" />
@@ -2525,6 +2524,8 @@
     <Content Include="Areas\Admin\Views\PhanHois\TimKiemNC.cshtml" />
     <Content Include="Areas\Admin\Views\BaiViets\TimKiemNC.cshtml" />
     <Content Include="Areas\Admin\Views\NhanViens\TimKiemNC.cshtml" />
+    <Content Include="Areas\Admin\Views\Main\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Main\ChangePassword.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -2652,10 +2653,11 @@
     <Content Include="Views\KhachHang\LichSuMuaHang.cshtml" />
     <Content Include="Views\KhachHang\HoaDonChiTiet.cshtml" />
     <Content Include="Views\Shared\_LayoutDefault.cshtml" />
-    <Content Include="Views\KhachHang\SetPassword.cshtml" />
+    <Content Include="Views\KhachHang\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Content\images\avatars\kh\" />
   </ItemGroup>
   <ItemGroup>

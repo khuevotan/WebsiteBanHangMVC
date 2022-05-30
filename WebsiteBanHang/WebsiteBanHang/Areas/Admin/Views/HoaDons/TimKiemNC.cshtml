@@ -47,60 +47,66 @@
             {
                 @Html.AntiForgeryToken()
 
-                <table class="table1" align="center" >
-                    <tr>
-                        <td>
-                            <div> Mã hóa đơn</div>
-                        </td>
-                        <td>
-                            <input type="text" name="MaHD" value="@ViewBag.MaHD" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Ngày đặt</td>
-                        <td>
-                            <input type="text" name="NgayDat" value="@ViewBag.NgayDat" />
-                        </td>
+            <table class="table1" align="center">
+                <tr>
+                    <td>
+                        <div> Mã hóa đơn</div>
+                    </td>
+                    <td>
+                        <input type="text" name="MaHD" value="@ViewBag.MaHD" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Ngày đặt</td>
+                    <td>
+                        <input type="text" name="NgayDat" value="@ViewBag.NgayDat" />
+                    </td>
 
-                    </tr>
+                </tr>
 
-                    <tr>
-                        <td>Ngày giao</td>
-                        <td>
-                            <input type="text" name="NgayGiao" value="@ViewBag.NgayGiao" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>DiaChi</td>
-                        <td>
-                            <input type="text" name="DiaChi" value="@ViewBag.DiaChi" />
-                        </td>
-                    </tr>
+                <tr>
+                    <td>Ngày giao</td>
+                    <td>
+                        <input type="text" name="NgayGiao" value="@ViewBag.NgayGiao" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>DiaChi</td>
+                    <td>
+                        <input type="text" name="DiaChi" value="@ViewBag.DiaChi" />
+                    </td>
+                </tr>
 
-                    <tr>
-                        <td>Trạng Thái</td>
-                        <td>
-                            @Html.DropDownList("MaTT", null, "Tất cả", htmlAttributes: new { @class = "form-control" })
-                        </td>
-                    </tr>
-                    <tr>
-                    <tr>
-                        <td>Nhân Viên</td>
-                        <td>
-                            @Html.DropDownList("MaNV", null, "Tất cả", htmlAttributes: new { @class = "form-control" })
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <input type="submit" name="submit" value="Tìm kiếm" style="margin-left: 5px;width:100px;
+                <tr>
+                    <td>Trạng Thái</td>
+                    <td>
+                        @Html.DropDownList("MaTT", null, "Tất cả", htmlAttributes: new { @class = "form-control" })
+                    </td>
+                </tr>
+                <tr>
+                <tr>
+                    <td>Nhân Viên</td>
+                    <td>
+                        @Html.DropDownList("MaNV", null, "Tất cả", htmlAttributes: new { @class = "form-control" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Khách Hàng</td>
+                    <td>
+                        @Html.DropDownList("MaKH", null, "Tất cả", htmlAttributes: new { @class = "form-control" })
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="submit" value="Tìm kiếm" style="margin-left: 5px;width:100px;
                 background-color: blue;color:white" />
-                            <input type="button" name="Nhapmoi" value="Nhập mới" style="margin-left: 5px;width:100px;
+                        <input type="button" name="Nhapmoi" value="Nhập mới" style="margin-left: 5px;width:100px;
                 background-color: blue;color:white" onclick="location.href='@Url.Action("TimKiemNC", "HoaDons/TimKiemNC")'" />
 
-                        </td>
-                    </tr>
-                </table>
+                    </td>
+                </tr>
+            </table>
             }
         </div>
         <div id="gridContent">
@@ -120,6 +126,7 @@ grid.Column("NgayGiao","Ngày giao",format:@<text> @item.NgayGiao.ToString("dd/M
 grid.Column("DiaChi","Địa chỉ"),
 grid.Column("TrangThai.TenTT","Trạng thái"),
 grid.Column("NhanVien.MaNV","Nhân Viên"),
+grid.Column("KhachHang.MaKH","Khách Hàng"),
 
 grid.Column("Chức năng", format: @<text>
     <a href="@Url.Action("Edit",

@@ -1,20 +1,9 @@
 ﻿@model WebsiteBanHang.Models.HomeModel
 @{
     ViewBag.Title = "TrangCaNhan";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutDefault.cshtml";
 }
 
-
-<section class="py-3 bg-success">
-    <div class="container">
-        <ol class="breadcrumb">
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-            <li></li>
-        </ol>
-    </div>
-</section>
 
 <link href="~/Content/css/KhachHang/history.css" rel="stylesheet" />
 
@@ -22,18 +11,18 @@
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content bg-white padding-y">
     <div class="container">
-      
-            <div class="container bootdey">
-                <div class="panel panel-default panel-order">
-                    <div class="panel-heading">
-                        <h3>Hóa đơn của bạn</h3>
-                        <br/>
-                    </div>
 
-                    <div class="panel-body">
+        <div class="container bootdey">
+            <div class="panel panel-default panel-order">
+                <div class="panel-heading">
+                    <h3>Hóa đơn của bạn</h3>
+                    <br />
+                </div>
 
-                        @foreach (var item in Model.ListHoaDon)
-                        {
+                <div class="panel-body">
+
+                    @foreach (var item in Model.ListHoaDon)
+                    {
                         <div class="row">
                             @foreach (var khachhang in Model.ListKhachHang)
                             {
@@ -43,38 +32,58 @@
                                         <div class="col-xl-6">
                                             <a href=""><label class="label label-success">Mã hóa đơn: </label></a>
                                             <span><strong>@item.MaHD</strong></span> <span class="label label-info">
-                                           
-                                                @if (@item.MaTT == "TT1")
-                                                {
-                                                                                         <div>
-                                                                                             Trạng thái: Chưa duyệt
-                                                                                         </div>
-                                                }
+
+    @if (@item.MaTT == "TT1")
+    {
+        <div>
+            <p>
+
+                Trạng thái: Chưa duyệt
+            </p>
+
+        </div>
+    }
 
 
-                                                @if (@item.MaTT == "TT2")
-                                                {
-                                                                                     <div>
-                                                                                         Trạng thái: Đã duyệt
-                                                                                     </div>
-                                                }
+    @if (@item.MaTT == "TT2")
+    {
+        <div>
+            <p>
+
+                Trạng thái: Đã duyệt
+            </p>
+
+        </div>
+    }
+
+    @if (@item.MaTT == "TT3")
+    {
+        <div>
+            <p>
+
+                Trạng thái: Đang vận chuyển
+            </p>
+
+        </div>
+    }
 
 
-                                                @if (@item.MaTT == "TT3")
-                                                {
-                                                                                     <div>
-                                                                                         Trạng thái: Đang vận chuyển
-                                                                                     </div>
-                                                }
+    @if (@item.MaTT == "TT5")
+    {
+        <div>
+            <p>
 
-                                                @if (@item.MaTT == "TT5")
-                                                {
-                                                                                     <div>
-                                                                                         Trạng thái: Hủy
-                                                                                     </div>
-                                                }
+                Trạng thái: Hủy
+            </p>
 
-                                            </span><br />
+        </div>
+    }
+
+
+
+
+
+</span><br />
                                             Ngày đặt: @item.NgayDat<br />
                                             <a data-placement="top" class="btn btn-success btn-xs glyphicon glyphicon-ok" href="#" title="View"></a>
                                             <a data-placement="top" class="btn btn-danger btn-xs glyphicon glyphicon-trash" href="#" title="Danger"></a>
@@ -82,10 +91,10 @@
                                         </div>
 
                                         <div class="col-xl-5">
-                                         
+
                                         </div>
 
-                                        <div class="col-xl-1" >
+                                        <div class="col-xl-1">
                                             <a href="@Url.Action("HoaDonChiTiet", "KhachHang", new { MaHD = item.MaHD})"
                                                class="btn btn-success btn-sm">Xem Chi Tiết </a>
                                         </div>
@@ -97,24 +106,14 @@
                             <br /><br />
                         </div>
 
-                                }
+                    }
 
-                            </div>
-                   
                 </div>
+
             </div>
-
-            <p style="margin-left:50px;">
-
-            </p>
-
-       
+        </div>
 
 
-
-
-        <br><br>
-        <a href="javascript: history.back()" class="btn btn-light"> &laquo Quay về</a>
     </div> <!-- container .//  -->
 </section>
 <!-- ========================= SECTION CONTENT END// ========================= -->

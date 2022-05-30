@@ -63,6 +63,7 @@
     <NavigationProperty Name="KhachHang" Relationship="Self.FK__HoaDon__MaKH__300424B4" FromRole="HoaDon" ToRole="KhachHang" />
     <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDon__MaNV__2F10007B" FromRole="HoaDon" ToRole="NhanVien" />
     <NavigationProperty Name="TrangThai" Relationship="Self.FK__HoaDon__MaTT__2E1BDC42" FromRole="HoaDon" ToRole="TrangThai" />
+    <Property Name="ThanhToan" Type="Double" Nullable="false" />
   </EntityType>
   <EntityType Name="KhachHang">
     <Key>
@@ -442,6 +443,60 @@
       <Parameter Name="DiaChi" Mode="In" Type="String" />
       <Parameter Name="MaTT" Mode="In" Type="String" />
       <Parameter Name="MaNV" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="KhachHang_TimKiemNC">
+      <Parameter Name="MaKH" Mode="In" Type="String" />
+      <Parameter Name="TaiKhoan" Mode="In" Type="String" />
+      <Parameter Name="MatKhau" Mode="In" Type="String" />
+      <Parameter Name="HoKH" Mode="In" Type="String" />
+      <Parameter Name="TenKH" Mode="In" Type="String" />
+      <Parameter Name="NgaySinh" Mode="In" Type="String" />
+      <Parameter Name="SoDT" Mode="In" Type="String" />
+      <Parameter Name="DiaChi" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="GioiTinh" Mode="In" Type="String" />
+      <Parameter Name="HinhDD" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="NhaCungCap_TimKiemNC">
+      <Parameter Name="MaNCC" Mode="In" Type="String" />
+      <Parameter Name="TenNCC" Mode="In" Type="String" />
+      <Parameter Name="DiaChi" Mode="In" Type="String" />
+      <Parameter Name="SoDT" Mode="In" Type="String" />
+      <Parameter Name="HinhDD" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="NhanVien_TimKiemNC">
+      <Parameter Name="MaNV" Mode="In" Type="String" />
+      <Parameter Name="TaiKhoan" Mode="In" Type="String" />
+      <Parameter Name="MatKhau" Mode="In" Type="String" />
+      <Parameter Name="HoNV" Mode="In" Type="String" />
+      <Parameter Name="TenNV" Mode="In" Type="String" />
+      <Parameter Name="SoDT" Mode="In" Type="String" />
+      <Parameter Name="DiaChi" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Luong" Mode="In" Type="String" />
+      <Parameter Name="NgaySinh" Mode="In" Type="String" />
+      <Parameter Name="GioiTinh" Mode="In" Type="String" />
+      <Parameter Name="HinhDD" Mode="In" Type="String" />
+      <Parameter Name="MaNhom" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PhanHoi_TimKiemNC">
+      <Parameter Name="MaPH" Mode="In" Type="String" />
+      <Parameter Name="NgayGui" Mode="In" Type="String" />
+      <Parameter Name="ChuDe" Mode="In" Type="String" />
+      <Parameter Name="NoiDung" Mode="In" Type="String" />
+      <Parameter Name="MaKH" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SanPham_TimKiemNC">
+      <Parameter Name="MaSP" Mode="In" Type="String" />
+      <Parameter Name="TenSP" Mode="In" Type="String" />
+      <Parameter Name="HinhDD" Mode="In" Type="String" />
+      <Parameter Name="SoLuong" Mode="In" Type="String" />
+      <Parameter Name="MoTaCT" Mode="In" Type="String" />
+      <Parameter Name="GiaBan" Mode="In" Type="String" />
+      <Parameter Name="PhoBien" Mode="In" Type="String" />
+      <Parameter Name="NgayDang" Mode="In" Type="String" />
+      <Parameter Name="MaNCC" Mode="In" Type="String" />
+      <Parameter Name="MaDM" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
 </Schema>

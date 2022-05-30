@@ -117,6 +117,7 @@ CREATE TABLE HoaDon
 	SoDT varchar(15) NOT NULL,
 	DiaChi nvarchar(50) NOT NULL,
 	GhiChu nvarchar(50) NOT NULL,
+	ThanhToan float not null,
 	MaTT varchar(15) FOREIGN KEY REFERENCES TrangThai(MaTT),
 	MaNV varchar(15) FOREIGN KEY REFERENCES NhanVien(MaNV),
 	MaKH varchar(15) FOREIGN KEY REFERENCES KhachHang(MaKH)
@@ -150,7 +151,7 @@ VALUES ('MN1', N'Quản lý'),
 
 GO
 INSERT INTO dbo.NhanVien (MaNV, TaiKhoan, MatKhau, HoNV, TenNV, SoDT, DiaChi,Email, Luong, NgaySinh, GioiTinh, HinhDD, MaNhom)
-VALUES ('NV01', N'khuevotan','123', N'Võ', N'Tấn Khuê','0987664220', N'Cam Ranh, Khánh Hòa','hello@gmail.com',10000000.0 ,CAST(N'2001-09-06' AS Date), 1, N'employee.jpg','MN1'),
+VALUES ('NV01', N'khuevotan','123', N'Võ', N'Tấn Khuê','0987664220', N'Cam Ranh, Khánh Hòa','hello@gmail.com',10000000.0 ,CAST(N'2001-09-06' AS Date), 1, N'khuevotan.jpg','MN1'),
 	   ('NV02', N'admin','123', N'Quản', N'Trị Viên','01627240041', N'Tuy Hòa, Phú Yên','hello@gmail.com', 20000000.0 ,CAST(N'2001-09-06' AS Date), 1, N'employee.jpg','MN2'),
 	   ('NV03', N'huynguyenhuu','123', N'Nguyễn', N'Hữu Huy','0987413571', N'Cam Lâm, Khánh Hòa','hello@gmail.com',10000000.0 ,CAST(N'2001-03-04' AS Date), 1, N'employee.jpg','MN1'),
 	   ('NV04', N'phucnguyenvan','123', N'Nguyễn', N'Văn Phúc','0983468912', N'Nha Trang, Khánh Hòa','hello@gmail.com',10000000.0 ,CAST(N'2001-11-24' AS Date), 1, N'employee.jpg','MN1'),
@@ -252,7 +253,7 @@ VALUES	('PN001', 'SP02', 10, 15000),
 
 GO
 INSERT INTO dbo.KhachHang (MaKH, TaiKhoan, MatKhau, HoKH, TenKH, NgaySinh, SoDT, DiaChi, Email, GioiTinh, HinhDD)
-VALUES	('KH001', N'huynguyen','123', N'Nguyễn', N'Huy', CAST(N'2001-03-16' AS Date), 0985101312, N'Cam Ranh, Khánh Hòa', N'nguyenhuy@gmail.com', 1, N'employee.jpg'),
+VALUES	('KH001', N'huynguyen','123', N'Nguyễn', N'Huy', CAST(N'2001-03-16' AS Date), 0985101312, N'Cam Ranh, Khánh Hòa', N'nguyenhuy@gmail.com', 1, N'nguyenhuy.jpg'),
 		('KH002', N'nhinguyen','123', N'Nguyễn', N'Nhi', CAST(N'2002-04-26' AS Date), 0981231232, N'Cam Ranh, Khánh Hòa', N'nguyennhi@gmail.com', 2, N'employee.jpg'),
 		('KH003', N'phucnguyen','123', N'Nguyễn', N'Phúc', CAST(N'2001-06-01' AS Date), 0985323422, N'Cam Lâm, Khánh Hòa', N'nguyenphuc@gmail.com', 1, N'employee.jpg'),
 		('KH004', N'minhtran','123', N'Trần', N'Minh', CAST(N'2002-03-17' AS Date), 0985101312, N'Nha Trang, Khánh Hòa', N'tranminh@gmail.com', 1, N'employee.jpg'),
@@ -264,17 +265,17 @@ VALUES	('KH001', N'huynguyen','123', N'Nguyễn', N'Huy', CAST(N'2001-03-16' AS 
 		('KH010', N'thupham','123', N'Phạm', N'Thu', CAST(N'2001-11-16' AS Date), 0985441312, N'Cam Lâm, Khánh Hòa', N'phamthu@gmail.com', 2, N'employee.jpg')
 GO
 
-INSERT INTO dbo.HoaDon (MaHD, NgayDat, NgayGiao, SoDT, DiaChi, GhiChu, MaTT, MaNV, MaKH)
-VALUES	('HD001', CAST(N'2020-09-03' AS Date), CAST(N'2020-09-04' AS Date), 0984614815, N'Vĩnh Điềm Trung', N'aaa', 'TT1', 'NV01','KH001'),
-		('HD002', CAST(N'2020-10-02' AS Date), CAST(N'2020-10-03' AS Date), 0985161712, N'Mã Vòng', N'aaa', 'TT2', 'NV03','KH002'),
-		('HD003', CAST(N'2020-04-10' AS Date), CAST(N'2020-04-11' AS Date), 0984614235, N'Vĩnh Điềm Trung', N'aaa', 'TT3', 'NV01','KH003'),
-		('HD004', CAST(N'2020-09-11' AS Date), CAST(N'2020-09-12' AS Date), 0984641215, N'Vĩnh Hải', N'aaa', 'TT4', 'NV02', 'KH004'),
-		('HD005', CAST(N'2020-04-06' AS Date), CAST(N'2020-04-07' AS Date), 0984611256, N'Vĩnh Phước', N'aaa', 'TT5', 'NV08', 'KH005'),
-		('HD006', CAST(N'2020-11-20' AS Date), CAST(N'2020-11-21' AS Date), 0982324812, N'Xóm Cồn', N'aaa', 'TT2', 'NV05', 'KH006'),
-		('HD007', CAST(N'2020-10-11' AS Date), CAST(N'2020-10-12' AS Date), 0984123815, N'Vĩnh Hải', N'aaa', 'TT2', 'NV10', 'KH007'),
-		('HD008', CAST(N'2020-02-01' AS Date), CAST(N'2020-02-02' AS Date), 0985125115, N'Vĩnh Phước', N'aaa', 'TT2', 'NV04', 'KH008'),
-		('HD009', CAST(N'2020-01-03' AS Date), CAST(N'2020-01-04' AS Date), 0984612314, N'Mường Thanh', N'aaa', 'TT2', 'NV09', 'KH009'),
-		('HD010', CAST(N'2020-11-09' AS Date), CAST(N'2020-11-10' AS Date), 098111155, N'Vĩnh Điềm Trung', N'aaa', 'TT2', 'NV03', 'KH001')
+INSERT INTO dbo.HoaDon (MaHD, NgayDat, NgayGiao, SoDT, DiaChi, GhiChu, MaTT, MaNV, MaKH, ThanhToan)
+VALUES	('HD001', CAST(N'2020-09-03' AS Date), CAST(N'2020-09-04' AS Date), 0984614815, N'Vĩnh Điềm Trung', N'aaa', 'TT1', 'NV01','KH001', 10.0),
+		('HD002', CAST(N'2020-10-02' AS Date), CAST(N'2020-10-03' AS Date), 0985161712, N'Mã Vòng', N'aaa', 'TT2', 'NV03','KH002', 10.0),
+		('HD003', CAST(N'2020-04-10' AS Date), CAST(N'2020-04-11' AS Date), 0984614235, N'Vĩnh Điềm Trung', N'aaa', 'TT3', 'NV01','KH003', 10.0),
+		('HD004', CAST(N'2020-09-11' AS Date), CAST(N'2020-09-12' AS Date), 0984641215, N'Vĩnh Hải', N'aaa', 'TT4', 'NV02', 'KH004', 10.0),
+		('HD005', CAST(N'2020-04-06' AS Date), CAST(N'2020-04-07' AS Date), 0984611256, N'Vĩnh Phước', N'aaa', 'TT5', 'NV08', 'KH005', 10.0),
+		('HD006', CAST(N'2020-11-20' AS Date), CAST(N'2020-11-21' AS Date), 0982324812, N'Xóm Cồn', N'aaa', 'TT2', 'NV05', 'KH006', 10.0),
+		('HD007', CAST(N'2020-10-11' AS Date), CAST(N'2020-10-12' AS Date), 0984123815, N'Vĩnh Hải', N'aaa', 'TT2', 'NV10', 'KH007', 10.0),
+		('HD008', CAST(N'2020-02-01' AS Date), CAST(N'2020-02-02' AS Date), 0985125115, N'Vĩnh Phước', N'aaa', 'TT2', 'NV04', 'KH008', 10.0),
+		('HD009', CAST(N'2020-01-03' AS Date), CAST(N'2020-01-04' AS Date), 0984612314, N'Mường Thanh', N'aaa', 'TT2', 'NV09', 'KH009', 10.0),
+		('HD010', CAST(N'2020-11-09' AS Date), CAST(N'2020-11-10' AS Date), 098111155, N'Vĩnh Điềm Trung', N'aaa', 'TT2', 'NV03', 'KH001', 10.0)
 GO
 
 GO
@@ -314,6 +315,7 @@ CREATE PROCEDURE HoaDon_TimKiemNC
 	@DiaChi nvarchar(50)=NULL,
 	@MaTT nvarchar(15)=NULL,
 	@MaNV nvarchar(15)=NULL
+	@MaKH nvarchar(15)=NULL
 AS
 BEGIN
 DECLARE @SqlStr NVARCHAR(4000),
@@ -347,6 +349,11 @@ IF @MaNV IS NOT NULL
        SELECT @SqlStr = @SqlStr + '
               AND (MaNV LIKE ''%'+@MaNV+'%'')
               '
+IF @MaKH IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (MaKH LIKE ''%'+@MaKH+'%'')
+              '
+
 	EXEC SP_EXECUTESQL @SqlStr
 END
 GO
@@ -608,6 +615,7 @@ IF @HinhDD IS NOT NULL
 END
 GO
 
+
 GO
 CREATE PROCEDURE NhaCungCap_TimKiemNC
     @MaNCC varchar(15)=NULL,
@@ -647,3 +655,6 @@ IF @HinhDD IS NOT NULL
 	EXEC SP_EXECUTESQL @SqlStr
 END
 GO
+
+
+---------------- Thống kê --------------------------------

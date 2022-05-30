@@ -3,69 +3,91 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-    var grid = new WebGrid(Model, canPage: true, defaultSort: "MaSP", rowsPerPage: 4);
-    int i = 0;
 }
+
 
 
 <div class="content-wrapper">
-   
-        <br />
-        <h3>DANH SÁCH SẢN PHẨM</h3>
-
-        <p>
-            @Html.ActionLink("Thêm sản phẩm mới", "Product")
-        </p>
-
-        <div id="gridContent">
-            @ViewBag.TB
-            @grid.GetHtml(
-                tableStyle: "table table-bordered table-hover",
-                footerStyle: "grid-footer",
-                fillEmptyRows: true,
-                mode: WebGridPagerModes.Numeric,
-                alternatingRowStyle: "alternatingRowStyle",
-                  columns: new[]  // colums in grid
-                 {
-             grid.Column("STT",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
-            grid.Column("MaSP","Mã sản phẩm"), //the model fields to display
-            grid.Column("TenSP","Tên sản phẩm"),
-              grid.Column("HinhDD","Hình đại diện"),
-              grid.Column("SoLuong","Số lượng"),
-            grid.Column("GiaBan","Giá bán"),
-              grid.Column("PhoBien","Phổ biến"),
-                 grid.Column("NgayDang","Ngày đăng"),
-        grid.Column("DanhMuc.TenDM","Tên danh mục"),
-         grid.Column("NhaCungCap.TenNCC","Nhà cung cấp"),
+    <br />
+    <table class="table table-bordered" style="width:100%" id="example">
+        <thead class="thead-dark">
+            <tr>
+                <th>Mã sản phẩm</th>
+                <th>Tên sản phẩm</th>
+                <th>Hình DD</th>
+                <th>Số lượng</th>
+                <th>Mô tả CT</th>
+                <th>Giá bán</th>
+                <th>Phổ biến</th>
+                <th>Ngày đăng</th>
+                <th>Mã nhà cung cấp</th>
+                <th>Mã danh mục</th>
 
 
-    grid.Column("Chức năng", format: @<text>
+            </tr>
+        </thead>
 
-    <a href="@Url.Action("Details",
-                        new { id = item.MaSP})" class="edit-btn">
-        <abbr title="Xem chi tiết">
-            <img src="/images/details.png" width="20" height="20" />
-        </abbr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaSP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenSP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HinhDD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoLuong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MoTaCT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GiaBan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoBien)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayDang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaNCC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaDM)
+                </td>
 
-    </a>
-    <a href="@Url.Action("Delete",
-                        new { id = item.MaSP})" class="edit-btn">
-        <abbr title="Xóa dữ liệu">
-            <img src="/images/delete.png" width="20" height="20" />
-        </abbr>
-    </a>
-    <a href="@Url.Action("Edit",
-                        new { id = item.MaSP})" class="edit-btn">
-        <abbr title="Xóa dữ liệu">
-            <img src="/images/delete.png" width="20" height="20" />
-        </abbr>
-    </a>
-    </text>),
+            </tr>
+        }
 
+    </table>
+
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+$(document).ready(function () {
+                $("#example").dataTable({
+                    "columns": [
+                        { 'data': 'MaSP' },
+                        { 'data': 'TenSP' },
+                        { 'data': 'HinhDD' },
+                        { 'data': 'SoLuong' },
+                        { 'data': 'MoTaCT' },
+                        { 'data': 'GiaBan' },
+                        { 'data': 'PhoBien' },
+                        { 'data': 'NgayDang' },
+                        { 'data': 'MaNCC' },
+                        { 'data': 'MaDM' },
+                    ],
+                    "dom": 'Bfrtip',
+                    "buttons": [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                })
+            })</script>
 }
-)
-        </div>
-
-    </div>
-
-

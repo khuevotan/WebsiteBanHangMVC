@@ -55,6 +55,7 @@
           <Property Name="SoDT" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="DiaChi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="GhiChu" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ThanhToan" Type="float" Nullable="false" />
           <Property Name="MaTT" Type="varchar" MaxLength="15" />
           <Property Name="MaNV" Type="varchar" MaxLength="15" />
           <Property Name="MaKH" Type="varchar" MaxLength="15" />
@@ -320,14 +321,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="HoaDon_TimKiem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="MaHD" Type="varchar" Mode="In" />
-          <Parameter Name="NgayDat" Type="nvarchar" Mode="In" />
-          <Parameter Name="NgayGiao" Type="nvarchar" Mode="In" />
-          <Parameter Name="DiaChi" Type="nvarchar" Mode="In" />
-          <Parameter Name="MaTT" Type="nvarchar" Mode="In" />
-          <Parameter Name="MaNV" Type="nvarchar" Mode="In" />
-        </Function>
         <Function Name="HoaDon_TimKiemNC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MaHD" Type="varchar" Mode="In" />
           <Parameter Name="NgayDat" Type="nvarchar" Mode="In" />
@@ -336,19 +329,59 @@
           <Parameter Name="MaTT" Type="nvarchar" Mode="In" />
           <Parameter Name="MaNV" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="NhanVien_TimKiem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="MaNV" Type="varchar" Mode="In" />
-          <Parameter Name="HoTen" Type="nvarchar" Mode="In" />
-          <Parameter Name="GioiTinh" Type="nvarchar" Mode="In" />
+        <Function Name="KhachHang_TimKiemNC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaKH" Type="varchar" Mode="In" />
+          <Parameter Name="TaiKhoan" Type="nvarchar" Mode="In" />
+          <Parameter Name="MatKhau" Type="nvarchar" Mode="In" />
+          <Parameter Name="HoKH" Type="nvarchar" Mode="In" />
+          <Parameter Name="TenKH" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgaySinh" Type="nvarchar" Mode="In" />
+          <Parameter Name="SoDT" Type="nvarchar" Mode="In" />
           <Parameter Name="DiaChi" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="GioiTinh" Type="nvarchar" Mode="In" />
+          <Parameter Name="HinhDD" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="NhaCungCap_TimKiemNC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaNCC" Type="varchar" Mode="In" />
+          <Parameter Name="TenNCC" Type="nvarchar" Mode="In" />
+          <Parameter Name="DiaChi" Type="nvarchar" Mode="In" />
+          <Parameter Name="SoDT" Type="nvarchar" Mode="In" />
+          <Parameter Name="HinhDD" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="NhanVien_TimKiemNC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaNV" Type="varchar" Mode="In" />
+          <Parameter Name="TaiKhoan" Type="nvarchar" Mode="In" />
+          <Parameter Name="MatKhau" Type="nvarchar" Mode="In" />
+          <Parameter Name="HoNV" Type="nvarchar" Mode="In" />
+          <Parameter Name="TenNV" Type="nvarchar" Mode="In" />
+          <Parameter Name="SoDT" Type="nvarchar" Mode="In" />
+          <Parameter Name="DiaChi" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Luong" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgaySinh" Type="nvarchar" Mode="In" />
+          <Parameter Name="GioiTinh" Type="nvarchar" Mode="In" />
+          <Parameter Name="HinhDD" Type="nvarchar" Mode="In" />
           <Parameter Name="MaNhom" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="SanPhamND_TimKiem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+        <Function Name="PhanHoi_TimKiemNC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaPH" Type="varchar" Mode="In" />
+          <Parameter Name="NgayGui" Type="nvarchar" Mode="In" />
+          <Parameter Name="ChuDe" Type="nvarchar" Mode="In" />
+          <Parameter Name="NoiDung" Type="nvarchar" Mode="In" />
+          <Parameter Name="MaKH" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SanPham_TimKiemNC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MaSP" Type="varchar" Mode="In" />
           <Parameter Name="TenSP" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="ThongTinKH_TimKiem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="MaKH" Type="varchar" Mode="In" />
+          <Parameter Name="HinhDD" Type="nvarchar" Mode="In" />
+          <Parameter Name="SoLuong" Type="nvarchar" Mode="In" />
+          <Parameter Name="MoTaCT" Type="nvarchar" Mode="In" />
+          <Parameter Name="GiaBan" Type="nvarchar" Mode="In" />
+          <Parameter Name="PhoBien" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgayDang" Type="nvarchar" Mode="In" />
+          <Parameter Name="MaNCC" Type="nvarchar" Mode="In" />
+          <Parameter Name="MaDM" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="QLTPModelStoreContainer">
           <EntitySet Name="BaiViet" EntityType="Self.BaiViet" Schema="dbo" store:Type="Tables" />
@@ -488,6 +521,7 @@
           <NavigationProperty Name="KhachHang" Relationship="Self.FK__HoaDon__MaKH__300424B4" FromRole="HoaDon" ToRole="KhachHang" />
           <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDon__MaNV__2F10007B" FromRole="HoaDon" ToRole="NhanVien" />
           <NavigationProperty Name="TrangThai" Relationship="Self.FK__HoaDon__MaTT__2E1BDC42" FromRole="HoaDon" ToRole="TrangThai" />
+          <Property Name="ThanhToan" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="KhachHang">
           <Key>
@@ -868,6 +902,60 @@
             <Parameter Name="MaTT" Mode="In" Type="String" />
             <Parameter Name="MaNV" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="KhachHang_TimKiemNC">
+            <Parameter Name="MaKH" Mode="In" Type="String" />
+            <Parameter Name="TaiKhoan" Mode="In" Type="String" />
+            <Parameter Name="MatKhau" Mode="In" Type="String" />
+            <Parameter Name="HoKH" Mode="In" Type="String" />
+            <Parameter Name="TenKH" Mode="In" Type="String" />
+            <Parameter Name="NgaySinh" Mode="In" Type="String" />
+            <Parameter Name="SoDT" Mode="In" Type="String" />
+            <Parameter Name="DiaChi" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="GioiTinh" Mode="In" Type="String" />
+            <Parameter Name="HinhDD" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NhaCungCap_TimKiemNC">
+            <Parameter Name="MaNCC" Mode="In" Type="String" />
+            <Parameter Name="TenNCC" Mode="In" Type="String" />
+            <Parameter Name="DiaChi" Mode="In" Type="String" />
+            <Parameter Name="SoDT" Mode="In" Type="String" />
+            <Parameter Name="HinhDD" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NhanVien_TimKiemNC">
+            <Parameter Name="MaNV" Mode="In" Type="String" />
+            <Parameter Name="TaiKhoan" Mode="In" Type="String" />
+            <Parameter Name="MatKhau" Mode="In" Type="String" />
+            <Parameter Name="HoNV" Mode="In" Type="String" />
+            <Parameter Name="TenNV" Mode="In" Type="String" />
+            <Parameter Name="SoDT" Mode="In" Type="String" />
+            <Parameter Name="DiaChi" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Luong" Mode="In" Type="String" />
+            <Parameter Name="NgaySinh" Mode="In" Type="String" />
+            <Parameter Name="GioiTinh" Mode="In" Type="String" />
+            <Parameter Name="HinhDD" Mode="In" Type="String" />
+            <Parameter Name="MaNhom" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PhanHoi_TimKiemNC">
+            <Parameter Name="MaPH" Mode="In" Type="String" />
+            <Parameter Name="NgayGui" Mode="In" Type="String" />
+            <Parameter Name="ChuDe" Mode="In" Type="String" />
+            <Parameter Name="NoiDung" Mode="In" Type="String" />
+            <Parameter Name="MaKH" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SanPham_TimKiemNC">
+            <Parameter Name="MaSP" Mode="In" Type="String" />
+            <Parameter Name="TenSP" Mode="In" Type="String" />
+            <Parameter Name="HinhDD" Mode="In" Type="String" />
+            <Parameter Name="SoLuong" Mode="In" Type="String" />
+            <Parameter Name="MoTaCT" Mode="In" Type="String" />
+            <Parameter Name="GiaBan" Mode="In" Type="String" />
+            <Parameter Name="PhoBien" Mode="In" Type="String" />
+            <Parameter Name="NgayDang" Mode="In" Type="String" />
+            <Parameter Name="MaNCC" Mode="In" Type="String" />
+            <Parameter Name="MaDM" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -920,6 +1008,7 @@
           <EntitySetMapping Name="HoaDons">
             <EntityTypeMapping TypeName="QLTPModel.HoaDon">
               <MappingFragment StoreEntitySet="HoaDon">
+                <ScalarProperty Name="ThanhToan" ColumnName="ThanhToan" />
                 <ScalarProperty Name="MaHD" ColumnName="MaHD" />
                 <ScalarProperty Name="NgayDat" ColumnName="NgayDat" />
                 <ScalarProperty Name="NgayGiao" ColumnName="NgayGiao" />
@@ -1033,11 +1122,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="SanPhamND_TimKiem" FunctionName="QLTPModel.Store.SanPhamND_TimKiem" />
-          <FunctionImportMapping FunctionImportName="ThongTinKH_TimKiem" FunctionName="QLTPModel.Store.ThongTinKH_TimKiem" />
-          <FunctionImportMapping FunctionImportName="HoaDon_TimKiem" FunctionName="QLTPModel.Store.HoaDon_TimKiem" />
-          <FunctionImportMapping FunctionImportName="NhanVien_TimKiem" FunctionName="QLTPModel.Store.NhanVien_TimKiem" />
           <FunctionImportMapping FunctionImportName="HoaDon_TimKiemNC" FunctionName="QLTPModel.Store.HoaDon_TimKiemNC" />
+          <FunctionImportMapping FunctionImportName="KhachHang_TimKiemNC" FunctionName="QLTPModel.Store.KhachHang_TimKiemNC" />
+          <FunctionImportMapping FunctionImportName="NhaCungCap_TimKiemNC" FunctionName="QLTPModel.Store.NhaCungCap_TimKiemNC" />
+          <FunctionImportMapping FunctionImportName="NhanVien_TimKiemNC" FunctionName="QLTPModel.Store.NhanVien_TimKiemNC" />
+          <FunctionImportMapping FunctionImportName="PhanHoi_TimKiemNC" FunctionName="QLTPModel.Store.PhanHoi_TimKiemNC" />
+          <FunctionImportMapping FunctionImportName="SanPham_TimKiemNC" FunctionName="QLTPModel.Store.SanPham_TimKiemNC" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
