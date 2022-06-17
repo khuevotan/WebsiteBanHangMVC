@@ -2640,11 +2640,9 @@
     <Content Include="Views\GioHang\Index.cshtml" />
     <Content Include="Views\BaiViet\Index.cshtml" />
     <Content Include="Views\BaiViet\ChiTietBaiViet.cshtml" />
-    <Content Include="Views\ThanhToan\Index.cshtml" />
     <Content Include="Views\DanhMuc\SanPhamDanhMuc2.cshtml" />
     <Content Include="Views\DanhMuc\TimKiemTenSP.cshtml" />
     <Content Include="Views\Shared\_LayoutGioHang.cshtml" />
-    <Content Include="Views\ThanhToan\NhapThongTin.cshtml" />
     <Content Include="Views\ThanhToan\ThanhCong.cshtml" />
     <Content Include="Views\GioHang\NhapThongTin.cshtml" />
     <Content Include="Views\KhachHang\TrangCaNhan.cshtml" />

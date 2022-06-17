@@ -17,17 +17,13 @@ namespace WebsiteBanHang.Controllers
         {
             List<CartItem> giohang = Session["giohang"] as List<CartItem>;
             return View(giohang);
-
         }
-
 
         public ActionResult NhapThongTin()
         {
             List<CartItem> giohang = Session["giohang"] as List<CartItem>;
             return View(giohang);
-
         }
-
 
         public RedirectToRouteResult ThemVaoGio(String MaSP)
         {

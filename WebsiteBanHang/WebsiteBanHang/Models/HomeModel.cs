@@ -14,15 +14,11 @@ namespace WebsiteBanHang.Models
         public List<SanPham> ListSanPham { get; set; }
         public List<NhaCungCap> ListNhaCungCap { get; set; }
         public List<BaiViet> ListBaiViet { get; set; }
-
         public List<HoaDon> ListHoaDon { get; set; }
         public List<CTHoaDon> ListCTHoaDon { get; set; }
-
         public List<BaiViet> ListFullBaiViet { get; set; }
-
         public List<KhachHang> ListKhachHang { get; set; }
         public List<TrangThai> ListTrangThai { get; set; }
-
 
         public String HinhDD { get; set; }
 

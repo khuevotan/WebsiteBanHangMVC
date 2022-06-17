@@ -27,7 +27,7 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
             ViewBag.DoanhThuNgay = objQLTPEntities.HoaDons.Where(x => x.NgayDat.Equals(DateTime.Today) && x.MaTT != "TT5").Sum(x => (float?)x.ThanhToan) ?? 0;
             // Số lượng đơn hàng trong ngày
             ViewBag.HoaDonNgay = objQLTPEntities.HoaDons.Where(x => x.NgayDat.Equals(DateTime.Today)).Count();
-            // Số lượng sản phẩm còn tồn
+            // Số lượng sản phẩm 
             ViewBag.TongSoDongHo = objQLTPEntities.SanPhams.Where(x => x.SoLuong > 0).Count();
             return View();
         }
@@ -84,7 +84,7 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
                     nv.MatKhau = collection["MatKhauMoi"];
                     Session["NhanVien"] = nv;
                     objQLTPEntities.SaveChanges();
-                    return RedirectToAction("GetProfile", new { id = nv.TaiKhoan });
+                    return RedirectToAction("TrangCaNhan", "NhanViens");
                 }
             }
             return View(nv);
