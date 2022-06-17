@@ -1,6 +1,6 @@
-﻿CREATE DATABASE QLTP
+﻿CREATE DATABASE QLTP3
 GO
-USE QLTP
+USE QLTP3
 GO
 CREATE TABLE Nhom
 (
@@ -151,7 +151,7 @@ VALUES ('MN1', N'Quản lý'),
 
 GO
 INSERT INTO dbo.NhanVien (MaNV, TaiKhoan, MatKhau, HoNV, TenNV, SoDT, DiaChi,Email, Luong, NgaySinh, GioiTinh, HinhDD, MaNhom)
-VALUES ('NV01', N'khuevotan','123', N'Võ', N'Tấn Khuê','0987664220', N'Cam Ranh, Khánh Hòa','hello@gmail.com',10000000.0 ,CAST(N'2001-09-06' AS Date), 1, N'khuevotan.jpg','MN1'),
+VALUES ('NV01', N'khuevotan','123', N'Võ', N'Tấn Khuê','0987664220', N'Cam Ranh, Khánh Hòa','hello@gmail.com',10000000.0 ,CAST(N'2001-09-06' AS Date), 1, N'employee.jpg','MN1'),
 	   ('NV02', N'admin','123', N'Quản', N'Trị Viên','01627240041', N'Tuy Hòa, Phú Yên','hello@gmail.com', 20000000.0 ,CAST(N'2001-09-06' AS Date), 1, N'employee.jpg','MN2'),
 	   ('NV03', N'huynguyenhuu','123', N'Nguyễn', N'Hữu Huy','0987413571', N'Cam Lâm, Khánh Hòa','hello@gmail.com',10000000.0 ,CAST(N'2001-03-04' AS Date), 1, N'employee.jpg','MN1'),
 	   ('NV04', N'phucnguyenvan','123', N'Nguyễn', N'Văn Phúc','0983468912', N'Nha Trang, Khánh Hòa','hello@gmail.com',10000000.0 ,CAST(N'2001-11-24' AS Date), 1, N'employee.jpg','MN1'),
@@ -168,8 +168,17 @@ INSERT INTO dbo.BaiViet (MaBV, MaNV, NgayDang,TenBV, HinhDD, NoiDung)
 VALUES	('BV01', 'NV01', CAST(N'2020-11-20' AS Date), N'Hướng dẫn 2 cách làm ổi lắc xí muội chua cay ngon khó cưỡng','oilacximui.jpg',N'Ổi lắc xí muội đang ngày càng phổ biến với nhiều người Việt, đặc biệt là các bạn trẻ. Cùng tìm hiểu 2 cách làm ổi lắc xí muội ngon khó cưỡng ngay tại nhà nhé!'),
 		('BV02', 'NV03', CAST(N'2020-10-11' AS Date), N'Cây monstera đột biến là cây gì? Một vài lưu ý khi trồng cây monstera', 'caymonstera.jpg',N'Cây monstera hay trầu bà Nam Mỹ đột biến có nguồn gốc từ Châu Mỹ, có nhiều ở vùng rừng rậm nhất là vùng nhiệt đới phía nam Mexico. Lá của loại cây này có rãnh hình cánh và tròn, nó có ý nghĩa mang lại may mắn cho gia chủ'),
 		('BV03', 'NV07', CAST(N'2020-9-20' AS Date), N'Đặc điểm của cây bạch tuyết? Ý nghĩa và cách trồng cây', 'caybachtuyet.jpg',N'Bạch Tuyết Mai hay còn được gọi là cây Bạch Tuyết, Mã Thiên Hương, hoa ngàn sao, bỏng nẻ và có tên khoa học là Serissa foetida, Serissa japonica Thunb. Cây thuộc họ cà phê Rubiaceae, phân bố nhiều nhất tại Nhật Bản và các quốc gia châu Á. Hiện nay, Bạch Tuyết Mai ở nước ta thường được thấy ở Đà Lạt cùng các tỉnh phía Nam khác.'),
-		('BV04', 'NV01', CAST(N'2020-10-01' AS Date), N'Cây bàng gai là gì? Đặc điểm, tác dụng và các bài thuốc của cây bàng gai', 'caybanggai.jpg',N'Cây bàng gai hay còn có những cái tên khác như Quang lang, Bàng biển, Badamier, Choambok Barangparrcang Prang, đây là loại cây thân gỗ lớn, mọc thẳng, có chiều cao lên đến 25m, tán lá rộng, cành nằm ngang.')
-GO
+		('BV04', 'NV01', CAST(N'2020-10-01' AS Date), N'Cây bàng gai là gì? Đặc điểm, tác dụng và các bài thuốc của cây bàng gai', 'caybanggai.jpg',N'Cây bàng gai hay còn có những cái tên khác như Quang lang, Bàng biển, Badamier, Choambok Barangparrcang Prang, đây là loại cây thân gỗ lớn, mọc thẳng, có chiều cao lên đến 25m, tán lá rộng, cành nằm ngang.'),
+		('BV05', 'NV01', CAST(N'2022-06-17' AS Date), N'Hướng dẫn cách làm ốc bươu xào sả ớt cay cay, đậm vị, cực dễ làm', 'ocbuu.jpg',N'Ốc chứa nhiều chất dinh dưỡng, đặc biệt là canxi và các loại vitamin A, B1, B2…. Ngoài ra, ốc cũng là nguyên liệu chế biến ra nhiều món ngon, nhất là ốc bươu xào sả ớt. Cùng chinh phục món này với Bách hóa XANH qua hướng dẫn bên dưới nhé.'),
+		('BV06', 'NV01', CAST(N'2022-06-17' AS Date), N'Gợi ý 11 nguyên liệu làm kẹo Nougat - kẹo hạnh phúc giá tốt', 'Marshmallow.jpg',N'Kẹo Nougat là loại kẹo thơm ngon, giàu dinh dưỡng. Bỏ túi 11 gợi ý về nguyên liệu làm kẹo Nougat kẹo hạnh phúc giá tốt tại Bách hóa XANH qua bài viết sau.'),
+		('BV07', 'NV01', CAST(N'2022-06-17' AS Date), N'2 cách làm cà tím nướng mỡ hành thơm béo, cực bắt cơm', 'canuong.jpg',N'Cà tím là thực phẩm dinh dưỡng và có thể chế biến thành nhiều món ngon, trong đó có món cà tím nướng mỡ hành hấp dẫn. Vào bếp cùng Bách hóa XANH trổ tài làm món cà tím nướng mỡ hành thay đổi khẩu vị cả nhà'),
+		('BV08', 'NV01', CAST(N'2022-06-17' AS Date), N'Cho bé 1 tuổi uống nước trái cây mỗi ngày, tưởng lợi mà hoá hại con', 'traicaycon.jpg',N'Nước trái cây là thức uống được làm từ các loại trái cây, rau củ có trong tự nhiên bằng phương pháp ép, chắt lọc bỏ bã và chỉ lấy nước. Mỗi loại trái cây đều có lượng vitamin và dưỡng chất dồi dào mang lại những lợi ích khác nhau cho sức khỏe.'),
+		('BV09', 'NV01', CAST(N'2022-06-17' AS Date), N'Bỏ túi ngay 3 cách bóc vỏ măng cụt nhanh như chớp cực kì đơn giản', 'lotvomangcuc.jpg',N'Bạn là “fan” trung thành của măng cụt nhưng lại chưa biết bóc vỏ măng cụt sao cho nhanh mà vẫn giữ được nguyên vẹn phần ruột? Đừng lo vì bài viết dưới đây sẽ chỉ cho bạn 3 cách bóc vỏ măng cụt nhanh, gọn, lẹ nhé!'),
+		('BV10', 'NV01', CAST(N'2022-06-17' AS Date), N'2 cách làm kem không cần máy hay tủ lạnh mà chỉ tốn 10 phút', 'kemkhongtulanh.jpg',N'Kem là món ăn chơi rất được nhiều người yêu thích ngoài hương vị béo thơm mà còn khả năng giải nhiệt ngay lập tức của nó. Hôm nay cùng vào bếp thử sức với làm kem mà không cần tủ lạnh hay máy móc trong 10 phút qua bài viết sau đây nhé.'),
+		('BV11', 'NV01', CAST(N'2020-11-20' AS Date), N'Mua tinh bột nghệ chất lượng, giá tốt ','tinhnghevang.jpg',N'Chúng ta đều biết những tác dụng tuyệt vời của tinh bột nghệ đối với sức khỏe. Đặc biệt “liều thuốc tự nhiên" này hỗ trợ tốt cho hệ miễn dịch giúp phòng chóng và đẩy lùi các loại bệnh tật.')
+
+Go
+
 
 INSERT INTO dbo.NhaCungCap (MaNCC, TenNCC, DiaChi, SoDT, HinhDD)
 VALUES ('NCC01', N'Công ty TNHH SX TM DV Nguyên Khang', N'2.12 Cao ốc KP, 67 Huỳnh Thiện Lộc, P Hòa Thạnh, Q Tân Phú, TPHCM', 0987642245, 'nguyenkhang.jpg'),
@@ -183,6 +192,7 @@ VALUES ('NCC01', N'Công ty TNHH SX TM DV Nguyên Khang', N'2.12 Cao ốc KP, 67
 	   ('NCC09', N'Phố Vọng', N'Hà Nội', 0985168142,'tiengiang.jpg'),
 	   ('NCC10', N'Vĩnh Hòa', N'Huế', 098415125,'tiengiang.jpg')
 GO
+
 INSERT INTO dbo.PhieuNhap (MaPN, NgayNhap, ThanhToan, MaNV, MaNCC)
 VALUES	('PN001', CAST(N'2020-09-11' AS Date), N'Tiền mặt', 'NV01', 'NCC03'),
 		('PN002', CAST(N'2020-10-01' AS Date), N'Tiền mặt', 'NV05', 'NCC02'),
@@ -229,7 +239,29 @@ VALUES	('SP01', N'Nấm kim châm Hàn Quốc', 'namkimcham.jpg', 30, N'Nấm ki
 		('SP20', N'Rong biển nấu canh Tohogenkai gói 50g', 'rongbien.jpg', 30,N'Rong biển nấu canh giúp bạn chế biến những món canh rong biển dinh dưỡng, mát lành. Rong biển nấu canh Tohogenkai gói 50g tiện lợi, chỉ cần ngâm rong biển trong nước và rửa sạch là có thể chế biến. Rong biển Tohogenkai chất lượng, vệ sinh, không lẫn tạp chất, yên tâm cho mọi người sử dụng', 6000.0,1, CAST(N'2020-09-01' AS Date), 'NCC09', 'DM08')
 GO
 
+
+INSERT INTO dbo.SanPham (MaSP, TenSP, HinhDD, SoLuong, MoTaCT, GiaBan,PhoBien, NgayDang, MaNCC, MaDM)
+VALUES ('SP21', N'Nấm rơm sấy thăng hoa Cỏ May Food hộp 25g', 'namrom.jpg', 30,N'Nấm rơm Cỏ May Food được sấy khô đầy chất lượng, thơm ngon và cực kỳ dinh dưỡng. Nấm rơm sấy thăng hoa Cỏ May Food hộp 25g được đóng hộp sang trọng, chất lượng, thích hợp bảo quản lâu dài, làm quà cũng đều hợp lý. Nấm rơm nấu được nhiều món ngon như xào, soup,...', 6300.0,1, CAST(N'2020-09-01' AS Date), 'NCC05', 'DM08'),
+		('SP22', N'Rong nho tách nước Top Food gói 50g', 'rongnho.jpg', 30,N'Rong nho chứa rất nhiều lượng canxi, protein và axit béo không bão hòa đa thuộc trong nhóm omega 3 (DHA, ALA, EPA) nên có công dụng kháng viêm cũng như làm giảm các triệu chứng của bệnh viêm khớp. Rong nho tách nước Top Food gói 50g tiện lợi, thơm ngon. Rong nho Top Food an toàn, dinh dưỡng', 3400.0,1, CAST(N'2020-09-01' AS Date), 'NCC02', 'DM08'),
+		('SP23', N'Măng nứa khô Kim Bôi gói 500g', 'mangnua.jpg', 30,N'Bỏ nước, rửa sạch, thái miếng hoặc tước to/nhỏ tùy ý. Chần qua nước sôi. Xào thập cẩm với miến, thịt/hải sản, hành tây, cà rốt, nấm hương. Nấu lẩu, nấu canh với sườn heo, thịt, hải sản các loại. Dùng chế biến các món chay. Măng có hàm lượng protein, vitamin, khoáng chất và chất xơ phong phú và rất lợi', 5000.0,1, CAST(N'2020-09-01' AS Date), 'NCC03', 'DM08'),
+		('SP24', N'Lá kim cuộn cơm O food gói 10g', 'lakimcuoncom.jpg', 30,N'Lá kim cuộn cơm là dạng dát mỏng của rong biển và nó hoàn toàn chứa đầy đủ các thành phần cũng như chất dinh dưỡng từ rong biển. Lá kim cuộn cơm O food gói 10g là sản phẩm được nhiều khách hàng yêu thích và lựa chọn', 2000.0,1, CAST(N'2020-09-01' AS Date), 'NCC04', 'DM08'),
+		('SP25', N'Bắp cải thảo', 'bapcaithao.jpg', 30,N'Bắp cải thảo là loại rau có bẹ lá to, giòn, ngọt thường được dùng để nấu canh, xào chung với rau củ hoặc để muối kim chi. Bắp cải thảo của Bách hóa Xanh được trồng tại Lâm Đồng và đóng gói theo những tiêu chuẩn nghiêm ngặt, bảo đảm các tiêu chuẩn xanh - sach, chất lượng và an toàn với người dùng.', 1000.0,1, CAST(N'2020-09-01' AS Date), 'NCC02', 'DM01'),
+		('SP26', N'Lá giang', 'lagiang.jpg', 30,N'Lá giang là loại rau có vị chua chua, giúp cho món ăn của bạn có vị chua ngon đậm đà vô cùng. Lá giang có thể dùng làm nguyên liệu cho nhiều món ăn thơm ngon như canh cá lá giang, lẩu gà lá giang,.... thơm ngon, cả nhà ai cũng thích', 1000.0,1, CAST(N'2020-09-01' AS Date), 'NCC02', 'DM01'),
+		('SP27', N'Củ cải trắng', 'cucaitrang.jpg', 30,N'Củ cải trắng trồng ở Đà Lạt là một loại rau củ vừa có thể dùng để làm thực phẩm, vừa có thể sử dụng để làm dầu hạt cải. Củ cải trắng chứa rất nhiều vitamin và khoáng chất, tốt cho cơ thể. Một vài công dụng của củ cải trắng có thể kể đến như: giảm cân, hỗ trợ hệ tiêu hoá, tăng cường miễn dịch,...', 1000.0,1, CAST(N'2020-09-01' AS Date), 'NCC03', 'DM02'),
+		('SP28', N'Khoai tây', 'khoaitay.jpg', 30,N'Khoai tây trồng tại Trung Quốc đã quá quen thuộc với mỗi chúng ta. Loại củ này được xuất hiện thường xuyên trên mâm cơm này có rất nhiều công dụng hữu ích. Khoai tây không chỉ có thể chế biến nhiều món ăn ngon mà còn tốt cho sức khỏe, làm đẹp hiệu quả mà còn có rất nhiều tác dụng bổ ích khác', 1500.0,1, CAST(N'2020-09-01' AS Date), 'NCC03', 'DM02'),
+		('SP29', N'Cam sành', 'camsanh.jpg', 30,N'Cam sành là loại trái cây được nhiều người yêu thích. Cam sành trái to, cầm chắc tay, khi ăn sẽ cảm nhận được vị chua chua ngọt ngọt, giàu vitamin C tốt cho cơ thể. Cam sành có lớp vỏ dày, sần sùi giống như bề mặt mảnh sành và màu lục nhạt. Múi thịt có màu cam vị ngọt và thơm', 3500.0,1, CAST(N'2020-09-01' AS Date), 'NCC04', 'DM03'),
+		('SP30', N'Dưa hấu đỏ', 'duahau.jpg', 30,N'Dưa hấu đỏ là trái cây nhiều nước và các vitamin, khoáng chất cần thiết, đặc biệt là ít calo và chất béo. Dưa hấu được xem là một sản phẩm thay thế cho nước uống thông thường. Giúp giải khát thanh nhiệt mà còn bổ sung nhiều chất dinh dưỡng cho cơ thể, giúp bạn tràn đầy năng lượng', 3500.0,1, CAST(N'2020-09-01' AS Date), 'NCC05', 'DM03'),
+		('SP31', N'Bưởi năm roi', 'buoinamroi.jpg', 30,N'Bưởi 5 roi là một trong những trái cây đặc sản nổi tiếng của Việt Nam. Bưởi 5 roi không chỉ ngon, ngọt mà còn mang lại cho con người nhiều công dụng tốt cho sức khoẻ như cung cấp nguồn vitamin dồi dào. Bưởi tại Bách hoá XANH thích hợp cho những ngày nắng nóng với nhiều cách chế biến', 3500.0,1, CAST(N'2020-09-01' AS Date), 'NCC05', 'DM03'),
+		('SP32', N'Thùng 48 hộp sữa tươi tiệt trùng ít đường TH true MILK', 'suaTH.jpg', 30,N'Đảm bảo không sử dụng thêm hương liệu, vị ngon 100% đến từ sữa tươi từ trang trại của TH True Milk chứa nhiều vitamin và khoáng chất như Vitamin A, D, B1, B2, canxi, kẽm. Thùng 48 hộp sữa tươi tiệt trùng ít đường TH true MILK 180ml đóng thùng tiện lợi, tiết kiệm', 35000.0,1, CAST(N'2020-09-01' AS Date), 'NCC05', 'DM04'),
+		('SP33', N'Thùng 48 hộp sữa tươi tiệt trùng ít đường Dalat MILK', 'suadalat.jpg', 30,N'Sữa tươi Dalat Milk được làm từ sữa tươi của những vùng chăn nuôi bò sữa nổi tiếng chất lượng theo tiêu chuẩn Dalatmilk, cung cấp cho bạn các vitamin khoáng chất. Thùng 48 hộp sữa tươi tiệt trùng ít đường Dalat Milk 180ml ít đường với hương vị thơm ngon dễ uống', 35000.0,1, CAST(N'2020-09-01' AS Date), 'NCC05', 'DM04'),
+		('SP34', N'Hộp 4 trứng vịt muối V.Farm', 'trungvitmuoi.jpg', 30,N'Hộp 4 trứng vịt muối của V.Farm được đóng gói và bảo quản theo những tiêu chuẩn nghiêm ngặt về vệ sinh và an toàn thực phẩm, đảm bảo về chất lượng của thực phẩm, xuất xứ rõ ràng. Trứng vịt to tròn, đều. Đây là sản phẩm cỏ thể ăn liền, có thể ăn với cơm hoặc ăn không,..', 2100.0,1, CAST(N'2020-09-01' AS Date), 'NCC06', 'DM05'),
+		('SP35', N'Gạo Ngon Lúa Mới túi 5kg', 'gaoluamoi.jpg', 30,N'Là giống gạo trắng thơm của thương hiệu gạo Ngon. Gạo Ngon túi 5kg khi thưởng thức, bạn sẽ cảm nhận được độ dẻo thơm và độ mềm vừa phải trong sản phẩm, thích hợp cho gia đình ở mọi lứa tuổi khác nhau. Gạo Ngon chất lượng, giúp ăn ngon miệng', 2100.0,1, CAST(N'2020-09-01' AS Date), 'NCC07', 'DM06'),
+		('SP36', N'Gạo thơm Vua Gạo ST25 túi 5kg', 'vuagao.jpg', 30,N'Gạo hạt dài, thơm đặc trưng và nở ít tạo giác ăn ngon miệng. Gạo thơm Vua Gạo ST25 túi 5kg vị dẻo, vị thơm đặc trưng sẽ kích thích vị giác giúp thưởng thức các món ăn khác tuyệt vời hơn. Gạo đảm bảo an toàn, không tẩy trắng, không chứa chất bảo quản. Túi 5kg phù hợp với gia đình đông người', 2100.0,1, CAST(N'2020-09-01' AS Date), 'NCC07', 'DM06'),
+		('SP37', N'Bột năng Tài Ký gói 400g', 'botnang.jpg', 30,N'Bột năng Tài Ký TakyFood được tinh chế từ củ khoai mì mang đến cho các món xào, món súp độ sánh sệt trong suốt đẹp mắt hay tạo độ dẻo, dai mềm tuyệt hảo cho các món bánh. Mịn hơn, dễ bám vân tay khi sờ vào hay có độ kết dính và độ sệt cao là những đặc điểm giúp phân biệt bột năng với các loại bột khác', 1100.0,1, CAST(N'2020-09-01' AS Date), 'NCC08', 'DM07'),
+		('SP38', N'Bột chiên giòn Aji-Quick gói 150g', 'botchiengion.jpg', 30,N'Thích hợp cho những món gà chiên, hải sản chiên hay rau củ chiên cũng rất thơm ngon. Bột chiên giòn Aji-Quick gói 150g  mang đến những món ăn ngon, giòn tan mà không bị ngán. Bột Aji-Quick được căn chỉnh đậm đà gia vị, phù hợp khẩu vị của người Việt', 1100.0,1, CAST(N'2020-09-01' AS Date), 'NCC08', 'DM07'),
+		('SP39', N'Bột cốt dừa Mikko Hương Xưa gói 150g', 'botcotdua.jpg', 30,N'Được làm từ đường, bột sữa dừa,... giúp bạn có thế chế biến các món như nấu xôi, chè, làm bánh và chế biến các món ăn khác. Bột cốt dừa Mikko Hương Xưa gói 150g tiện lợi, an toàn và dinh dưỡng. Bột dừa Mikko giúp bạn chế biến món ăn thơm ngon', 1200.0,1, CAST(N'2020-09-01' AS Date), 'NCC08', 'DM07')
 GO
+
 INSERT INTO dbo.TrangThai (MaTT, TenTT)
 VALUES ('TT1', N'Chưa duyệt'),
 	   ('TT2', N'Đã duyệt'),
@@ -253,7 +285,7 @@ VALUES	('PN001', 'SP02', 10, 15000),
 
 GO
 INSERT INTO dbo.KhachHang (MaKH, TaiKhoan, MatKhau, HoKH, TenKH, NgaySinh, SoDT, DiaChi, Email, GioiTinh, HinhDD)
-VALUES	('KH001', N'huynguyen','123', N'Nguyễn', N'Huy', CAST(N'2001-03-16' AS Date), 0985101312, N'Cam Ranh, Khánh Hòa', N'nguyenhuy@gmail.com', 1, N'nguyenhuy.jpg'),
+VALUES	('KH001', N'huynguyen','123', N'Nguyễn', N'Huy', CAST(N'2001-03-16' AS Date), 0985101312, N'Cam Ranh, Khánh Hòa', N'nguyenhuy@gmail.com', 1, N'employee.jpg'),
 		('KH002', N'nhinguyen','123', N'Nguyễn', N'Nhi', CAST(N'2002-04-26' AS Date), 0981231232, N'Cam Ranh, Khánh Hòa', N'nguyennhi@gmail.com', 2, N'employee.jpg'),
 		('KH003', N'phucnguyen','123', N'Nguyễn', N'Phúc', CAST(N'2001-06-01' AS Date), 0985323422, N'Cam Lâm, Khánh Hòa', N'nguyenphuc@gmail.com', 1, N'employee.jpg'),
 		('KH004', N'minhtran','123', N'Trần', N'Minh', CAST(N'2002-03-17' AS Date), 0985101312, N'Nha Trang, Khánh Hòa', N'tranminh@gmail.com', 1, N'employee.jpg'),
@@ -308,14 +340,59 @@ GO
 
 ------------------- TÌM KIẾM ----------------------------------------
 GO
+CREATE PROCEDURE BaiViet_TimKiemNC
+    @MaBV varchar(30)=NULL,
+	@TenBV nvarchar(15)=NULL,
+	@NoiDung nvarchar(15)= NULL,
+	@HinhDD nvarchar(50)=NULL,
+	@NgayDang nvarchar(15)=NULL,
+	@MaNV nvarchar(15)=NULL
+AS
+BEGIN
+DECLARE @SqlStr NVARCHAR(4000),
+		@ParamList nvarchar(2000)
+SELECT @SqlStr = '
+       SELECT * 
+       FROM BaiViet
+       WHERE  (1=1)
+       '
+IF @MaBV IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (MaBV LIKE ''%'+@MaBV+'%'')
+              '
+IF @TenBV IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+               AND (TenBV LIKE ''%'+@TenBV+'%'')
+              '
+IF @NoiDung IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+             AND (NoiDung LIKE ''%'+@NoiDung+'%'')
+             '
+IF @HinhDD IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (HinhDD LIKE ''%'+@HinhDD+'%'')
+              '
+IF @NgayDang IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (NgayDang LIKE ''%'+@NgayDang+'%'')
+              '
+IF @MaNV IS NOT NULL
+       SELECT @SqlStr = @SqlStr + '
+              AND (MaNV LIKE ''%'+@MaNV+'%'')
+              '
+	EXEC SP_EXECUTESQL @SqlStr	
+END
+GO
+
+GO
 CREATE PROCEDURE HoaDon_TimKiemNC
     @MaHD varchar(30)=NULL,
 	@NgayDat nvarchar(15)=NULL,
 	@NgayGiao nvarchar(15)= NULL,
 	@DiaChi nvarchar(50)=NULL,
 	@MaTT nvarchar(15)=NULL,
-	@MaNV nvarchar(15)=NULL
-	@MaKH nvarchar(15)=NULL
+	@MaNV nvarchar(15)=NULL,
+	@MaKH nvarchar(15)=null
 AS
 BEGIN
 DECLARE @SqlStr NVARCHAR(4000),
@@ -353,7 +430,6 @@ IF @MaKH IS NOT NULL
        SELECT @SqlStr = @SqlStr + '
               AND (MaKH LIKE ''%'+@MaKH+'%'')
               '
-
 	EXEC SP_EXECUTESQL @SqlStr
 END
 GO

@@ -12,7 +12,7 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
 {
     public class KhachHangsController : Controller
     {
-        private QLTPEntities1 db = new QLTPEntities1();
+        private QLTP3Entities2 db = new QLTP3Entities2();
 
         // GET: Admin/KhachHangs
         public ActionResult Index()

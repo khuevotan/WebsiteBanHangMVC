@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string gtinh = "";
 }
 
 
@@ -58,12 +59,23 @@
                     @Html.DisplayFor(modelItem => item.NgaySinh)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.GioiTinh)
+                    @{if (item.GioiTinh == true)
+                        { gtinh = "Nam"; }
+                        else
+                        { gtinh = "Nữ"; }
+                    }
+                    @gtinh
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.HinhDD)
                 </td>
                 <td>
+                    @{if (item.MaNhom == "MN1")
+                        { item.MaNhom = "Nhân viên"; }
+                        else
+                        { item.MaNhom = "Quản lý"; }
+                    }
+                   
                     @Html.DisplayFor(modelItem => item.MaNhom)
                 </td>
             </tr>

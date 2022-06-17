@@ -11,7 +11,7 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
 {
     public class HomeController : Controller
     {
-        QLTPEntities1 objQLTPEntities = new QLTPEntities1();
+        QLTP3Entities2 objQLTPEntities = new QLTP3Entities2();
 
         // GET: Admin/Home
         public ActionResult Index()

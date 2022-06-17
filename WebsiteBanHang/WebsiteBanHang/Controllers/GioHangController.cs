@@ -11,7 +11,7 @@ namespace WebsiteBanHang.Controllers
 {
     public class GioHangController : Controller
     {
-        QLTPEntities1 objQLTPEntities = new QLTPEntities1();
+        QLTP3Entities2 objQLTPEntities = new QLTP3Entities2();
 
         public ActionResult Index()
         {

@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string phoBien = "";
 }
 
 
@@ -49,7 +50,12 @@
                     @Html.DisplayFor(modelItem => item.GiaBan)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.PhoBien)
+                    @{if (item.PhoBien == true)
+                        { phoBien = "Nhanh"; }
+                        else
+                        { phoBien = "Chậm"; }
+                    }
+                    @phoBien
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.NgayDang)

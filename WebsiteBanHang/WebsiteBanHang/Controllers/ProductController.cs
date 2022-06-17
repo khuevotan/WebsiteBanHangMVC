@@ -11,7 +11,7 @@ namespace WebsiteBanHang.Controllers
     public class ProductController : Controller
     {
 
-        QLTPEntities1 objQLTPEntities = new QLTPEntities1();
+        QLTP3Entities2 objQLTPEntities = new QLTP3Entities2();
 
         // Xem thoong tin cu the cua mot doi tuong
         // GET: Product

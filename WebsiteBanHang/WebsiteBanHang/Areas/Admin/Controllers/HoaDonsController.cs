@@ -12,8 +12,15 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
 {
     public class HoaDonsController : Controller
     {
-        private QLTPEntities1 db = new QLTPEntities1();
+        private QLTP3Entities2 db = new QLTP3Entities2();
 
+        string LayMaHD()
+        {
+            var maMax = db.HoaDons.ToList().Select(n => n.MaHD).Max();
+            int MaHD = int.Parse(maMax.Substring(2)) + 1;
+            string HD = String.Concat("00", MaHD.ToString());
+            return "HD" + HD.Substring(MaHD.ToString().Length - 1);
+        }
         // GET: Admin/HoaDons
         public ActionResult Index()
         {
@@ -39,6 +46,7 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
         // GET: Admin/HoaDons/Create
         public ActionResult Create()
         {
+            ViewBag.MaHD = LayMaHD();
             ViewBag.MaKH = new SelectList(db.KhachHangs, "MaKH", "TaiKhoan");
             ViewBag.MaNV = new SelectList(db.NhanViens, "MaNV", "TaiKhoan");
             ViewBag.MaTT = new SelectList(db.TrangThais, "MaTT", "TenTT");
@@ -130,7 +138,7 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
 
 
         [HttpGet]
-        public ActionResult TimKiemNC(string MaHD = "", string NgayDat = "", string NgayGiao = "", string DiaChi = "", string MaTT = "", string MaNV = "", string MaKH = "")
+        public ActionResult TimKiemNC(string MaHD = "", string NgayDat = "", string NgayGiao = "", string DiaChi = "",   string MaTT = "", string MaNV = "", string MaKH = "")
         {
             if (Session["MaNV"] == null)
             {
@@ -141,10 +149,10 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
                 ViewBag.MaHD = MaHD;
                 ViewBag.NgayDat = NgayDat;
                 ViewBag.NgayGiao = NgayGiao;
-                ViewBag.DiaChi = DiaChi;
+                ViewBag.DiaChi = DiaChi;                
                 ViewBag.MaTT = new SelectList(db.TrangThais, "MaTT", "TenTT");
                 ViewBag.MaNV = new SelectList(db.NhanViens, "MaNV", "MaNV");
-                ViewBag.MaNV = new SelectList(db.KhachHangs, "MaKH", "MaKH");
+                ViewBag.MaKH = new SelectList(db.KhachHangs, "MaKH", "MaKH");
                 var hoaDons = db.HoaDons.SqlQuery("HoaDon_TimKiemNC'" + MaHD + "','" + NgayDat + "','" + NgayGiao + "','" + DiaChi + "','" + MaTT + "','" + MaNV + "','" + MaKH + "'");
                 if (hoaDons.Count() == 0)
                     ViewBag.TB = "Không có thông tin tìm kiếm.";

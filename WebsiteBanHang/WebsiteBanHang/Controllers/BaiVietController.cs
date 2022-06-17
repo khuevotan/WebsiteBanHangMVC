@@ -11,8 +11,8 @@ namespace WebsiteBanHang.Controllers
 {
     public class BaiVietController : Controller
     {
-        QLTPEntities1 objQLTPEntities = new QLTPEntities1();
-        QLTPEntities1 db = new QLTPEntities1();
+        QLTP3Entities2 objQLTPEntities = new QLTP3Entities2();
+        QLTP3Entities2 db = new QLTP3Entities2();
 
         // GET: BaiViet
         public ActionResult Index(int? page)
@@ -23,7 +23,6 @@ namespace WebsiteBanHang.Controllers
             int PageNumber = (page ?? 1);
 
             return View(lstSP.OrderBy(n => n.MaBV).ToPagedList(PageNumber, PageSize));
-
         }
 
         

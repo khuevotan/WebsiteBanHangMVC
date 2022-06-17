@@ -6,11 +6,12 @@ using System.Web.Mvc;
 using WebsiteBanHang.CSDL;
 using WebsiteBanHang.Models;
 
+
 namespace WebsiteBanHang.Controllers
 {
     public class DanhMucController : Controller
     {
-        QLTPEntities1 objQLTPEntities = new QLTPEntities1();
+        QLTP3Entities2 objQLTPEntities = new QLTP3Entities2();
         // GET: DanhMuc
         public ActionResult DanhMuc()
         {
@@ -32,7 +33,6 @@ namespace WebsiteBanHang.Controllers
             objHomeModel2.ListNhaCungCap = objQLTPEntities.NhaCungCaps.ToList();
             objHomeModel2.ListDanhMuc = objQLTPEntities.DanhMucs.Where(n => n.MaDM == MaDM).ToList();
             objHomeModel2.ListSanPham = objQLTPEntities.SanPhams.Where(n => n.MaDM == MaDM).ToList();
-  
             return View(objHomeModel2);
         }
 

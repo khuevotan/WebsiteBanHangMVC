@@ -12,9 +12,16 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
 {
     public class BaiVietsController : Controller
     {
-        private QLTPEntities1 db = new QLTPEntities1();
+        private QLTP3Entities2 db = new QLTP3Entities2();
 
         // GET: Admin/BaiViets
+        string LayMaBV()
+        {
+            var maMax = db.BaiViets.ToList().Select(n => n.MaBV).Max();
+            int maBV = int.Parse(maMax.Substring(2)) + 1;
+            string BV = String.Concat("0", maBV.ToString());
+            return "BV" + BV.Substring(maBV.ToString().Length - 1);
+        }
         public ActionResult Index()
         {
             if (Session["MaNV"] == null)
@@ -47,6 +54,7 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
         // GET: Admin/BaiViets/Create
         public ActionResult Create()
         {
+            ViewBag.MaBV = LayMaBV();
             ViewBag.MaNV = new SelectList(db.NhanViens, "MaNV", "TaiKhoan");
             return View();
         }

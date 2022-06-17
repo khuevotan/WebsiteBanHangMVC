@@ -13,8 +13,14 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
 {
     public class NhanViensController : Controller
     {
-        private QLTPEntities1 db = new QLTPEntities1();
-
+        private QLTP3Entities2 db = new QLTP3Entities2();
+        string LayMaNV()
+        {
+            var maMax = db.NhanViens.ToList().Select(n => n.MaNV).Max();
+            int maNV = int.Parse(maMax.Substring(2)) + 1;
+            string NV = String.Concat("0", maNV.ToString());
+            return "NV" + NV.Substring(maNV.ToString().Length - 1);
+        }
         // GET: Admin/NhanViens
         public ActionResult Index()
         {
@@ -40,6 +46,7 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
         // GET: Admin/NhanViens/Create
         public ActionResult Create()
         {
+            ViewBag.MaNV = LayMaNV();
             ViewBag.MaNhom = new SelectList(db.Nhoms, "MaNhom", "TenNhom");
             return View();
         }

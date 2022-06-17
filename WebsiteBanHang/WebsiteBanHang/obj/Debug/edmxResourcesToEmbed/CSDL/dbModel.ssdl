@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="QLTPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="QLTP3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="BaiViet">
     <Key>
       <PropertyRef Name="MaBV" />
@@ -316,6 +316,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="BaiViet_TimKiemNC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MaBV" Type="varchar" Mode="In" />
+    <Parameter Name="TenBV" Type="nvarchar" Mode="In" />
+    <Parameter Name="NoiDung" Type="nvarchar" Mode="In" />
+    <Parameter Name="HinhDD" Type="nvarchar" Mode="In" />
+    <Parameter Name="NgayDang" Type="nvarchar" Mode="In" />
+    <Parameter Name="MaNV" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="HoaDon_TimKiemNC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="MaHD" Type="varchar" Mode="In" />
     <Parameter Name="NgayDat" Type="nvarchar" Mode="In" />
@@ -323,6 +331,7 @@
     <Parameter Name="DiaChi" Type="nvarchar" Mode="In" />
     <Parameter Name="MaTT" Type="nvarchar" Mode="In" />
     <Parameter Name="MaNV" Type="nvarchar" Mode="In" />
+    <Parameter Name="MaKH" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="KhachHang_TimKiemNC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="MaKH" Type="varchar" Mode="In" />
@@ -378,7 +387,7 @@
     <Parameter Name="MaNCC" Type="nvarchar" Mode="In" />
     <Parameter Name="MaDM" Type="nvarchar" Mode="In" />
   </Function>
-  <EntityContainer Name="QLTPModelStoreContainer">
+  <EntityContainer Name="QLTP3ModelStoreContainer">
     <EntitySet Name="BaiViet" EntityType="Self.BaiViet" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CTHoaDon" EntityType="Self.CTHoaDon" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CTPhieuNhap" EntityType="Self.CTPhieuNhap" Schema="dbo" store:Type="Tables" />

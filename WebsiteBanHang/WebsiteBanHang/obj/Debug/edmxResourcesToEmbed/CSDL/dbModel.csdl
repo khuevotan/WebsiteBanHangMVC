@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="QLTPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="QLTP3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="BaiViet">
     <Key>
       <PropertyRef Name="MaBV" />
@@ -56,6 +56,7 @@
     <Property Name="SoDT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ThanhToan" Type="Double" Nullable="false" />
     <Property Name="MaTT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="MaNV" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="MaKH" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
@@ -63,7 +64,6 @@
     <NavigationProperty Name="KhachHang" Relationship="Self.FK__HoaDon__MaKH__300424B4" FromRole="HoaDon" ToRole="KhachHang" />
     <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDon__MaNV__2F10007B" FromRole="HoaDon" ToRole="NhanVien" />
     <NavigationProperty Name="TrangThai" Relationship="Self.FK__HoaDon__MaTT__2E1BDC42" FromRole="HoaDon" ToRole="TrangThai" />
-    <Property Name="ThanhToan" Type="Double" Nullable="false" />
   </EntityType>
   <EntityType Name="KhachHang">
     <Key>
@@ -344,7 +344,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="QLTPEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="QLTP3Entities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="BaiViets" EntityType="Self.BaiViet" />
     <EntitySet Name="CTHoaDons" EntityType="Self.CTHoaDon" />
     <EntitySet Name="CTPhieuNhaps" EntityType="Self.CTPhieuNhap" />
@@ -414,27 +414,13 @@
       <End Role="NhanVien" EntitySet="NhanViens" />
       <End Role="PhieuNhap" EntitySet="PhieuNhaps" />
     </AssociationSet>
-    <FunctionImport Name="SanPhamND_TimKiem">
-      <Parameter Name="MaSP" Mode="In" Type="String" />
-      <Parameter Name="TenSP" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="ThongTinKH_TimKiem">
-      <Parameter Name="MaKH" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="HoaDon_TimKiem">
-      <Parameter Name="MaHD" Mode="In" Type="String" />
-      <Parameter Name="NgayDat" Mode="In" Type="String" />
-      <Parameter Name="NgayGiao" Mode="In" Type="String" />
-      <Parameter Name="DiaChi" Mode="In" Type="String" />
-      <Parameter Name="MaTT" Mode="In" Type="String" />
+    <FunctionImport Name="BaiViet_TimKiemNC">
+      <Parameter Name="MaBV" Mode="In" Type="String" />
+      <Parameter Name="TenBV" Mode="In" Type="String" />
+      <Parameter Name="NoiDung" Mode="In" Type="String" />
+      <Parameter Name="HinhDD" Mode="In" Type="String" />
+      <Parameter Name="NgayDang" Mode="In" Type="String" />
       <Parameter Name="MaNV" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="NhanVien_TimKiem">
-      <Parameter Name="MaNV" Mode="In" Type="String" />
-      <Parameter Name="HoTen" Mode="In" Type="String" />
-      <Parameter Name="GioiTinh" Mode="In" Type="String" />
-      <Parameter Name="DiaChi" Mode="In" Type="String" />
-      <Parameter Name="MaNhom" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="HoaDon_TimKiemNC">
       <Parameter Name="MaHD" Mode="In" Type="String" />
@@ -443,6 +429,7 @@
       <Parameter Name="DiaChi" Mode="In" Type="String" />
       <Parameter Name="MaTT" Mode="In" Type="String" />
       <Parameter Name="MaNV" Mode="In" Type="String" />
+      <Parameter Name="MaKH" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="KhachHang_TimKiemNC">
       <Parameter Name="MaKH" Mode="In" Type="String" />

@@ -10,7 +10,7 @@ namespace WebsiteBanHang.Controllers
 {
     public class ThanhToanController : Controller
     {
-        QLTPEntities1 objQLTPEntities = new QLTPEntities1();
+        QLTP3Entities2 objQLTPEntities = new QLTP3Entities2();
 
         // GET: ThanhToan
       

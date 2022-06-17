@@ -2,18 +2,16 @@
 using System.Web.Mvc;
 using WebsiteBanHang.CSDL;
 
-using System;
+
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 using System.Net;
 
 namespace WebsiteBanHang.Areas.Admin.Controllers
 {
     public class MainController : Controller
     {
-        private QLTPEntities1 objQLTPEntities = new QLTPEntities1();
+        private QLTP3Entities2 objQLTPEntities = new QLTP3Entities2();
         // GET: Admin/Main
 
         public ActionResult Index()

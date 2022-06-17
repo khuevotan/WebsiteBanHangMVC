@@ -26,10 +26,10 @@ namespace WebsiteBanHang.CSDL
         public string SoDT { get; set; }
         public string DiaChi { get; set; }
         public string GhiChu { get; set; }
+        public double ThanhToan { get; set; }
         public string MaTT { get; set; }
         public string MaNV { get; set; }
         public string MaKH { get; set; }
-        public double ThanhToan { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTHoaDon> CTHoaDons { get; set; }

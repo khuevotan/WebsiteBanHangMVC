@@ -14,8 +14,8 @@ namespace WebsiteBanHang.Controllers
     
     public class HomeController : Controller
     {
-       
-        QLTPEntities1 objQLTPEntities = new QLTPEntities1();
+
+        QLTP3Entities2 objQLTPEntities = new QLTP3Entities2();
         public ActionResult Index()
         {
             HomeModel objHomeModel = new HomeModel();
@@ -77,10 +77,15 @@ namespace WebsiteBanHang.Controllers
                 khachHang.HinhDD = postedFileName;
                 objQLTPEntities.KhachHangs.Add(khachHang);
                 objQLTPEntities.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ThongBao");
             }
 
             return View(khachHang);
+        }
+
+        public ActionResult ThongBao()
+        {
+            return View();
         }
 
         public bool CheckUser(string username, string password)

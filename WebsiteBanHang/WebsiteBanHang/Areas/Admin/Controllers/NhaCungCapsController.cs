@@ -12,8 +12,14 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
 {
     public class NhaCungCapsController : Controller
     {
-        private QLTPEntities1 db = new QLTPEntities1();
-
+        private QLTP3Entities2 db = new QLTP3Entities2();
+        string LayMaNCC()
+        {
+            var maMax = db.NhaCungCaps.ToList().Select(n => n.MaNCC).Max();
+            int maNCC = int.Parse(maMax.Substring(3)) + 1;
+            string NCC = String.Concat("00", maNCC.ToString());
+            return "NCC" + NCC.Substring(maNCC.ToString().Length - 1);
+        }
         // GET: Admin/NhaCungCaps
         public ActionResult Index()
         {
@@ -47,6 +53,7 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
         // GET: Admin/NhaCungCaps/Create
         public ActionResult Create()
         {
+            ViewBag.MaNCC = LayMaNCC();
             return View();
         }
 

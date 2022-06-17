@@ -14,7 +14,7 @@ namespace WebsiteBanHang.Controllers
 {
     public class KhachHangController : Controller
     {
-        private QLTPEntities1 db = new QLTPEntities1();
+        private QLTP3Entities2 db = new QLTP3Entities2();
 
         // GET: KhachHang
         public ActionResult TrangCaNhan()
@@ -116,7 +116,7 @@ namespace WebsiteBanHang.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaKH,TaiKhoan,HoKH,TenKH,NgaySinh,SoDT,DiaChi,Email,GioiTinh,HinhDD")] KhachHang khachHang)
+        public ActionResult Edit([Bind(Include = "MaKH,TaiKhoan,MatKhau,HoKH,TenKH,NgaySinh,SoDT,DiaChi,Email,GioiTinh,HinhDD")] KhachHang khachHang)
         {
             var imgKH = Request.Files["Avatar"];
             try
@@ -128,8 +128,6 @@ namespace WebsiteBanHang.Controllers
             }
             catch
             { }
-
-
             if (ModelState.IsValid)
             {
                 db.Entry(khachHang).State = EntityState.Modified;

@@ -71,12 +71,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>DiaChi</td>
+                    <td>Địa chỉ</td>
                     <td>
                         <input type="text" name="DiaChi" value="@ViewBag.DiaChi" />
                     </td>
                 </tr>
-
                 <tr>
                     <td>Trạng Thái</td>
                     <td>
@@ -123,7 +122,10 @@
             grid.Column("MaHD","Mã hóa đơn"), //the model fields to display
             grid.Column("NgayDat","Ngày đặt",format:@<text> @item.NgayDat.ToString("dd/MM/yyyy")</text>),
 grid.Column("NgayGiao","Ngày giao",format:@<text> @item.NgayGiao.ToString("dd/MM/yyyy")</text>),
+grid.Column("SoDT","Số điện thoại"),
 grid.Column("DiaChi","Địa chỉ"),
+grid.Column("GhiChu","Ghi chú"),
+grid.Column("ThanhToan","Thanh toán"),
 grid.Column("TrangThai.TenTT","Trạng thái"),
 grid.Column("NhanVien.MaNV","Nhân Viên"),
 grid.Column("KhachHang.MaKH","Khách Hàng"),

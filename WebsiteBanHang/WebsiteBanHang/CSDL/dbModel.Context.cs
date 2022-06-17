@@ -15,10 +15,10 @@ namespace WebsiteBanHang.CSDL
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class QLTPEntities1 : DbContext
+    public partial class QLTP3Entities2 : DbContext
     {
-        public QLTPEntities1()
-            : base("name=QLTPEntities1")
+        public QLTP3Entities2()
+            : base("name=QLTP3Entities2")
         {
         }
     
@@ -41,109 +41,66 @@ namespace WebsiteBanHang.CSDL
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<TrangThai> TrangThais { get; set; }
     
-        public virtual int SanPhamND_TimKiem(string maSP, string tenSP)
+        public virtual int BaiViet_TimKiemNC(string maBV, string tenBV, string noiDung, string hinhDD, string ngayDang, string maNV)
         {
-            var maSPParameter = maSP != null ?
-                new ObjectParameter("MaSP", maSP) :
-                new ObjectParameter("MaSP", typeof(string));
+            var maBVParameter = maBV != null ?
+                new ObjectParameter("MaBV", maBV) :
+                new ObjectParameter("MaBV", typeof(string));
     
-            var tenSPParameter = tenSP != null ?
-                new ObjectParameter("TenSP", tenSP) :
-                new ObjectParameter("TenSP", typeof(string));
+            var tenBVParameter = tenBV != null ?
+                new ObjectParameter("TenBV", tenBV) :
+                new ObjectParameter("TenBV", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SanPhamND_TimKiem", maSPParameter, tenSPParameter);
+            var noiDungParameter = noiDung != null ?
+                new ObjectParameter("NoiDung", noiDung) :
+                new ObjectParameter("NoiDung", typeof(string));
+    
+            var hinhDDParameter = hinhDD != null ?
+                new ObjectParameter("HinhDD", hinhDD) :
+                new ObjectParameter("HinhDD", typeof(string));
+    
+            var ngayDangParameter = ngayDang != null ?
+                new ObjectParameter("NgayDang", ngayDang) :
+                new ObjectParameter("NgayDang", typeof(string));
+    
+            var maNVParameter = maNV != null ?
+                new ObjectParameter("MaNV", maNV) :
+                new ObjectParameter("MaNV", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("BaiViet_TimKiemNC", maBVParameter, tenBVParameter, noiDungParameter, hinhDDParameter, ngayDangParameter, maNVParameter);
         }
     
-        public virtual int ThongTinKH_TimKiem(string maKH)
+        public virtual int HoaDon_TimKiemNC(string maHD, string ngayDat, string ngayGiao, string diaChi, string maTT, string maNV, string maKH)
         {
+            var maHDParameter = maHD != null ?
+                new ObjectParameter("MaHD", maHD) :
+                new ObjectParameter("MaHD", typeof(string));
+    
+            var ngayDatParameter = ngayDat != null ?
+                new ObjectParameter("NgayDat", ngayDat) :
+                new ObjectParameter("NgayDat", typeof(string));
+    
+            var ngayGiaoParameter = ngayGiao != null ?
+                new ObjectParameter("NgayGiao", ngayGiao) :
+                new ObjectParameter("NgayGiao", typeof(string));
+    
+            var diaChiParameter = diaChi != null ?
+                new ObjectParameter("DiaChi", diaChi) :
+                new ObjectParameter("DiaChi", typeof(string));
+    
+            var maTTParameter = maTT != null ?
+                new ObjectParameter("MaTT", maTT) :
+                new ObjectParameter("MaTT", typeof(string));
+    
+            var maNVParameter = maNV != null ?
+                new ObjectParameter("MaNV", maNV) :
+                new ObjectParameter("MaNV", typeof(string));
+    
             var maKHParameter = maKH != null ?
                 new ObjectParameter("MaKH", maKH) :
                 new ObjectParameter("MaKH", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ThongTinKH_TimKiem", maKHParameter);
-        }
-    
-        public virtual int HoaDon_TimKiem(string maHD, string ngayDat, string ngayGiao, string diaChi, string maTT, string maNV)
-        {
-            var maHDParameter = maHD != null ?
-                new ObjectParameter("MaHD", maHD) :
-                new ObjectParameter("MaHD", typeof(string));
-    
-            var ngayDatParameter = ngayDat != null ?
-                new ObjectParameter("NgayDat", ngayDat) :
-                new ObjectParameter("NgayDat", typeof(string));
-    
-            var ngayGiaoParameter = ngayGiao != null ?
-                new ObjectParameter("NgayGiao", ngayGiao) :
-                new ObjectParameter("NgayGiao", typeof(string));
-    
-            var diaChiParameter = diaChi != null ?
-                new ObjectParameter("DiaChi", diaChi) :
-                new ObjectParameter("DiaChi", typeof(string));
-    
-            var maTTParameter = maTT != null ?
-                new ObjectParameter("MaTT", maTT) :
-                new ObjectParameter("MaTT", typeof(string));
-    
-            var maNVParameter = maNV != null ?
-                new ObjectParameter("MaNV", maNV) :
-                new ObjectParameter("MaNV", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("HoaDon_TimKiem", maHDParameter, ngayDatParameter, ngayGiaoParameter, diaChiParameter, maTTParameter, maNVParameter);
-        }
-    
-        public virtual int NhanVien_TimKiem(string maNV, string hoTen, string gioiTinh, string diaChi, string maNhom)
-        {
-            var maNVParameter = maNV != null ?
-                new ObjectParameter("MaNV", maNV) :
-                new ObjectParameter("MaNV", typeof(string));
-    
-            var hoTenParameter = hoTen != null ?
-                new ObjectParameter("HoTen", hoTen) :
-                new ObjectParameter("HoTen", typeof(string));
-    
-            var gioiTinhParameter = gioiTinh != null ?
-                new ObjectParameter("GioiTinh", gioiTinh) :
-                new ObjectParameter("GioiTinh", typeof(string));
-    
-            var diaChiParameter = diaChi != null ?
-                new ObjectParameter("DiaChi", diaChi) :
-                new ObjectParameter("DiaChi", typeof(string));
-    
-            var maNhomParameter = maNhom != null ?
-                new ObjectParameter("MaNhom", maNhom) :
-                new ObjectParameter("MaNhom", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("NhanVien_TimKiem", maNVParameter, hoTenParameter, gioiTinhParameter, diaChiParameter, maNhomParameter);
-        }
-    
-        public virtual int HoaDon_TimKiemNC(string maHD, string ngayDat, string ngayGiao, string diaChi, string maTT, string maNV)
-        {
-            var maHDParameter = maHD != null ?
-                new ObjectParameter("MaHD", maHD) :
-                new ObjectParameter("MaHD", typeof(string));
-    
-            var ngayDatParameter = ngayDat != null ?
-                new ObjectParameter("NgayDat", ngayDat) :
-                new ObjectParameter("NgayDat", typeof(string));
-    
-            var ngayGiaoParameter = ngayGiao != null ?
-                new ObjectParameter("NgayGiao", ngayGiao) :
-                new ObjectParameter("NgayGiao", typeof(string));
-    
-            var diaChiParameter = diaChi != null ?
-                new ObjectParameter("DiaChi", diaChi) :
-                new ObjectParameter("DiaChi", typeof(string));
-    
-            var maTTParameter = maTT != null ?
-                new ObjectParameter("MaTT", maTT) :
-                new ObjectParameter("MaTT", typeof(string));
-    
-            var maNVParameter = maNV != null ?
-                new ObjectParameter("MaNV", maNV) :
-                new ObjectParameter("MaNV", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("HoaDon_TimKiemNC", maHDParameter, ngayDatParameter, ngayGiaoParameter, diaChiParameter, maTTParameter, maNVParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("HoaDon_TimKiemNC", maHDParameter, ngayDatParameter, ngayGiaoParameter, diaChiParameter, maTTParameter, maNVParameter, maKHParameter);
         }
     
         public virtual int KhachHang_TimKiemNC(string maKH, string taiKhoan, string matKhau, string hoKH, string tenKH, string ngaySinh, string soDT, string diaChi, string email, string gioiTinh, string hinhDD)

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="QLTPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QLTP3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BaiViet">
           <Key>
             <PropertyRef Name="MaBV" />
@@ -321,6 +321,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="BaiViet_TimKiemNC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaBV" Type="varchar" Mode="In" />
+          <Parameter Name="TenBV" Type="nvarchar" Mode="In" />
+          <Parameter Name="NoiDung" Type="nvarchar" Mode="In" />
+          <Parameter Name="HinhDD" Type="nvarchar" Mode="In" />
+          <Parameter Name="NgayDang" Type="nvarchar" Mode="In" />
+          <Parameter Name="MaNV" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="HoaDon_TimKiemNC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MaHD" Type="varchar" Mode="In" />
           <Parameter Name="NgayDat" Type="nvarchar" Mode="In" />
@@ -328,6 +336,7 @@
           <Parameter Name="DiaChi" Type="nvarchar" Mode="In" />
           <Parameter Name="MaTT" Type="nvarchar" Mode="In" />
           <Parameter Name="MaNV" Type="nvarchar" Mode="In" />
+          <Parameter Name="MaKH" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="KhachHang_TimKiemNC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MaKH" Type="varchar" Mode="In" />
@@ -383,7 +392,7 @@
           <Parameter Name="MaNCC" Type="nvarchar" Mode="In" />
           <Parameter Name="MaDM" Type="nvarchar" Mode="In" />
         </Function>
-        <EntityContainer Name="QLTPModelStoreContainer">
+        <EntityContainer Name="QLTP3ModelStoreContainer">
           <EntitySet Name="BaiViet" EntityType="Self.BaiViet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CTHoaDon" EntityType="Self.CTHoaDon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CTPhieuNhap" EntityType="Self.CTPhieuNhap" Schema="dbo" store:Type="Tables" />
@@ -457,7 +466,7 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="QLTPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="QLTP3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="BaiViet">
           <Key>
             <PropertyRef Name="MaBV" />
@@ -514,6 +523,7 @@
           <Property Name="SoDT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ThanhToan" Type="Double" Nullable="false" />
           <Property Name="MaTT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="MaNV" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="MaKH" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
@@ -521,7 +531,6 @@
           <NavigationProperty Name="KhachHang" Relationship="Self.FK__HoaDon__MaKH__300424B4" FromRole="HoaDon" ToRole="KhachHang" />
           <NavigationProperty Name="NhanVien" Relationship="Self.FK__HoaDon__MaNV__2F10007B" FromRole="HoaDon" ToRole="NhanVien" />
           <NavigationProperty Name="TrangThai" Relationship="Self.FK__HoaDon__MaTT__2E1BDC42" FromRole="HoaDon" ToRole="TrangThai" />
-          <Property Name="ThanhToan" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="KhachHang">
           <Key>
@@ -802,7 +811,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QLTPEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="QLTP3Entities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BaiViets" EntityType="Self.BaiViet" />
           <EntitySet Name="CTHoaDons" EntityType="Self.CTHoaDon" />
           <EntitySet Name="CTPhieuNhaps" EntityType="Self.CTPhieuNhap" />
@@ -872,27 +881,13 @@
             <End Role="NhanVien" EntitySet="NhanViens" />
             <End Role="PhieuNhap" EntitySet="PhieuNhaps" />
           </AssociationSet>
-          <FunctionImport Name="SanPhamND_TimKiem">
-            <Parameter Name="MaSP" Mode="In" Type="String" />
-            <Parameter Name="TenSP" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="ThongTinKH_TimKiem">
-          <Parameter Name="MaKH" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="HoaDon_TimKiem">
-            <Parameter Name="MaHD" Mode="In" Type="String" />
-            <Parameter Name="NgayDat" Mode="In" Type="String" />
-            <Parameter Name="NgayGiao" Mode="In" Type="String" />
-            <Parameter Name="DiaChi" Mode="In" Type="String" />
-            <Parameter Name="MaTT" Mode="In" Type="String" />
+          <FunctionImport Name="BaiViet_TimKiemNC">
+            <Parameter Name="MaBV" Mode="In" Type="String" />
+            <Parameter Name="TenBV" Mode="In" Type="String" />
+            <Parameter Name="NoiDung" Mode="In" Type="String" />
+            <Parameter Name="HinhDD" Mode="In" Type="String" />
+            <Parameter Name="NgayDang" Mode="In" Type="String" />
             <Parameter Name="MaNV" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="NhanVien_TimKiem">
-            <Parameter Name="MaNV" Mode="In" Type="String" />
-            <Parameter Name="HoTen" Mode="In" Type="String" />
-            <Parameter Name="GioiTinh" Mode="In" Type="String" />
-            <Parameter Name="DiaChi" Mode="In" Type="String" />
-            <Parameter Name="MaNhom" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="HoaDon_TimKiemNC">
             <Parameter Name="MaHD" Mode="In" Type="String" />
@@ -901,6 +896,7 @@
             <Parameter Name="DiaChi" Mode="In" Type="String" />
             <Parameter Name="MaTT" Mode="In" Type="String" />
             <Parameter Name="MaNV" Mode="In" Type="String" />
+            <Parameter Name="MaKH" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="KhachHang_TimKiemNC">
             <Parameter Name="MaKH" Mode="In" Type="String" />
@@ -962,9 +958,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="QLTPModelStoreContainer" CdmEntityContainer="QLTPEntities1">
+        <EntityContainerMapping StorageEntityContainer="QLTP3ModelStoreContainer" CdmEntityContainer="QLTP3Entities2">
           <EntitySetMapping Name="BaiViets">
-            <EntityTypeMapping TypeName="QLTPModel.BaiViet">
+            <EntityTypeMapping TypeName="QLTP3Model.BaiViet">
               <MappingFragment StoreEntitySet="BaiViet">
                 <ScalarProperty Name="MaBV" ColumnName="MaBV" />
                 <ScalarProperty Name="TenBV" ColumnName="TenBV" />
@@ -976,7 +972,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CTHoaDons">
-            <EntityTypeMapping TypeName="QLTPModel.CTHoaDon">
+            <EntityTypeMapping TypeName="QLTP3Model.CTHoaDon">
               <MappingFragment StoreEntitySet="CTHoaDon">
                 <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
@@ -986,7 +982,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CTPhieuNhaps">
-            <EntityTypeMapping TypeName="QLTPModel.CTPhieuNhap">
+            <EntityTypeMapping TypeName="QLTP3Model.CTPhieuNhap">
               <MappingFragment StoreEntitySet="CTPhieuNhap">
                 <ScalarProperty Name="MaPN" ColumnName="MaPN" />
                 <ScalarProperty Name="MaSP" ColumnName="MaSP" />
@@ -996,7 +992,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DanhMucs">
-            <EntityTypeMapping TypeName="QLTPModel.DanhMuc">
+            <EntityTypeMapping TypeName="QLTP3Model.DanhMuc">
               <MappingFragment StoreEntitySet="DanhMuc">
                 <ScalarProperty Name="MaDM" ColumnName="MaDM" />
                 <ScalarProperty Name="TenDM" ColumnName="TenDM" />
@@ -1006,15 +1002,15 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HoaDons">
-            <EntityTypeMapping TypeName="QLTPModel.HoaDon">
+            <EntityTypeMapping TypeName="QLTP3Model.HoaDon">
               <MappingFragment StoreEntitySet="HoaDon">
-                <ScalarProperty Name="ThanhToan" ColumnName="ThanhToan" />
                 <ScalarProperty Name="MaHD" ColumnName="MaHD" />
                 <ScalarProperty Name="NgayDat" ColumnName="NgayDat" />
                 <ScalarProperty Name="NgayGiao" ColumnName="NgayGiao" />
                 <ScalarProperty Name="SoDT" ColumnName="SoDT" />
                 <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
                 <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="ThanhToan" ColumnName="ThanhToan" />
                 <ScalarProperty Name="MaTT" ColumnName="MaTT" />
                 <ScalarProperty Name="MaNV" ColumnName="MaNV" />
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
@@ -1022,7 +1018,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="KhachHangs">
-            <EntityTypeMapping TypeName="QLTPModel.KhachHang">
+            <EntityTypeMapping TypeName="QLTP3Model.KhachHang">
               <MappingFragment StoreEntitySet="KhachHang">
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
                 <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
@@ -1039,7 +1035,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NhaCungCaps">
-            <EntityTypeMapping TypeName="QLTPModel.NhaCungCap">
+            <EntityTypeMapping TypeName="QLTP3Model.NhaCungCap">
               <MappingFragment StoreEntitySet="NhaCungCap">
                 <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
                 <ScalarProperty Name="TenNCC" ColumnName="TenNCC" />
@@ -1050,7 +1046,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NhanViens">
-            <EntityTypeMapping TypeName="QLTPModel.NhanVien">
+            <EntityTypeMapping TypeName="QLTP3Model.NhanVien">
               <MappingFragment StoreEntitySet="NhanVien">
                 <ScalarProperty Name="MaNV" ColumnName="MaNV" />
                 <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
@@ -1069,7 +1065,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Nhoms">
-            <EntityTypeMapping TypeName="QLTPModel.Nhom">
+            <EntityTypeMapping TypeName="QLTP3Model.Nhom">
               <MappingFragment StoreEntitySet="Nhom">
                 <ScalarProperty Name="MaNhom" ColumnName="MaNhom" />
                 <ScalarProperty Name="TenNhom" ColumnName="TenNhom" />
@@ -1077,7 +1073,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PhanHois">
-            <EntityTypeMapping TypeName="QLTPModel.PhanHoi">
+            <EntityTypeMapping TypeName="QLTP3Model.PhanHoi">
               <MappingFragment StoreEntitySet="PhanHoi">
                 <ScalarProperty Name="MaPH" ColumnName="MaPH" />
                 <ScalarProperty Name="NgayGui" ColumnName="NgayGui" />
@@ -1088,7 +1084,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PhieuNhaps">
-            <EntityTypeMapping TypeName="QLTPModel.PhieuNhap">
+            <EntityTypeMapping TypeName="QLTP3Model.PhieuNhap">
               <MappingFragment StoreEntitySet="PhieuNhap">
                 <ScalarProperty Name="MaPN" ColumnName="MaPN" />
                 <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
@@ -1099,7 +1095,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SanPhams">
-            <EntityTypeMapping TypeName="QLTPModel.SanPham">
+            <EntityTypeMapping TypeName="QLTP3Model.SanPham">
               <MappingFragment StoreEntitySet="SanPham">
                 <ScalarProperty Name="MaSP" ColumnName="MaSP" />
                 <ScalarProperty Name="TenSP" ColumnName="TenSP" />
@@ -1115,19 +1111,20 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TrangThais">
-            <EntityTypeMapping TypeName="QLTPModel.TrangThai">
+            <EntityTypeMapping TypeName="QLTP3Model.TrangThai">
               <MappingFragment StoreEntitySet="TrangThai">
                 <ScalarProperty Name="MaTT" ColumnName="MaTT" />
                 <ScalarProperty Name="TenTT" ColumnName="TenTT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="HoaDon_TimKiemNC" FunctionName="QLTPModel.Store.HoaDon_TimKiemNC" />
-          <FunctionImportMapping FunctionImportName="KhachHang_TimKiemNC" FunctionName="QLTPModel.Store.KhachHang_TimKiemNC" />
-          <FunctionImportMapping FunctionImportName="NhaCungCap_TimKiemNC" FunctionName="QLTPModel.Store.NhaCungCap_TimKiemNC" />
-          <FunctionImportMapping FunctionImportName="NhanVien_TimKiemNC" FunctionName="QLTPModel.Store.NhanVien_TimKiemNC" />
-          <FunctionImportMapping FunctionImportName="PhanHoi_TimKiemNC" FunctionName="QLTPModel.Store.PhanHoi_TimKiemNC" />
-          <FunctionImportMapping FunctionImportName="SanPham_TimKiemNC" FunctionName="QLTPModel.Store.SanPham_TimKiemNC" />
+          <FunctionImportMapping FunctionImportName="BaiViet_TimKiemNC" FunctionName="QLTP3Model.Store.BaiViet_TimKiemNC" />
+          <FunctionImportMapping FunctionImportName="HoaDon_TimKiemNC" FunctionName="QLTP3Model.Store.HoaDon_TimKiemNC" />
+          <FunctionImportMapping FunctionImportName="KhachHang_TimKiemNC" FunctionName="QLTP3Model.Store.KhachHang_TimKiemNC" />
+          <FunctionImportMapping FunctionImportName="NhaCungCap_TimKiemNC" FunctionName="QLTP3Model.Store.NhaCungCap_TimKiemNC" />
+          <FunctionImportMapping FunctionImportName="NhanVien_TimKiemNC" FunctionName="QLTP3Model.Store.NhanVien_TimKiemNC" />
+          <FunctionImportMapping FunctionImportName="PhanHoi_TimKiemNC" FunctionName="QLTP3Model.Store.PhanHoi_TimKiemNC" />
+          <FunctionImportMapping FunctionImportName="SanPham_TimKiemNC" FunctionName="QLTP3Model.Store.SanPham_TimKiemNC" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

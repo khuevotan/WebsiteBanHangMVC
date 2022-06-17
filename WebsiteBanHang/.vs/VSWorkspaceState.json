@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\WebsiteBanHang",
+    "\\WebsiteBanHang\\Areas",
+    "\\WebsiteBanHang\\Areas\\Admin",
+    "\\WebsiteBanHang\\Areas\\Admin\\Controllers",
+    "\\WebsiteBanHang\\Areas\\Admin\\Data",
+    "\\WebsiteBanHang\\Areas\\Admin\\Views",
+    "\\WebsiteBanHang\\Controllers"
+  ],
+  "SelectedNode": "\\WebsiteBanHang\\Areas\\Admin\\Controllers\\HomeController.cs",
+  "PreviewInSolutionExplorer": false
+}

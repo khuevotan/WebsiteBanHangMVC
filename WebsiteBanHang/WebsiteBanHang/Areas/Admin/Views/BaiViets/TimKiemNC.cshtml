@@ -119,7 +119,7 @@
          grid.Column("STT",format: item => item.WebGrid.Rows.IndexOf(item) + 1 + Math.Round(Convert.ToDouble(grid.TotalRowCount / grid.PageCount) / grid.RowsPerPage) * grid.RowsPerPage * grid.PageIndex),
         grid.Column("MaBV","Mã bài viết"), //the model fields to display
         grid.Column("TenBV","Tên bài viết"),
-        grid.Column("NgayDang","Ngày đăng",format:@<text> @item.NgayGui.ToString("dd/MM/yyyy")</text>),
+        grid.Column("NgayDang","Ngày đăng",format:@<text> @item.NgayDang.ToString("dd/MM/yyyy")</text>),
 
 grid.Column("NoiDung","Nội dung"),
 grid.Column("HinhDD","HinhDD"),

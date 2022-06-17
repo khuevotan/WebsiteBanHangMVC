@@ -12,8 +12,15 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
 {
     public class SanPhamsController : Controller
     {
-        private QLTPEntities1 db = new QLTPEntities1();
+        private QLTP3Entities2 db = new QLTP3Entities2();
 
+        string LayMaSP()
+        {
+            var maMax = db.SanPhams.ToList().Select(n => n.MaSP).Max();
+            int maSP = int.Parse(maMax.Substring(2)) + 1;
+            string SP = String.Concat("0", maSP.ToString());
+            return "SP" + SP.Substring(maSP.ToString().Length - 1);
+        }
         // GET: Admin/SanPhams
         public ActionResult Index()
         {
@@ -46,6 +53,7 @@ namespace WebsiteBanHang.Areas.Admin.Controllers
         // GET: Admin/SanPhams/Create
         public ActionResult Create()
         {
+            ViewBag.MaSP = LayMaSP();
             ViewBag.MaDM = new SelectList(db.DanhMucs, "MaDM", "TenDM");
             ViewBag.MaNCC = new SelectList(db.NhaCungCaps, "MaNCC", "TenNCC");
             return View();
